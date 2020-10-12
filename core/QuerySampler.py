@@ -209,6 +209,11 @@ class QuerySampler:
 
         random_size /= base_size
 
+        # print('EXPLAIN (COSTS) ' + query_template)
+        # print("Location: ", sel, random_size)
+        # print("costs: ", [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
+        # exit(0)
+
         return sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
 
     def parse_costs(self, plan, primary_table):
@@ -450,7 +455,7 @@ def visualize_pair_on_dataset(db_name='tpch'):
             viz = DecisionVisualizer()
             viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=f"{left_table}_{base_table}_optimal",
                                                          base_dir=f'./figures/{db_name.lower()}/{base_table}/')
-            # exit(1)
+            exit(1)
 
 
 if __name__ == "__main__":
