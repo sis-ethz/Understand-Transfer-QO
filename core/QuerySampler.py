@@ -57,18 +57,22 @@ class QuerySampler:
         self.db = None  # the database used by sampler
         self.left_size_ratio_threshold = 0.5
 
-    def sample_for_table(self, primary_table, left_tables=[], sample_size=100):
+    def sample_for_table(self, primary_table, left_tables=[], sample_size=100, sample_with_replacement=False, left_order='random'):
         results = []
-        print(f"Samping for {primary_table}, with left tables: {left_tables}")
+        # ==============================================
+        # Manual seed to make it reproducible
+        print(f"Set numpy random seed 0 for reproducibility")
+        np.random.seed(0)
+        # ==============================================
+        print(
+            f"Samping for {primary_table}, with left tables: {left_tables}, left table sorted on {left_order.upper()}")
         for _ in tqdm(range(sample_size)):
             rand_table = left_tables[np.random.randint(len(left_tables))]
             results.append(self.collect_random_query_2_table_all_op(
-                primary_table, rand_table))
-            # print(results)
-            # exit(0)
+                primary_table, rand_table, sample_with_replacement, left_order=left_order))
         return results
 
-    def collect_random_query_2_table_all_op(self, base_table, left_table):
+    def collect_random_query_2_table_all_op(self, base_table, left_table, sample_with_replacement, left_order='random'):
 
         # ==============================================
         # load features
@@ -78,6 +82,10 @@ class QuerySampler:
         left_table_key, base_table_key = self.join_keys[(
             left_table, base_table)]
         base_indexed_key = self.primary_keys[base_table]
+        if left_order.lower() == 'random':
+            left_order = "RANDOM()"
+        elif left_order.lower() == 'left_join_key':
+            left_order = f"{left_table_key}"
         # ==============================================
 
         if self.left_size_ratio_threshold < 0:
@@ -104,7 +112,14 @@ class QuerySampler:
         # self.db.execute(
         #     f"DROP VIEW IF EXISTS prev_result_view; CREATE VIEW prev_result_view AS select * from {left_table} ORDER BY RANDOM() LIMIT {random_size};", set_env=True)
 
-        prev_cte = f'WITH prev_result_view AS (select * from {left_table} ORDER BY RANDOM() LIMIT {random_size}) \n'
+        if not sample_with_replacement:
+            prev_cte = f'WITH prev_result_view AS (select * from {left_table} ORDER BY {left_order} LIMIT {random_size}) \n'
+        else:
+            prev_cte = f"""
+            WITH prev_result_view AS (with rows as (select *,row_number() over() as rn from {left_table} order by random()),
+            w(num) as (select (random()*(select count(*) from rows))::int+1
+                from generate_series(1,{random_size}))
+            select rows.* from rows join w on rows.rn = w.num ORDER BY {left_order} LIMIT {random_size})\n"""
 
         # print("Mixed selectivity", base_indexed_key, base_table_key)
         # if base_indexed_key == base_table_key:
@@ -142,6 +157,8 @@ class QuerySampler:
         # merge join + index scan
         # rules = f"/*+\nLeading((prev_result_view {base_table}))\nMergeJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
         rules = f"/*+\nMergeJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/"
+        # rules = f"/*+\nMergeJoin(prev_result_view {base_table})\nBitMapScan({base_table})\n*/"
+
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         # print(query)
@@ -207,14 +224,37 @@ class QuerySampler:
         nl_seq_scan_cost = q.total_cost
         # ==============================================
 
-        random_size /= base_size
+        left_ratio = random_size / base_size
 
-        # print('EXPLAIN (COSTS) ' + query_template)
-        # print("Location: ", sel, random_size)
-        # print("costs: ", [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
-        # exit(0)
+        # ==============================================
+        # collect all the features needed for training
+        # features included:
+        # left cardinality; base cardinality; left ordered on join key; base ordered on joined key; selectivity on indexed attr;
 
-        return sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
+        features = {}
+
+        features['left_cardinality'] = random_size
+        features['left_cardinality_ratio'] = left_ratio
+        features['base_cardinality'] = base_size
+        features['selectivity_on_indexed_attr'] = sel
+        features['left_ordered'] = 1 if left_order == left_table_key else 0
+        features['base_ordered'] = 1 if base_table_key == base_indexed_key else 0
+
+        features['hj_idx_cost'] = hash_idx_scan_cost
+        features['hj_seq_cost'] = hash_seq_scan_cost
+
+        features['nl_idx_cost'] = nl_idx_scan_cost
+        features['nl_seq_cost'] = nl_seq_scan_cost
+
+        features['mj_idx_cost'] = merge_idx_scan_cost
+        features['mj_seq_cost'] = merge_seq_scan_cost
+
+        features['optimal_decision'] = np.argmin(
+            [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
+        features['visualization_features'] = sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
+        # ==============================================
+        return features
+        # return sel, left_ratio, , nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
 
     def parse_costs(self, plan, primary_table):
         pass
@@ -294,6 +334,15 @@ class IMDB_lite_query_sampler(QuerySampler):
                       'movie_companies', 'movie_keyword', 'cast_info']
         }
 
+        self.indexes = {
+            'movie_info_idx': ['id'],
+            'movie_info': ['id'],
+            'movie_companies': ['id'],
+            'movie_keyword': ['id'],
+            'cast_info': ['id'],
+            'title': ['id'],
+        }
+
 
 class TPCH_query_sampler(QuerySampler):
 
@@ -305,6 +354,7 @@ class TPCH_query_sampler(QuerySampler):
             'part': 'p_partkey',
             'supplier': 's_suppkey',
             'orders': 'o_orderkey',
+            # 'orders': 'o_custkey',
             'customer': 'c_custkey',
             'partsupp': 'ps_partkey'
         }  # table: primary key
@@ -330,6 +380,9 @@ class TPCH_query_sampler(QuerySampler):
             ('lineitem', 'partsupp'): ('l_partkey', 'ps_partkey'),
             ('partsupp', 'lineitem'): ('ps_partkey', 'l_partkey'),
 
+            # ('lineitem', 'partsupp'): ('l_suppkey', 'ps_suppkey'),
+            # ('partsupp', 'lineitem'): ('ps_suppkey', 'l_suppkey'),
+
 
         }  # (table, table) : (key1, key2)
         self.table_features = {
@@ -344,6 +397,8 @@ class TPCH_query_sampler(QuerySampler):
             'orders': {
                 'table_size': 1500000,
                 'key_range': [1, 6000000]
+                # 'table_size': 1500000,
+                # 'key_range': [1,  149999]
             },
             'supplier': {
                 'table_size': 10000,
@@ -365,11 +420,20 @@ class TPCH_query_sampler(QuerySampler):
 
         self.join_graph = {
             # constructed by base table + left table list
-            # 'part': ['lineitem', 'partsupp'],
-            'orders': ['lineitem', 'customer'],
-            # 'supplier': ['lineitem', 'partsupp'],
-            # 'customer': ['orders'],
-            # 'partsupp': ['lineitem', 'supplier'],
+            'part': ['lineitem', 'partsupp'],
+            'orders': ['customer', 'lineitem'],
+            'supplier': ['lineitem', 'partsupp'],
+            'customer': ['orders'],
+            'partsupp': ['lineitem', 'part',  'supplier'],
+        }
+
+        self.indexes = {
+            'part': ['p_partkey'],
+            'orders': ['o_orderkey'],
+            'supplier': ['s_suppkey'],
+            'customer': ['c_custkey'],
+            'partsupp': ['ps_partkey'],
+            'lineitem': [],
         }
 
 
@@ -435,8 +499,17 @@ class SSB_query_sampler(QuerySampler):
             'supplier': ['lineorder']
         }
 
+        self.indexes = {
+            'part': ['p_partkey'],
+            'supplier': ['s_suppkey'],
+            'ddate': ['d_datekey'],
+            'customer': ['c_custkey'],
+            'lineorder': ['lo_orderkey', 'lo_linenumber'],
+        }
 
-def visualize_pair_on_dataset(db_name='tpch'):
+
+def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
+
     if db_name.lower() == 'tpch':
         sampler = TPCH_query_sampler()
     elif db_name.lower() == 'imdb':
@@ -448,17 +521,88 @@ def visualize_pair_on_dataset(db_name='tpch'):
 
     for base_table in sampler.join_graph:
         for left_table in sampler.join_graph[base_table]:
+            for left_order in ['random', 'left_join_key']:
 
-            res = sampler.sample_for_table(
-                base_table, [left_table], sample_size=500)
+                res = sampler.sample_for_table(
+                    base_table, [left_table], sample_size=500, sample_with_replacement=sample_with_replacement, left_order=left_order)
 
-            viz = DecisionVisualizer()
-            viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=f"{left_table}_{base_table}_optimal",
-                                                         base_dir=f'./figures/{db_name.lower()}/{base_table}/')
-            exit(1)
+                if sample_with_replacement:
+                    fig_filename = f"{left_table}_{base_table}_optimal_rep"
+                    data_filename = f"{left_table}_{base_table}_optimal_rep.csv"
+                else:
+                    fig_filename = f"{left_table}_{base_table}_optimal"
+                    data_filename = f"{left_table}_{base_table}_optimal.csv"
+
+                # viz = DecisionVisualizer()
+                # viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=fig_filename,
+                #                                              base_dir=f'./figures/{db_name.lower()}/{base_table}/')
+
+                save_data(res, save_path=f'./data/{db_name.lower()}/{base_table}/',
+                          filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
+                                                                'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
+
+
+def prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False):
+
+    if db_name.lower() == 'tpch':
+        sampler = TPCH_query_sampler()
+    elif db_name.lower() == 'imdb':
+        sampler = IMDB_lite_query_sampler()
+    elif db_name.lower() == 'ssb':
+        sampler = SSB_query_sampler()
+
+    result = []
+
+    for base_table in sampler.join_graph:
+        for left_table in sampler.join_graph[base_table]:
+            result = []
+
+            for left_order in ['random', 'left_join_key']:
+
+                res = sampler.sample_for_table(
+                    base_table, [left_table], sample_size=1000, sample_with_replacement=sample_with_replacement, left_order=left_order)
+                result += res
+
+            if sample_with_replacement:
+                data_filename = f"{left_table}_{base_table}_optimal_rep.csv"
+            else:
+                data_filename = f"{left_table}_{base_table}_optimal.csv"
+
+            save_data(result, save_path=f'./data/{db_name.lower()}/{base_table}/',
+                      filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
+                                                            'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
+
+
+def save_data(results, column_names, save_path, filename):
+
+    data = []
+
+    for f in results:
+        curr = []
+        for c in column_names:
+            curr.append(f[c])
+        data.append(curr)
+
+    df = pd.DataFrame(data=data, columns=column_names)
+    df.to_csv(os.path.join(save_path, filename), index=False)
 
 
 if __name__ == "__main__":
-    # visualize_pair_on_dataset(db_name='ssb')
-    visualize_pair_on_dataset(db_name='tpch')
-    # visualize_pair_on_dataset(db_name='imdb')
+
+    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
+    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=False)
+
+    # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=True)
+    # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=False)
+
+    # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=True)
+    # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False)
+
+    prepare_data_on_dataset(db_name='ssb', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=False)
+
+    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
+
+    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)

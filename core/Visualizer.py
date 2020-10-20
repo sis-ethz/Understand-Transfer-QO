@@ -37,7 +37,9 @@ class DecisionVisualizer:
         plt.figure()
         ax = plt.gca()
 
-        for sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost in all_results:
+        for f in all_results:
+            
+            sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost = f[visualization_features]
 
             m_cost_list = [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost,
                            hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost]
@@ -47,7 +49,17 @@ class DecisionVisualizer:
 
             importance = (min(m_cost_list) - min_cost) / min_cost
 
-            if hash_idx_scan_cost == min_cost:
+            if merge_idx_scan_cost == min_cost:
+                merge_idx_scan_x.append(sel)
+                merge_idx_scan_y.append(random_size)
+                merge_idx_scan_imp.append(importance)
+                # print("5")
+            elif merge_seq_scan_cost == min_cost:
+                merge_seq_scan_x.append(sel)
+                merge_seq_scan_y.append(random_size)
+                merge_seq_scan_imp.append(importance)
+
+            elif hash_idx_scan_cost == min_cost:
                 hash_idx_scan_x.append(sel)
                 hash_idx_scan_y.append(random_size)
                 hash_idx_scan_imp.append(importance)
@@ -67,15 +79,7 @@ class DecisionVisualizer:
                 nl_seq_scan_y.append(random_size)
                 nl_seq_scan_imp.append(importance)
                 # print("4")
-            elif merge_idx_scan_cost == min_cost:
-                merge_idx_scan_x.append(sel)
-                merge_idx_scan_y.append(random_size)
-                merge_idx_scan_imp.append(importance)
-                # print("5")
-            elif merge_seq_scan_cost == min_cost:
-                merge_seq_scan_x.append(sel)
-                merge_seq_scan_y.append(random_size)
-                merge_seq_scan_imp.append(importance)
+
                 # print("6")
             print([nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost,
                    hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])

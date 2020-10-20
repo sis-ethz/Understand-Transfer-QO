@@ -1,0 +1,3 @@
+left_cardinality,left_cardinality_ratio,base_cardinality,selectivity_on_indexed_attr,left_ordered,base_ordered,hj_idx_cost,hj_seq_cost,nl_idx_cost,nl_seq_cost,mj_idx_cost,mj_seq_cost,optimal_decision
+560,0.28,2000,0.6575,0,1,464779.15,464769.17,465019.55,475796.24,464796.57,464853.69,3
+560,0.28,2000,0.6575,1,1,334963.51,334953.53,335203.91,345980.6,334980.93,335038.05,3
