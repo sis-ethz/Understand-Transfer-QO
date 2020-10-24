@@ -1,0 +1,8 @@
+{'node type': 'sort', 'parent relationship': 'outer', 'parallel aware': false, 'startup cost': 7952.49, 'total cost': 8061.41, 'plan rows': 43568, 'plan width': 172, 'output': ['prev_result_view.lo_orderkey', 'prev_result_view.lo_linenumber', 'prev_result_view.lo_custkey', 'prev_result_view.lo_partkey', 'prev_result_view.lo_suppkey', 'prev_result_view.lo_orderdate', 'prev_result_view.lo_orderpriority', 'prev_result_view.lo_shippriority', 'prev_result_view.lo_quantity', 'prev_result_view.lo_extendedprice', 'prev_result_view.lo_ordtotalprice', 'prev_result_view.lo_discount', 'prev_result_view.lo_revenue', 'prev_result_view.lo_supplycost', 'prev_result_view.lo_tax', 'prev_result_view.lo_commitdate', 'prev_result_view.lo_shipmode'
+    ], 'sort key': ['prev_result_view.lo_partkey'
+    ], 'plans': [
+        {'node type': 'cte scan', 'parent relationship': 'outer', 'parallel aware': false, 'cte name': 'prev_result_view', 'alias': 'prev_result_view', 'startup cost': 0.0, 'total cost': 871.36, 'plan rows': 43568, 'plan width': 172, 'output': ['prev_result_view.lo_orderkey', 'prev_result_view.lo_linenumber', 'prev_result_view.lo_custkey', 'prev_result_view.lo_partkey', 'prev_result_view.lo_suppkey', 'prev_result_view.lo_orderdate', 'prev_result_view.lo_orderpriority', 'prev_result_view.lo_shippriority', 'prev_result_view.lo_quantity', 'prev_result_view.lo_extendedprice', 'prev_result_view.lo_ordtotalprice', 'prev_result_view.lo_discount', 'prev_result_view.lo_revenue', 'prev_result_view.lo_supplycost', 'prev_result_view.lo_tax', 'prev_result_view.lo_commitdate', 'prev_result_view.lo_shipmode'
+            ]
+        }
+    ]
+}
