@@ -38,8 +38,9 @@ class DecisionVisualizer:
         ax = plt.gca()
 
         for f in all_results:
-            
-            sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost = f[visualization_features]
+
+            sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost = f[
+                'visualization_features']
 
             m_cost_list = [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost,
                            hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost]
@@ -81,8 +82,8 @@ class DecisionVisualizer:
                 # print("4")
 
                 # print("6")
-            print([nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost,
-                   hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
+            # print([nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost,
+            #        hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
         # print(m_color(hash_idx_scan_imp))
 
         cm = plt.cm.get_cmap('RdYlBu')

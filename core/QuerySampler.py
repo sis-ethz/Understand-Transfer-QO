@@ -121,21 +121,30 @@ class QuerySampler:
                 from generate_series(1,{random_size}))
             select rows.* from rows join w on rows.rn = w.num ORDER BY {left_order} LIMIT {random_size})\n"""
 
-        # print("Mixed selectivity", base_indexed_key, base_table_key)
-        # if base_indexed_key == base_table_key:
-        #     print("Mixed selectivity")
-        #     selectivity_query_template = f"""
-        #     select count(*) from {base_table} where {base_indexed_key} > {random_key} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
-        # else:
-        selectivity_query_template = f"""
-        select count(*) from {base_table} where {base_indexed_key} > {random_key};"""
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        select * from {base_table} where {base_indexed_key} > {random_key};"""
         # print("cardinality sql \n", selectivity_query_template)
+        # print(selectivity_query_template)
+        q = self.db.explain(selectivity_query_template)
+        card = q.cardinalities['estimated'][0]
+        sel_on_indexed_attr = card / base_size
+        # card = self.db.execute(selectivity_query_template)[0][0]
 
-        card = self.db.execute(selectivity_query_template)[0][0]
+        # print("Mixed selectivity", base_indexed_key, base_table_key)
+        if base_indexed_key == base_table_key:
+            selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+            {prev_cte} select * from {base_table} where {base_indexed_key} > {random_key} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+            q = self.db.explain(
+                selectivity_query_template)
+            sel_on_indexed_attr_with_join_predicate = q.cardinalities['estimated'][0] / base_size
+        else:
+            sel_on_indexed_attr_with_join_predicate = sel_on_indexed_attr
 
-        sel = card / base_size
+        # print(card)
+        # print(sel_on_indexed_attr_with_join_predicate)
+        # exit(0)
 
-        # print("sel: ", sel, "left size: ", random_size)
+        # print("sel_on_indexed_attr: ", sel_on_indexed_attr, "left size: ", random_size)
 
         # rand_query = query_template
         # print(rand_query)
@@ -162,12 +171,9 @@ class QuerySampler:
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         # print(query)
-        # exit(0)
         q = self.db.explain(query)
-
-        # print(q.cardinalities['estimated'])
-
-        merge_idx_scan_cost = q.total_cost
+        # triplet_cost_parse(q)
+        merge_idx_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
         # ==============================================
 
         # ==============================================
@@ -179,7 +185,8 @@ class QuerySampler:
 
         # print(query)
         q = self.db.explain(query)
-        merge_seq_scan_cost = q.total_cost
+        # triplet_cost_parse(q)
+        merge_seq_scan_cost = triplet_cost_parse(q)
         assert merge_seq_scan_cost != merge_idx_scan_cost
         # exit(0)
         # ==============================================
@@ -191,7 +198,8 @@ class QuerySampler:
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         q = self.db.explain(query)
-        hash_seq_scan_cost = q.total_cost
+        # triplet_cost_parse(q)
+        hash_seq_scan_cost = triplet_cost_parse(q)
         # ==============================================
 
         # ==============================================
@@ -201,7 +209,8 @@ class QuerySampler:
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         q = self.db.explain(query)
-        hash_idx_scan_cost = q.total_cost
+        # triplet_cost_parse(q)
+        hash_idx_scan_cost = triplet_cost_parse(q)
         # ==============================================
 
         # ==============================================
@@ -211,7 +220,7 @@ class QuerySampler:
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         q = self.db.explain(query)
-        nl_idx_scan_cost = q.total_cost
+        nl_idx_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
         # ==============================================
 
         # ==============================================
@@ -221,7 +230,7 @@ class QuerySampler:
         query = rules + \
             'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
         q = self.db.explain(query)
-        nl_seq_scan_cost = q.total_cost
+        nl_seq_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
         # ==============================================
 
         left_ratio = random_size / base_size
@@ -236,9 +245,12 @@ class QuerySampler:
         features['left_cardinality'] = random_size
         features['left_cardinality_ratio'] = left_ratio
         features['base_cardinality'] = base_size
-        features['selectivity_on_indexed_attr'] = sel
+        features['selectivity_on_indexed_attr'] = sel_on_indexed_attr
         features['left_ordered'] = 1 if left_order == left_table_key else 0
         features['base_ordered'] = 1 if base_table_key == base_indexed_key else 0
+        features['index_size'] = self.indexes[base_table][base_indexed_key]
+        features['result_size'] = q.cardinalities['estimated'][0]
+        features['sel_on_indexed_attr_with_join_predicate'] = sel_on_indexed_attr_with_join_predicate
 
         features['hj_idx_cost'] = hash_idx_scan_cost
         features['hj_seq_cost'] = hash_seq_scan_cost
@@ -251,10 +263,11 @@ class QuerySampler:
 
         features['optimal_decision'] = np.argmin(
             [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
-        features['visualization_features'] = sel, random_size, nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
+        features['visualization_features'] = (sel_on_indexed_attr, left_ratio, nl_idx_scan_cost, nl_seq_scan_cost,
+                                              hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
         # ==============================================
         return features
-        # return sel, left_ratio, , nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
+        # return sel_on_indexed_attr, left_ratio, , nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
 
     def parse_costs(self, plan, primary_table):
         pass
@@ -335,12 +348,24 @@ class IMDB_lite_query_sampler(QuerySampler):
         }
 
         self.indexes = {
-            'movie_info_idx': ['id'],
-            'movie_info': ['id'],
-            'movie_companies': ['id'],
-            'movie_keyword': ['id'],
-            'cast_info': ['id'],
-            'title': ['id'],
+            'movie_info_idx': {
+                'id': 31014912
+            },
+            'movie_info': {
+                'id': 482312192
+            },
+            'movie_companies': {
+                'id':  58621952
+            },
+            'movie_keyword': {
+                'id':  101629952
+            },
+            'cast_info': {
+                'id':  814112768
+            },
+            'title': {
+                'id':  73875456
+            },
         }
 
 
@@ -428,12 +453,26 @@ class TPCH_query_sampler(QuerySampler):
         }
 
         self.indexes = {
-            'part': ['p_partkey'],
-            'orders': ['o_orderkey'],
-            'supplier': ['s_suppkey'],
-            'customer': ['c_custkey'],
-            'partsupp': ['ps_partkey'],
-            'lineitem': [],
+            'part': {
+                'p_partkey': 4513792
+            },
+            'orders': {
+                'o_orderkey': 33718272
+            },
+            'supplier': {
+                's_suppkey': 245760
+            },
+            'customer': {
+                'c_custkey':  3391488
+            },
+            'partsupp': {
+                'ps_partkey': 17989632
+            },
+            'lineitem': {},
+        }
+
+        self.index_size = {
+
         }
 
 
@@ -500,11 +539,22 @@ class SSB_query_sampler(QuerySampler):
         }
 
         self.indexes = {
-            'part': ['p_partkey'],
-            'supplier': ['s_suppkey'],
-            'ddate': ['d_datekey'],
-            'customer': ['c_custkey'],
-            'lineorder': ['lo_orderkey', 'lo_linenumber'],
+            'part': {
+                'p_partkey': 4513792
+            },
+            'supplier': {
+                's_suppkey': 65536
+            },
+            'ddate': {
+                'd_datekey': 73728
+            },
+            'customer': {
+                'c_custkey': 688128
+            },
+            'lineorder': {
+                'lo_orderkey':  134815744,
+                # 'lo_linenumber'
+            },
         }
 
 
@@ -521,7 +571,7 @@ def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
 
     for base_table in sampler.join_graph:
         for left_table in sampler.join_graph[base_table]:
-            for left_order in ['random', 'left_join_key']:
+            for left_order in ['random']:
 
                 res = sampler.sample_for_table(
                     base_table, [left_table], sample_size=500, sample_with_replacement=sample_with_replacement, left_order=left_order)
@@ -533,13 +583,14 @@ def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
                     fig_filename = f"{left_table}_{base_table}_optimal"
                     data_filename = f"{left_table}_{base_table}_optimal.csv"
 
-                # viz = DecisionVisualizer()
-                # viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=fig_filename,
-                #                                              base_dir=f'./figures/{db_name.lower()}/{base_table}/')
+                viz = DecisionVisualizer()
+                viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=fig_filename,
+                                                             base_dir=f'./figures/{db_name.lower()}/{base_table}/')
+            # exit(0)
 
-                save_data(res, save_path=f'./data/{db_name.lower()}/{base_table}/',
-                          filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
-                                                                'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
+                # save_data(res, save_path=f'./data/{db_name.lower()}/{base_table}/',
+                #           filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
+                #                                                 'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
 
 
 def prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False):
@@ -569,7 +620,8 @@ def prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False):
                 data_filename = f"{left_table}_{base_table}_optimal.csv"
 
             save_data(result, save_path=f'./data/{db_name.lower()}/{base_table}/',
-                      filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
+                      filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr',
+                                                            'left_ordered', 'base_ordered', 'result_size', 'sel_on_indexed_attr_with_join_predicate',
                                                             'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
 
 
@@ -598,11 +650,11 @@ if __name__ == "__main__":
     # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=True)
     # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False)
 
-    prepare_data_on_dataset(db_name='ssb', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=True)
     # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=False)
 
-    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
-    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
+    prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
+    prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
 
-    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
-    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)
+    prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
+    prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)

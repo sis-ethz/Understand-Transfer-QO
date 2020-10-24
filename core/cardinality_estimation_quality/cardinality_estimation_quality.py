@@ -19,6 +19,7 @@ from math import ceil, log
 import errno
 import glob
 import json
+from collections import deque
 import matplotlib
 matplotlib.use('Agg')
 
@@ -96,7 +97,6 @@ class QueryResult():
             self.execution_time = result['Execution Time']
             self.cardinalities = pd.DataFrame(self._parse_cardinalities())
 
-        self.total_cost = result['Plan']['Total Cost']
         return result
 
     def _parse_cardinalities(self, query_plan=None):
@@ -478,6 +478,45 @@ def plot_q_error_distribution_vs_join_level(queries):
     plot.set_title('Q-error distribution vs node join level')
     plot.set(xlabel='Join level', ylabel='Q-error')
     return plot
+
+
+def triplet_cost_parse(q, anchor='CTE Scan'):
+    total_cost = q.query_plan['Total Cost']
+    sub_plan = q.query_plan['Plans']
+    # print(q.query_plan)
+    assert len(sub_plan) == 3
+    CTE_cost = sub_plan[0]['Total Cost']
+
+    if is_CTE_scan(sub_plan[1], anchor):
+        CTE_scan_cost = is_CTE_scan(sub_plan[1], anchor)
+    else:
+        CTE_scan_cost = is_CTE_scan(sub_plan[2], anchor)
+
+    total_useful_cost = total_cost - CTE_scan_cost - CTE_cost
+
+    # print("Total cost ", total_cost)
+    # print("CTE_cost ", CTE_cost)
+    # print("CTE_scan_cost ", CTE_scan_cost)
+    return total_useful_cost
+
+
+def is_CTE_scan(plan_json, anchor):
+    # print("str(plan)", str(plan_json).lower())
+    # exit(1)
+
+    if anchor.lower() in str(plan_json).lower():
+        q = deque()
+        q.append(plan_json)
+        while q:
+            c = q.popleft()
+            if 'cte scan' not in c['Node Type'].lower():
+                for p in c['Plans']:
+                    q.append(p)
+            else:
+                break
+        return c['Total Cost']
+    else:
+        return None
 
 
 if __name__ == '__main__':
