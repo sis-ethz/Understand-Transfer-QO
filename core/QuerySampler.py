@@ -262,9 +262,11 @@ class QuerySampler:
         features['mj_seq_cost'] = merge_seq_scan_cost
 
         features['optimal_decision'] = np.argmin(
-            [nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
+            [hash_idx_scan_cost, hash_seq_scan_cost, nl_idx_scan_cost, nl_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
         features['visualization_features'] = (sel_on_indexed_attr, left_ratio, nl_idx_scan_cost, nl_seq_scan_cost,
                                               hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
+        # features['visualization_features'] = (q.cardinalities['estimated'][0], left_ratio, nl_idx_scan_cost, nl_seq_scan_cost,
+        #                                       hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
         # ==============================================
         return features
         # return sel_on_indexed_attr, left_ratio, , nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
@@ -641,7 +643,7 @@ def save_data(results, column_names, save_path, filename):
 
 if __name__ == "__main__":
 
-    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
+    visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
     # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=False)
 
     # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=True)
@@ -653,8 +655,8 @@ if __name__ == "__main__":
     # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=True)
     # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=False)
 
-    prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
-    prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
+    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
 
-    prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
-    prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)
+    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
+    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)

@@ -514,7 +514,7 @@ def is_CTE_scan(plan_json, anchor):
                     q.append(p)
             else:
                 break
-        return c['Total Cost']
+        return c['Total Cost'] - c['Startup Cost']
     else:
         return None
 
