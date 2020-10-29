@@ -186,3 +186,475 @@
 [I 22:14:50.980 NotebookApp] Saving file at /interpretable models/mlp.ipynb
 [I 22:16:50.975 NotebookApp] Saving file at /interpretable models/mlp.ipynb
 [I 22:20:51.010 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 22:23:58.137 NotebookApp] Starting buffering for e80934e0-2ecf-47f3-b67a-3f11ff147ec9:73beb5cdaa40451483a3969cfc5626a8
+[I 22:24:03.195 NotebookApp] Kernel restarted: e80934e0-2ecf-47f3-b67a-3f11ff147ec9
+[I 22:24:03.222 NotebookApp] Restoring connection for e80934e0-2ecf-47f3-b67a-3f11ff147ec9:73beb5cdaa40451483a3969cfc5626a8
+[I 22:24:50.706 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 22:28:50.706 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 22:32:50.701 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 22:36:50.706 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 22:38:50.977 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 23:25:27.767 NotebookApp] Kernel started: fdd389cf-57e8-48b7-938e-772660d38fb2, name: python3
+[I 23:26:50.986 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 23:27:27.764 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:29:27.760 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:31:27.979 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:41:27.767 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:43:27.788 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:45:27.771 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:47:27.775 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:49:27.761 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:51:27.760 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:53:27.778 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:55:27.764 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:57:27.772 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 23:59:27.771 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:01:27.771 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:03:27.773 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:04:29.544 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 00:04:29.963 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 00:04:29.982 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 00:04:29.984 NotebookApp] Replaying 3 buffered messages
+[I 00:05:27.770 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:07:27.773 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:11:27.767 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:13:28.080 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:15:27.867 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:17:09.937 NotebookApp] Starting buffering for 66345f1d-a83d-4760-87ab-6344237a5703:46fc048e939f48c7bf7afcfbe9d6ded4
+[I 00:17:18.213 NotebookApp] Kernel shutdown: 66345f1d-a83d-4760-87ab-6344237a5703
+[W 00:17:18.230 NotebookApp] delete /interpretable models/EBM.ipynb
+[W 00:17:18.236 NotebookApp] Skipping trash for /mnt/Database/rule-based-qo/interpretable-cost-model/interpretable models/EBM.ipynb, on different device to home directory
+[I 00:17:22.521 NotebookApp] Copying interpretable models/decision tree.ipynb to /interpretable models
+[I 00:17:34.863 NotebookApp] Kernel started: 4f36c852-9846-4b70-972b-2e12b8f96ff3, name: python3
+[I 00:19:34.791 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:26:37.726 NotebookApp] Starting buffering for 4f36c852-9846-4b70-972b-2e12b8f96ff3:af65b730f73745588fc339f3610f3b0f
+[I 00:26:42.812 NotebookApp] Kernel restarted: 4f36c852-9846-4b70-972b-2e12b8f96ff3
+[I 00:26:42.828 NotebookApp] Restoring connection for 4f36c852-9846-4b70-972b-2e12b8f96ff3:af65b730f73745588fc339f3610f3b0f
+[I 00:27:28.014 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:27:34.778 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:29:34.798 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:33:34.795 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:35:34.784 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:37:34.798 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:39:27.821 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:39:35.026 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:41:27.920 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:41:35.036 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:43:27.801 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:43:35.019 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 00:45:27.803 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:47:27.797 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:49:27.813 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:51:27.800 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:53:27.765 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:55:27.792 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:57:27.778 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 00:59:02.771 NotebookApp] Starting buffering for 4f36c852-9846-4b70-972b-2e12b8f96ff3:af65b730f73745588fc339f3610f3b0f
+[I 00:59:07.870 NotebookApp] Kernel restarted: 4f36c852-9846-4b70-972b-2e12b8f96ff3
+[I 00:59:07.931 NotebookApp] Restoring connection for 4f36c852-9846-4b70-972b-2e12b8f96ff3:af65b730f73745588fc339f3610f3b0f
+[I 00:59:34.779 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 01:01:27.780 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:01:35.002 NotebookApp] Saving file at /interpretable models/ebm.ipynb
+[I 01:03:27.767 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:05:27.766 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:07:27.762 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:09:27.762 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:10:07.874 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:10:11.403 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 01:10:11.425 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:10:11.426 NotebookApp] Replaying 3 buffered messages
+[I 01:11:27.766 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:13:27.768 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:15:27.771 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:17:27.983 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:19:27.765 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:21:11.392 NotebookApp] Kernel interrupted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 01:21:27.762 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:23:27.987 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:25:27.766 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:26:48.107 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:26:48.826 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 01:26:48.846 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:26:48.847 NotebookApp] Replaying 3 buffered messages
+[I 01:27:27.772 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:29:27.763 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:31:27.764 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:33:27.773 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:35:27.776 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:37:27.778 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:39:27.766 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:39:49.411 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:39:52.855 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 01:58:24.972 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:58:26.010 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 01:58:26.065 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 01:58:26.066 NotebookApp] Replaying 3 buffered messages
+[I 01:59:27.791 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 02:01:27.762 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 02:57:27.766 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 02:59:27.762 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 03:01:27.763 NotebookApp] Saving file at /interpretable models/decision tree.ipynb
+[I 15:13:17.966 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:27:17.642 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:29:17.651 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:30:27.654 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 15:30:28.272 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 15:30:28.292 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 15:30:28.295 NotebookApp] Replaying 3 buffered messages
+[I 15:30:41.327 NotebookApp] Starting buffering for e80934e0-2ecf-47f3-b67a-3f11ff147ec9:73beb5cdaa40451483a3969cfc5626a8
+[I 15:30:51.537 NotebookApp] Kernel shutdown: e80934e0-2ecf-47f3-b67a-3f11ff147ec9
+[W 15:30:51.546 NotebookApp] delete /interpretable models/mlp.ipynb
+[W 15:30:51.550 NotebookApp] Skipping trash for /mnt/Database/rule-based-qo/interpretable-cost-model/interpretable models/mlp.ipynb, on different device to home directory
+[I 15:30:54.496 NotebookApp] Copying interpretable models/random_forest.ipynb to /interpretable models
+[I 15:31:05.669 NotebookApp] Kernel started: 81f57b07-71f2-4030-afc1-02972927f390, name: python3
+[I 15:31:17.880 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:33:05.877 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:36:20.981 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 15:36:21.313 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 15:36:21.350 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 15:36:21.351 NotebookApp] Replaying 3 buffered messages
+[I 15:37:05.879 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:39:05.860 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:42:43.694 NotebookApp] Starting buffering for 4f36c852-9846-4b70-972b-2e12b8f96ff3:af65b730f73745588fc339f3610f3b0f
+[I 15:43:17.646 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:47:17.654 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:49:05.641 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:51:05.870 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:51:17.658 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:53:05.860 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:53:17.864 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:55:05.869 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:56:18.748 NotebookApp] Kernel interrupted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 15:56:20.906 NotebookApp] Kernel interrupted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 15:56:33.571 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 15:56:38.770 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 15:56:38.810 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 15:57:05.865 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:57:17.657 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 15:59:05.856 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 15:59:17.650 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:01:17.641 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:03:05.635 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 16:05:05.862 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 16:06:21.444 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel fdd389cf-57e8-48b7-938e-772660d38fb2 restarted
+[I 16:06:31.381 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel 81f57b07-71f2-4030-afc1-02972927f390 restarted
+[I 16:07:05.890 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 16:07:17.665 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:07:51.641 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 16:07:51.977 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 16:07:52.073 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 16:07:52.074 NotebookApp] Replaying 3 buffered messages
+[I 16:09:17.872 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:11:17.870 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:13:17.644 NotebookApp] Saving file at /interpretable models/random_forest.ipynb
+[I 16:14:23.823 NotebookApp] Copying interpretable models/random_forest_all_features.ipynb to /interpretable models
+[I 16:14:42.846 NotebookApp] Kernel started: 544aa460-83a3-462c-833c-d49c19f2b692, name: python3
+[I 16:15:22.478 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 16:15:22.810 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 16:15:22.829 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 16:15:22.829 NotebookApp] Replaying 3 buffered messages
+[I 16:18:18.482 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel fdd389cf-57e8-48b7-938e-772660d38fb2 restarted
+[I 16:18:19.523 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 16:25:05.658 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 16:27:05.639 NotebookApp] Saving file at /interpretable models/mlp.ipynb
+[I 16:28:02.214 NotebookApp] Kernel interrupted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:29:05.643 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:31:05.636 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:33:05.640 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:33:26.788 NotebookApp] Kernel interrupted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 16:34:51.876 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 16:35:17.650 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 16:37:05.634 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:37:17.679 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 16:39:05.638 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:43:05.862 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:45:14.953 NotebookApp] Kernel interrupted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:45:15.095 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel 81f57b07-71f2-4030-afc1-02972927f390 restarted
+[I 16:45:15.183 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+kernel 544aa460-83a3-462c-833c-d49c19f2b692 restarted
+[I 16:45:15.305 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:45:20.481 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:45:20.591 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:45:21.065 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:45:21.066 NotebookApp] Replaying 6 buffered messages
+[I 16:46:53.799 NotebookApp] Kernel interrupted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:48:01.017 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:50:41.031 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:51:44.049 NotebookApp] Kernel interrupted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:51:49.372 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:51:54.446 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:51:54.500 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:51:54.501 NotebookApp] Replaying 40 buffered messages
+[I 16:52:52.822 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:52:53.139 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 16:52:53.180 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 16:52:53.181 NotebookApp] Replaying 3 buffered messages
+[I 16:53:21.031 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:56:01.892 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:58:41.909 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:01:21.031 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:04:01.028 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:06:41.872 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:09:21.874 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:12:01.868 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[W 17:37:00.560 NotebookApp] delete /interpretable models/Linear regression.ipynb
+[W 17:37:00.574 NotebookApp] Skipping trash for /mnt/Database/rule-based-qo/interpretable-cost-model/interpretable models/Linear regression.ipynb, on different device to home directory
+[I 17:37:09.087 NotebookApp] Kernel shutdown: 4f36c852-9846-4b70-972b-2e12b8f96ff3
+[W 17:37:09.099 NotebookApp] delete /interpretable models/ebm.ipynb
+[W 17:37:09.105 NotebookApp] Skipping trash for /mnt/Database/rule-based-qo/interpretable-cost-model/interpretable models/ebm.ipynb, on different device to home directory
+[I 17:37:14.391 NotebookApp] Copying interpretable models/random_forest_all_features.ipynb to /interpretable models
+[I 17:37:29.132 NotebookApp] Kernel started: 32443c7b-f326-4492-8f04-f69ea6699d35, name: python3
+[I 17:47:29.122 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 17:49:29.113 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 17:51:29.864 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 18:21:29.100 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:17:29.121 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:19:29.867 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:21:29.106 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:23:29.099 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:29:29.098 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:31:29.098 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:33:29.863 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:37:29.100 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:40:24.887 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:42:24.880 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:44:24.880 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:46:24.889 NotebookApp] Saving file at /interpretable models/gam_all_features.ipynb
+[I 00:48:24.975 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 00:50:24.877 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 00:52:24.889 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 00:54:24.878 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 01:46:24.882 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 01:48:24.874 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 16:26:31.834 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:29:11.677 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:31:51.677 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:34:31.676 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:37:11.677 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:39:51.681 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:45:11.680 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:03:19.951 NotebookApp] Copying interpretable models/mlp_all_features.ipynb to /interpretable models
+[I 17:03:36.658 NotebookApp] Kernel started: e73ae617-031b-4914-a5fc-81aa93f2e87f, name: python3
+[I 17:04:14.105 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:04:14.435 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 17:04:14.454 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:04:14.455 NotebookApp] Replaying 3 buffered messages
+[I 17:05:37.562 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:19:41.763 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 17:21:29.671 NotebookApp] Starting buffering for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:21:30.371 NotebookApp] Restoring connection for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:21:32.916 NotebookApp] Starting buffering for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:21:33.362 NotebookApp] Kernel restarted: e73ae617-031b-4914-a5fc-81aa93f2e87f
+[I 17:21:33.382 NotebookApp] Restoring connection for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:21:33.383 NotebookApp] Replaying 3 buffered messages
+[I 17:21:36.662 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:23:36.688 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:25:36.661 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:29:36.659 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:33:36.660 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:39:36.678 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:43:37.554 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:49:37.542 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:53:08.340 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 17:53:37.553 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:55:08.559 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 17:59:11.672 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:59:16.314 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 17:59:16.347 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:59:16.347 NotebookApp] Replaying 3 buffered messages
+[I 18:08:23.757 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 18:08:28.826 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 18:08:28.855 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 18:08:28.856 NotebookApp] Replaying 3 buffered messages
+[I 18:09:12.553 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 18:09:19.506 NotebookApp] Starting buffering for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 18:09:20.739 NotebookApp] Kernel restarted: e73ae617-031b-4914-a5fc-81aa93f2e87f
+[I 18:09:20.769 NotebookApp] Restoring connection for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 18:09:20.772 NotebookApp] Replaying 3 buffered messages
+[I 18:09:36.668 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 18:10:32.543 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:13:12.537 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:17:37.536 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 18:18:32.535 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:29:12.572 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:37:36.660 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 18:47:52.534 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:11:37.531 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 19:14:32.528 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:17:12.552 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:27:52.541 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:30:32.533 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:41:12.532 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:43:52.529 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 19:47:37.531 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 20:05:37.532 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 20:09:37.532 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 20:13:37.538 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 21:37:08.322 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:01:08.327 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:03:08.313 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:05:08.539 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:05:11.689 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 22:07:52.539 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 22:16:41.759 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 22:29:30.944 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:29:31.463 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 22:29:31.510 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:29:31.510 NotebookApp] Replaying 3 buffered messages
+[I 22:33:12.526 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 22:41:08.318 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:49:08.306 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:51:08.350 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:53:08.333 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:53:16.219 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 22:53:17.144 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 22:53:17.164 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 22:53:17.165 NotebookApp] Replaying 3 buffered messages
+[I 22:55:08.305 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 22:55:34.458 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 22:55:35.076 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 22:55:35.095 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 22:55:35.096 NotebookApp] Replaying 3 buffered messages
+[I 22:57:08.309 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:03:08.324 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:17:08.321 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:19:08.310 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:21:08.308 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:25:08.316 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:26:32.109 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 23:26:32.728 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 23:26:32.747 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 23:26:32.748 NotebookApp] Replaying 3 buffered messages
+[I 23:27:08.535 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:33:08.315 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:35:08.307 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:37:08.306 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:53:08.538 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 23:54:15.553 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 23:56:15.538 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 00:26:16.525 NotebookApp] Saving file at /interpretable models/ebm_all_features.ipynb
+[I 16:32:56.823 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 16:34:56.817 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 17:05:58.328 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:05:58.851 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 17:05:58.871 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 17:05:58.872 NotebookApp] Replaying 3 buffered messages
+[I 17:06:57.041 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 17:07:20.684 NotebookApp] Starting buffering for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:07:21.308 NotebookApp] Kernel restarted: e73ae617-031b-4914-a5fc-81aa93f2e87f
+[I 17:07:21.341 NotebookApp] Restoring connection for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[I 17:07:21.344 NotebookApp] Replaying 3 buffered messages
+[I 17:07:25.179 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:07:41.822 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 17:07:42.756 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 17:07:42.777 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 17:07:42.778 NotebookApp] Replaying 3 buffered messages
+[I 17:09:01.062 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:11:26.040 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:14:21.038 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:15:01.062 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 17:17:01.050 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:19:41.038 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:22:21.051 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:27:26.048 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:29:26.039 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:35:41.048 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:51:26.052 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 17:51:41.054 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:54:21.053 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:10:21.037 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:13:01.042 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:21:01.048 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:23:26.044 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 18:39:41.040 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:42:21.040 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:53:26.051 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 18:57:26.039 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 19:09:26.039 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 20:20:57.060 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 20:21:56.518 NotebookApp] Starting buffering for 32443c7b-f326-4492-8f04-f69ea6699d35:e99898915e0a49a1be36cc9b4bbe32f8
+[I 20:22:57.244 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 20:30:56.827 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 20:32:49.741 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 20:32:50.471 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 20:32:50.498 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 20:32:50.500 NotebookApp] Replaying 3 buffered messages
+[I 20:32:56.837 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 20:34:56.814 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 20:35:44.264 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 20:35:44.990 NotebookApp] Kernel restarted: fdd389cf-57e8-48b7-938e-772660d38fb2
+[I 20:35:45.032 NotebookApp] Restoring connection for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 20:35:45.033 NotebookApp] Replaying 3 buffered messages
+[I 20:36:56.818 NotebookApp] Saving file at /interpretable models/random_forest_all_features.ipynb
+[I 21:15:15.225 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:15:15.749 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 21:15:15.768 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:15:15.772 NotebookApp] Replaying 3 buffered messages
+[I 21:22:30.277 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 21:23:06.741 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:23:07.258 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 21:23:07.277 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:23:07.278 NotebookApp] Replaying 3 buffered messages
+[I 21:24:21.175 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:24:21.696 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 21:24:21.713 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 21:24:21.715 NotebookApp] Replaying 3 buffered messages
+[I 21:33:00.199 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 21:35:40.190 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 21:39:01.047 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 21:41:01.044 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 22:28:30.264 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 22:30:51.896 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:30:52.413 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 22:30:52.433 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:30:52.434 NotebookApp] Replaying 3 buffered messages
+[I 22:35:26.066 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 22:35:54.687 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:35:55.417 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 22:35:55.445 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:35:55.446 NotebookApp] Replaying 3 buffered messages
+[I 22:38:40.645 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:38:41.368 NotebookApp] Kernel restarted: 544aa460-83a3-462c-833c-d49c19f2b692
+[I 22:38:41.393 NotebookApp] Restoring connection for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 22:38:41.394 NotebookApp] Replaying 3 buffered messages
+[I 22:39:26.043 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 22:45:01.100 NotebookApp] Saving file at /interpretable models/random_forest_key_features.ipynb
+[I 22:45:25.163 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 22:55:25.159 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 23:07:25.161 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 23:09:25.163 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 23:15:26.050 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 23:29:25.168 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 23:45:25.161 NotebookApp] Saving file at /interpretable models/mlp_key_features.ipynb
+[I 10:03:43.550 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 10:03:44.285 NotebookApp] Kernel restarted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 10:03:44.323 NotebookApp] Restoring connection for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 10:03:44.326 NotebookApp] Replaying 3 buffered messages
+[I 10:04:49.824 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 10:07:29.796 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:43:23.529 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:46:03.514 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:48:43.515 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:51:23.505 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:54:03.536 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 15:56:44.388 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 16:39:24.399 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 17:45:36.234 NotebookApp] Kernel interrupted: 81f57b07-71f2-4030-afc1-02972927f390
+[I 17:46:03.534 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:10:03.545 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 18:12:43.517 NotebookApp] Saving file at /interpretable models/mlp_all_features.ipynb
+[I 00:25:13.507 NotebookApp] Starting buffering for 544aa460-83a3-462c-833c-d49c19f2b692:bdae563fd8dc4fbc96353ff005e49a71
+[I 00:25:13.551 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:bac5407079ab49d281d6701572b72d81
+[I 00:25:13.555 NotebookApp] Starting buffering for fdd389cf-57e8-48b7-938e-772660d38fb2:08008b4f04dd41c581ca26034ea4b63b
+[I 00:25:13.560 NotebookApp] Starting buffering for e73ae617-031b-4914-a5fc-81aa93f2e87f:9466d9c67f8c43a981c0bd2dc1d3fd57
+[W 00:45:53.146 NotebookApp] 404 GET /notebooks/interpretable%20models/random_forest_key_features.ipynb (172.17.0.1): No such file or directory: interpretable models/random_forest_key_features.ipynb
+[W 00:45:53.217 NotebookApp] 404 GET /notebooks/interpretable%20models/random_forest_key_features.ipynb (172.17.0.1) 81.60ms referer=http://127.0.0.1:8888/tree/interpretable%20models
+[W 00:45:53.712 NotebookApp] 404 GET /notebooks/interpretable%20models/mlp_key_features.ipynb (172.17.0.1): No such file or directory: interpretable models/mlp_key_features.ipynb
+[W 00:45:53.714 NotebookApp] 404 GET /notebooks/interpretable%20models/mlp_key_features.ipynb (172.17.0.1) 2.78ms referer=http://127.0.0.1:8888/tree/interpretable%20models
+[I 00:45:56.432 NotebookApp] Starting buffering for 81f57b07-71f2-4030-afc1-02972927f390:b09cc99421794ca9853fa782c5246d24
+[W 00:45:56.775 NotebookApp] 404 GET /notebooks/interpretable%20models/random_forest_all_features.ipynb (172.17.0.1): No such file or directory: interpretable models/random_forest_all_features.ipynb
+[W 00:45:56.776 NotebookApp] 404 GET /notebooks/interpretable%20models/random_forest_all_features.ipynb (172.17.0.1) 5.72ms referer=http://127.0.0.1:8888/tree/interpretable%20models
