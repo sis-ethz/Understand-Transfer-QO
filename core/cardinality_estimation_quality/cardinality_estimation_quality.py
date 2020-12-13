@@ -480,7 +480,7 @@ def plot_q_error_distribution_vs_join_level(queries):
     return plot
 
 
-def triplet_cost_parse(q, anchor='CTE Scan'):
+def postgres_triplet_cost_parse(q, anchor='CTE Scan'):
     total_cost = q.query_plan['Total Cost']
     sub_plan = q.query_plan['Plans']
     # print(q.query_plan)
@@ -497,7 +497,8 @@ def triplet_cost_parse(q, anchor='CTE Scan'):
     # print("Total cost ", total_cost)
     # print("CTE_cost ", CTE_cost)
     # print("CTE_scan_cost ", CTE_scan_cost)
-    return total_useful_cost
+    # return total_cost, CTE_scan_cost
+    return total_cost, (CTE_scan_cost + CTE_cost)
 
 
 def is_CTE_scan(plan_json, anchor):

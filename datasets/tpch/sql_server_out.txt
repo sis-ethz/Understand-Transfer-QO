@@ -1,0 +1,17 @@
+Changed database context to 'tpch'.
+
+(150000 rows affected)
+
+(6001215 rows affected)
+
+(25 rows affected)
+
+(1500000 rows affected)
+
+(200000 rows affected)
+
+(800000 rows affected)
+
+(5 rows affected)
+
+(10000 rows affected)

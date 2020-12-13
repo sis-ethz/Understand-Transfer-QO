@@ -1,37 +1,13 @@
 import numpy as np
 import pandas as pd
-from cardinality_estimation_quality.cardinality_estimation_quality import *
+# from cardinality_estimation_quality.cardinality_estimation_quality import *
 import os
 import sys
 from Visualizer import *
 from tqdm import tqdm
-
-
-class Database:
-    def __init__(self, db_url='host=localhost port=5432 user=postgres dbname={} password=postgres', db_name=None):
-        self.db_url = db_url
-        self.db_name = db_name
-        if db_name:
-            self.init_db(db_name)
-
-    def init_db(self, db_name):
-        db = self.db_url.format(db_name)
-        PG = Postgres(db)
-        self.db = PG
-        return PG
-
-    def disable_parallel(self):
-        self.execute(
-            'LOAD \'pg_hint_plan\';SET max_parallel_workers_per_gather=0;SET max_parallel_workers=0;', set_env=True)
-
-    def explain(self, query):
-        q = QueryResult(None)
-        q.query = query
-        q.explain(self.db, execute=False)
-        return q
-
-    def execute(self, query, set_env=False):
-        return self.db.execute(query, set_env=set_env)
+from DB_connector import *
+from Schema import *
+import itertools
 
 
 class Table:
@@ -48,16 +24,17 @@ class Table:
 
 class QuerySampler:
 
-    def __init__(self):
+    def __init__(self, left_size_ratio_threshold=0.5):
         self.join_graph = None
         self.tables = None
         self.primary_keys = {}  # table: primary key
         self.join_keys = {}  # (table, table) : (key1, key2)
         self.table_features = {}  # table features
         self.db = None  # the database used by sampler
-        self.left_size_ratio_threshold = 0.5
+        self.left_size_ratio_threshold = left_size_ratio_threshold
+        self.max_predicate_num = 3
 
-    def sample_for_table(self, primary_table, left_tables=[], sample_size=100, sample_with_replacement=False, left_order='random'):
+    def sample_for_table(self, primary_table, left_tables=[], sample_size=100, sample_with_replacement=False, left_order=None):
         results = []
         # ==============================================
         # Manual seed to make it reproducible
@@ -65,7 +42,7 @@ class QuerySampler:
         np.random.seed(0)
         # ==============================================
         print(
-            f"Samping for {primary_table}, with left tables: {left_tables}, left table sorted on {left_order.upper()}")
+            f"{self.db.db_name}: Samping for {primary_table}, with left tables: {left_tables}, left table sorted on {left_order}")
         for _ in tqdm(range(sample_size)):
             rand_table = left_tables[np.random.randint(len(left_tables))]
             results.append(self.collect_random_query_2_table_all_op(
@@ -73,19 +50,39 @@ class QuerySampler:
         return results
 
     def collect_random_query_2_table_all_op(self, base_table, left_table, sample_with_replacement, left_order='random'):
+        # Overwritten by child classes
+        pass
+
+
+class Postgres_QuerySampler(QuerySampler):
+
+    def __init__(self, db_name='imdb', left_size_ratio_threshold=0.5, schema=None):
+        super(Postgres_QuerySampler, self).__init__(
+            left_size_ratio_threshold=left_size_ratio_threshold)
+        self.schema = schema
+        self.db = Postgres_Connector(db_name=db_name)
+
+    def collect_random_query_2_table_all_op(self, base_table, left_table, sample_with_replacement, left_order=None):
 
         # ==============================================
         # load features
-        base_size = self.table_features[base_table]['table_size']
-        key_range = self.table_features[base_table]['key_range']
-        left_table_size = self.table_features[left_table]['table_size']
-        left_table_key, base_table_key = self.join_keys[(
+        base_size = self.schema.table_features[base_table]['table_size']
+        key_range = self.schema.table_features[base_table]['key_range']
+        left_table_size = self.schema.table_features[left_table]['table_size']
+        left_table_key, base_table_key = self.schema.join_keys[(
             left_table, base_table)]
-        base_indexed_key = self.primary_keys[base_table]
-        if left_order.lower() == 'random':
-            left_order = "RANDOM()"
+        non_indexed_attr, non_indexed_attr_range = self.schema.non_indexed_attr[base_table]
+        base_indexed_key = self.schema.primary_keys[base_table]
+        left_indexed_key = self.schema.primary_keys[left_table] if left_table in self.schema.primary_keys.keys(
+        ) else None
+        if left_order is None:
+            left_order = ""
+        elif left_order.lower() == 'random':
+            left_order = "ORDER BY RANDOM()"
         elif left_order.lower() == 'left_join_key':
-            left_order = f"{left_table_key}"
+            left_order = f"ORDER BY {left_table_key}"
+        else:
+            exit(f"Left order {left_order} is not supported!")
         # ==============================================
 
         if self.left_size_ratio_threshold < 0:
@@ -96,144 +93,406 @@ class QuerySampler:
 
         size_range = [1, left_size_ratio_threshold * base_size]
 
-        random_key = np.random.randint(
-            key_range[-1] - key_range[0]) + key_range[0]
-
         random_size = np.random.randint(
             size_range[-1] - size_range[0]) + size_range[0]
 
-        # query_template = f"""
-        # DROP VIEW IF EXISTS prev_result_view;
-        # CREATE VIEW prev_result_view AS select * from {left_table} ORDER BY RANDOM() LIMIT {random_size};
-        # {}
-        # EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
-        # select * from prev_result_view, {base_table} where {base_table_key} = prev_result_view.{left_table_key} and {base_indexed_key} > {random_key};"""
+        # ==============================================
+        # Generate random predicate on indexed attribute
+        random_indexed_predicate_num = np.random.randint(
+            self.max_predicate_num) + 1
+        predicates_on_indexed_attr_list = []
+        for _ in range(random_indexed_predicate_num):
+            random_key = self.schema.random_indexed_attr_value(base_table)
+            predicates_on_indexed_attr_list.append(
+                f'{base_table}.{base_indexed_key} { np.random.choice([" > "]) } {random_key}')
+        predicates_on_indexed_attr = ' and '.join(
+            predicates_on_indexed_attr_list)
+        # ==============================================
 
-        # self.db.execute(
-        #     f"DROP VIEW IF EXISTS prev_result_view; CREATE VIEW prev_result_view AS select * from {left_table} ORDER BY RANDOM() LIMIT {random_size};", set_env=True)
+        # ==============================================
+        # Generate random predicate on non-indexed attribute
+        random_non_indexed_predicate_num = np.random.randint(
+            self.max_predicate_num)
+        predicates_on_non_indexed_attr_list = []
+
+        for _ in range(random_non_indexed_predicate_num):
+            random_attr = self.schema.random_non_indexed_attr_value(base_table)
+            predicates_on_non_indexed_attr_list.append(
+                f'{base_table}.{non_indexed_attr} { np.random.choice([" > "]) } {random_attr}')
+        all_predicates_on_base_table_list = predicates_on_non_indexed_attr_list + \
+            predicates_on_indexed_attr_list
+        predicates_on_non_indexed_attr = ' and '.join(
+            predicates_on_non_indexed_attr_list)
+        # ==============================================
 
         if not sample_with_replacement:
-            prev_cte = f'WITH prev_result_view AS (select * from {left_table} ORDER BY {left_order} LIMIT {random_size}) \n'
+            prev_cte = f'WITH prev_result_view AS (select * from {left_table} {left_order} LIMIT {random_size}) \n'
         else:
             prev_cte = f"""
             WITH prev_result_view AS (with rows as (select *,row_number() over() as rn from {left_table} order by random()),
             w(num) as (select (random()*(select count(*) from rows))::int+1
                 from generate_series(1,{random_size}))
-            select rows.* from rows join w on rows.rn = w.num ORDER BY {left_order} LIMIT {random_size})\n"""
+            select rows.* from rows join w on rows.rn = w.num {left_order} LIMIT {random_size})\n"""
 
+        # ==============================================
+        # Selectivity of predicate on indexed attr
         selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
-        select * from {base_table} where {base_indexed_key} > {random_key};"""
-        # print("cardinality sql \n", selectivity_query_template)
-        # print(selectivity_query_template)
+        select * from {base_table} where {predicates_on_indexed_attr};"""
         q = self.db.explain(selectivity_query_template)
-        card = q.cardinalities['estimated'][0]
-        sel_on_indexed_attr = card / base_size
-        # card = self.db.execute(selectivity_query_template)[0][0]
+        sel_of_pred_on_indexed_attr = q.cardinalities['estimated'][0] / base_size
+        # ==============================================
 
-        # print("Mixed selectivity", base_indexed_key, base_table_key)
-        if base_indexed_key == base_table_key:
+        # ==============================================
+        # Selectivity on non_indexed attr
+        if random_non_indexed_predicate_num > 0:
             selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
-            {prev_cte} select * from {base_table} where {base_indexed_key} > {random_key} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
-            q = self.db.explain(
-                selectivity_query_template)
-            sel_on_indexed_attr_with_join_predicate = q.cardinalities['estimated'][0] / base_size
+            select * from {base_table} where {predicates_on_non_indexed_attr};"""
+            q = self.db.explain(selectivity_query_template)
+            sel_of_pred_on_non_indexed_attr = q.cardinalities['estimated'][0] / base_size
         else:
-            sel_on_indexed_attr_with_join_predicate = sel_on_indexed_attr
-
-        # print(card)
-        # print(sel_on_indexed_attr_with_join_predicate)
-        # exit(0)
-
-        # print("sel_on_indexed_attr: ", sel_on_indexed_attr, "left size: ", random_size)
-
-        # rand_query = query_template
-        # print(rand_query)
-
-        nl_idx_scan_cost = 0
-        nl_seq_scan_cost = 0
-
-        hash_idx_scan_cost = 0
-        hash_seq_scan_cost = 0
-
-        merge_idx_scan_cost = 0
-        merge_seq_scan_cost = 0
-
-        query_template = f" {prev_cte} select * from prev_result_view, {base_table} where {base_table}.{base_table_key} = prev_result_view.{left_table_key} and {base_table}.{base_indexed_key} > {random_key};"
-
-        # inner_query = f"(select * from {left_table} ORDER BY RANDOM() LIMIT {random_size})"
-
-        # ==============================================
-        # merge join + index scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nMergeJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
-        rules = f"/*+\nMergeJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/"
-        # rules = f"/*+\nMergeJoin(prev_result_view {base_table})\nBitMapScan({base_table})\n*/"
-
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-        # print(query)
-        q = self.db.explain(query)
-        # triplet_cost_parse(q)
-        merge_idx_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
+            sel_of_pred_on_non_indexed_attr = 1
         # ==============================================
 
         # ==============================================
-        # merge join + seq scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nMergeJoin(prev_result_view {base_table})\nSeqScan({base_table})\n*/\n"
-        rules = f"/*+\nMergeJoin(prev_result_view {base_table})\nSeqScan({base_table})\n*/"
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-
-        # print(query)
-        q = self.db.explain(query)
-        # triplet_cost_parse(q)
-        merge_seq_scan_cost = triplet_cost_parse(q)
-        assert merge_seq_scan_cost != merge_idx_scan_cost
-        # exit(0)
+        # Selectivity of pred on non-indexed and indexed attrs on base table
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        select * from {base_table} where {' and '.join(all_predicates_on_base_table_list)};"""
+        q = self.db.explain(selectivity_query_template)
+        sel_of_pred_on_indexed_attr_and_non_indexed_attr = q.cardinalities[
+            'estimated'][0] / base_size
         # ==============================================
 
         # ==============================================
-        # hash join + seq scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nHashJoin(prev_result_view {base_table})\nSeqScan({base_table})\n*/\n"
-        rules = f"/*+\nHashJoin(prev_result_view {base_table})\nSeqScan({base_table})\n*/\n"
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-        q = self.db.explain(query)
-        # triplet_cost_parse(q)
-        hash_seq_scan_cost = triplet_cost_parse(q)
+        # Join predicate selectivity
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        {prev_cte} select * from {base_table} where {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_join_pred = q.cardinalities['estimated'][0] / base_size
         # ==============================================
 
         # ==============================================
-        # hash join + index scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nHashJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
-        rules = f"/*+\nHashJoin(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-        q = self.db.explain(query)
-        # triplet_cost_parse(q)
-        hash_idx_scan_cost = triplet_cost_parse(q)
+        # Selectivity on indexed attr include join predicate
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        {prev_cte} select * from {base_table} where {predicates_on_indexed_attr} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_pred_on_indexed_attr_and_join_pred = q.cardinalities['estimated'][0] / base_size
         # ==============================================
 
         # ==============================================
-        # nest loop join + idx scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nNestLoop(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
-        rules = f"/*+\nNestLoop(prev_result_view {base_table})\nIndexScan({base_table})\n*/\n"
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-        q = self.db.explain(query)
-        nl_idx_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
+        # Selectivity on non indexed attr include join predicate
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        {prev_cte} select * from {base_table} where {' and '.join(predicates_on_non_indexed_attr_list + [f'{base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view)'])};"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_pred_on_non_indexed_attr_and_join_pred = q.cardinalities[
+            'estimated'][0] / base_size
         # ==============================================
 
         # ==============================================
-        # nest loop join + seq scan
-        # rules = f"/*+\nLeading((prev_result_view {base_table}))\nNestLoop(prev_result_view {base_table})\nSeqScan({base_table})\n*/\n"
-        rules = f"/*+\nNestLoop(prev_result_view {base_table})\nSeqScan({base_table})\n*/\n"
-        query = rules + \
-            'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
-        q = self.db.explain(query)
-        nl_seq_scan_cost = triplet_cost_parse(q)  # triplet_cost_parse(q)
+        # Total sel on base table
+        selectivity_query_template = f"""EXPLAIN (COSTS, VERBOSE, FORMAT JSON)
+        {prev_cte} select * from {base_table} where {' and '.join(all_predicates_on_base_table_list)} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        total_sel_on_base_table = q.cardinalities['estimated'][0] / base_size
         # ==============================================
 
+        # ==============================================
+        # Run query with different physical operators
+        query_template = f" {prev_cte} select * from prev_result_view, {base_table} where {' and '.join([f'{base_table}.{base_table_key} = prev_result_view.{left_table_key}'] + all_predicates_on_base_table_list)};"
+        costs = {}
+        cte_costs = {}
+        queries = {}
+        for join_method, scan_method in itertools.product(['MergeJoin', 'HashJoin', 'NestLoop'], ['SeqScan', 'IndexScan']):
+            rules = f"/*+\n{join_method}(prev_result_view {base_table})\n{scan_method}({base_table})\n*/"
+            query = rules + \
+                'EXPLAIN (COSTS, VERBOSE, FORMAT JSON) ' + query_template
+            q = self.db.explain(query)
+            queries[(join_method, scan_method)] = query
+            costs[(join_method, scan_method)
+                  ], cte_costs[(join_method, scan_method)] = postgres_triplet_cost_parse(q)
+
+        nl_idx_scan_cost, nl_idx_scan_cte_cost = costs[(
+            'NestLoop', 'IndexScan')], cte_costs[('NestLoop', 'IndexScan')]
+        nl_seq_scan_cost, nl_seq_scan_cte_cost = costs[(
+            'NestLoop', 'SeqScan')], cte_costs[('NestLoop', 'SeqScan')]
+
+        hash_idx_scan_cost, hash_idx_scan_cte_cost = costs[(
+            'HashJoin', 'IndexScan')], cte_costs[('HashJoin', 'IndexScan')]
+        hash_seq_scan_cost, hash_seq_scan_cte_cost = costs[(
+            'HashJoin', 'SeqScan')], cte_costs[('HashJoin', 'SeqScan')]
+
+        merge_idx_scan_cost, merge_idx_scan_cte_cost = costs[(
+            'MergeJoin', 'IndexScan')], cte_costs[('MergeJoin', 'IndexScan')]
+        merge_seq_scan_cost, merge_seq_scan_cte_cost = costs[(
+            'MergeJoin', 'SeqScan')], cte_costs[('MergeJoin', 'SeqScan')]
+
+        nl_idx_scan_query = queries[('NestLoop', 'IndexScan')]
+        nl_seq_scan_query = queries[('NestLoop', 'SeqScan')]
+
+        hash_idx_scan_query = queries[('HashJoin', 'IndexScan')]
+        hash_seq_scan_query = queries[('HashJoin', 'SeqScan')]
+
+        merge_idx_scan_query = queries[('MergeJoin', 'IndexScan')]
+        merge_seq_scan_query = queries[('MergeJoin', 'SeqScan')]
+        # ==============================================
+
+        # ==============================================
+        # collect all the features needed for training
+        # features included:
+        # left cardinality; base cardinality; left ordered on join key; base ordered on joined key; selectivity on indexed attr;
         left_ratio = random_size / base_size
+        features = {}
+        features['query'] = query_template
+
+        features['hj_idx_query'] = hash_idx_scan_query
+        features['hj_seq_query'] = hash_seq_scan_query
+        features['nl_idx_query'] = nl_idx_scan_query
+        features['nl_seq_query'] = nl_seq_scan_query
+        features['mj_idx_query'] = merge_idx_scan_query
+        features['mj_seq_query'] = merge_seq_scan_query
+
+        features['left_cardinality'] = random_size
+        features['left_cardinality_ratio'] = left_ratio
+        features['base_cardinality'] = base_size
+        features['left_ordered'] = 1 if left_indexed_key == left_table_key else 0
+        features['base_ordered'] = 1 if base_table_key == base_indexed_key else 0
+        features['index_size'] = self.schema.indexes[base_table][base_indexed_key]
+        features['result_size'] = q.cardinalities['estimated'][0]
+
+        features['sel_of_pred_on_indexed_attr'] = sel_of_pred_on_indexed_attr
+        features['sel_of_pred_on_indexed_attr_and_join_pred'] = sel_of_pred_on_indexed_attr_and_join_pred
+        features['sel_of_pred_on_non_indexed_attr_and_join_pred'] = sel_of_pred_on_non_indexed_attr_and_join_pred
+        features['sel_of_join_pred'] = sel_of_join_pred
+        features['sel_of_pred_on_non_indexed_attr'] = sel_of_pred_on_non_indexed_attr
+        features['sel_of_pred_on_indexed_attr_and_non_indexed_attr'] = sel_of_pred_on_indexed_attr_and_non_indexed_attr
+        features['total_sel_on_base_table'] = total_sel_on_base_table
+
+        features['predicate_op_num_on_indexed_attr'] = random_indexed_predicate_num
+        features['predicate_op_num_on_non_indexed_attr'] = random_non_indexed_predicate_num
+
+        features['hj_idx_cost'] = hash_idx_scan_cost
+        features['hj_seq_cost'] = hash_seq_scan_cost
+        features['nl_idx_cost'] = nl_idx_scan_cost
+        features['nl_seq_cost'] = nl_seq_scan_cost
+        features['mj_idx_cost'] = merge_idx_scan_cost
+        features['mj_seq_cost'] = merge_seq_scan_cost
+
+        features['hj_idx_cte_cost'] = hash_idx_scan_cte_cost
+        features['hj_seq_cte_cost'] = hash_seq_scan_cte_cost
+        features['nl_idx_cte_cost'] = nl_idx_scan_cte_cost
+        features['nl_seq_cte_cost'] = nl_seq_scan_cte_cost
+        features['mj_idx_cte_cost'] = merge_idx_scan_cte_cost
+        features['mj_seq_cte_cost'] = merge_seq_scan_cte_cost
+
+        features['optimal_decision'] = np.argmin(
+            [hash_idx_scan_cost, hash_seq_scan_cost, nl_idx_scan_cost, nl_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
+
+        features['visualization_features'] = (sel_of_pred_on_indexed_attr, left_ratio, hash_idx_scan_cost, hash_seq_scan_cost,
+                                      nl_idx_scan_cost, nl_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
+        # ==============================================
+        # print(features)
+        return features
+
+
+class Mssql_QuerySampler(QuerySampler):
+
+    def __init__(self, db_name='imdb', left_size_ratio_threshold=0.5, schema=None):
+        super(Mssql_QuerySampler, self).__init__(
+            left_size_ratio_threshold=left_size_ratio_threshold)
+        self.schema = schema
+        self.db = Mssql_Connector(db_name=db_name)
+
+    def collect_random_query_2_table_all_op(self, base_table, left_table, sample_with_replacement=False, left_order=None):
+        # ==============================================
+        # load features
+        base_size = self.schema.table_features[base_table]['table_size']
+        key_range = self.schema.table_features[base_table]['key_range']
+        left_table_size = self.schema.table_features[left_table]['table_size']
+        non_indexed_attr, non_indexed_attr_range = self.schema.non_indexed_attr[base_table]
+        left_table_key, base_table_key = self.schema.join_keys[(
+            left_table, base_table)]
+        base_indexed_key = self.schema.primary_keys[base_table]
+        left_indexed_key = self.schema.primary_keys[left_table] if left_table in self.schema.primary_keys.keys(
+        ) else None
+
+        if left_order is None:
+            left_order = ""
+        elif left_order.lower() == 'random':
+            left_order = "ORDER BY NEWID()"
+        elif left_order.lower() == 'left_join_key':
+            left_order = f"ORDER BY {left_table_key}"
+        else:
+            exit(f"Left order {left_order} is not supported!")
+
+        # ==============================================
+
+        # ==============================================
+        # Generate random left size
+        if self.left_size_ratio_threshold < 0:
+            left_size_ratio_threshold = left_table_size / base_size
+        else:
+            left_size_ratio_threshold = min(
+                self.left_size_ratio_threshold, left_table_size / base_size)
+
+        size_range = [1, left_size_ratio_threshold * base_size]
+        random_size = np.random.randint(
+            size_range[-1] - size_range[0]) + size_range[0]
+        # ==============================================
+
+        # ==============================================
+        # Generate random predicate on indexed attribute
+        random_indexed_predicate_num = np.random.randint(
+            self.max_predicate_num) + 1
+        predicates_on_indexed_attr_list = []
+        for _ in range(random_indexed_predicate_num):
+            random_key = self.schema.random_indexed_attr_value(base_table)
+            predicates_on_indexed_attr_list.append(
+                f'{base_table}.{base_indexed_key} { np.random.choice([" > "]) } {random_key}')
+        predicates_on_indexed_attr = ' and '.join(
+            predicates_on_indexed_attr_list)
+        # ==============================================
+
+        # ==============================================
+        # Generate random predicate on non-indexed attribute
+        random_non_indexed_predicate_num = np.random.randint(
+            self.max_predicate_num)
+        predicates_on_non_indexed_attr_list = []
+
+        for _ in range(random_non_indexed_predicate_num):
+            random_attr = self.schema.random_non_indexed_attr_value(base_table)
+            predicates_on_non_indexed_attr_list.append(
+                f'{base_table}.{non_indexed_attr} { np.random.choice([" > "]) } {random_attr}')
+        all_predicates_on_base_table_list = predicates_on_non_indexed_attr_list + \
+            predicates_on_indexed_attr_list
+        predicates_on_non_indexed_attr = ' and '.join(
+            predicates_on_non_indexed_attr_list)
+        # ==============================================
+
+        if not sample_with_replacement:
+            prev_cte = f'WITH prev_result_view AS (select TOP {random_size} * from {left_table} {left_order}) \n'
+        else:
+            print("Sample with replacement for sql server is not supported yet")
+            exit(1)
+
+        # ==============================================
+        # Selectivity on indexed attribute
+        selectivity_query_template = f"""select * from {base_table} where {predicates_on_indexed_attr};"""
+        q = self.db.explain(selectivity_query_template)
+        sel_of_pred_on_indexed_attr = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        # ==============================================
+        # Selectivity on non indexed attribute
+        if random_non_indexed_predicate_num > 0:
+            selectivity_query_template = f"""select * from {base_table} where {predicates_on_non_indexed_attr};"""
+            q = self.db.explain(selectivity_query_template)
+            sel_of_pred_on_non_indexed_attr = q['estimated_result_size'] / base_size
+        else:
+            sel_of_pred_on_non_indexed_attr = 1
+        # ==============================================
+
+        # ==============================================
+        # Selectivity of join predicate on base table
+        selectivity_query_template = f"""{prev_cte}
+        select * from {base_table} where {predicates_on_indexed_attr} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_join_pred = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        # ==============================================
+        # selectivity of predicate on indexed attr and non indexed attr on base table
+        selectivity_query_template = f"""select * from {base_table} where {' and '.join(all_predicates_on_base_table_list)};"""
+        q = self.db.explain(selectivity_query_template)
+        sel_of_pred_on_indexed_attr_and_non_indexed_attr = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        # ==============================================
+        # Selectivity of join predicate on base table
+        selectivity_query_template = f"""{prev_cte}
+        select * from {base_table} where {' and '.join(all_predicates_on_base_table_list)} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        total_sel_on_base_table = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        # ==============================================
+        # Selectivity of (predicate_on_indexed_attr and join_pred)
+        selectivity_query_template = f"""{prev_cte}
+        select * from {base_table} where {predicates_on_indexed_attr} and {base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view);"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_pred_on_indexed_attr_and_join_pred = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        # ==============================================
+        # Selectivity of (predicate_on_non_indexed_attr and join_pred)
+        selectivity_query_template = f"""{prev_cte}
+        select * from {base_table} where {' and '.join(predicates_on_non_indexed_attr_list + [f'{base_table}.{base_indexed_key} in (select {left_table_key} from prev_result_view)'])};"""
+        q = self.db.explain(
+            selectivity_query_template)
+        sel_of_pred_on_non_indexed_attr_and_join_pred = q['estimated_result_size'] / base_size
+        # ==============================================
+
+        index_name = base_indexed_key.split('_')[-1]
+
+        query_template = f"""{prev_cte} select * from prev_result_view, {base_table} %s where {' and '.join([f'{base_table}.{base_table_key} = prev_result_view.{left_table_key}'] + all_predicates_on_base_table_list)} %s;"""
+
+        costs = {}
+        cte_costs = {}
+        queries = {}
+
+        for join_method, scan_method in itertools.product(['MERGE', 'LOOP', 'HASH'], [f'INDEX({"PK_" + base_table}) FORCESEEK', 'INDEX(0) FORCESCAN']):
+            rules = (f"WITH ({scan_method}) ",
+                     f" OPTION ({join_method} JOIN, MAXDOP 1, NO_PERFORMANCE_SPOOL, use hint('DISABLE_BATCH_MODE_ADAPTIVE_JOINS') )")
+            query = query_template % rules
+            q = self.db.explain(query)
+            # print(query)
+            queries[(join_method, scan_method)] = query
+            costs[(join_method, scan_method)] = q['total_estimated_cost']
+
+            if q['left_table'] == base_table:
+                cte_costs[(join_method, scan_method)] = q['right_cost']
+                # useless_costs.append(q['right_cost'])
+            else:
+                cte_costs[(join_method, scan_method)] = q['left_cost']
+                # useless_costs.append(q['left_cost'])
+
+        nl_idx_scan_cost = costs[(
+            'LOOP', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        nl_idx_scan_cte_cost = cte_costs[(
+            'LOOP', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        nl_seq_scan_cost = costs[('LOOP', f'INDEX(0) FORCESCAN')]
+        nl_seq_scan_cte_cost = cte_costs[('LOOP', f'INDEX(0) FORCESCAN')]
+
+        hash_idx_scan_cost = costs[(
+            'HASH', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        hash_idx_scan_cte_cost = cte_costs[(
+            'HASH', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        hash_seq_scan_cost = costs[('HASH', f'INDEX(0) FORCESCAN')]
+        hash_seq_scan_cte_cost = cte_costs[('HASH', f'INDEX(0) FORCESCAN')]
+
+        merge_idx_scan_cost = costs[(
+            'MERGE', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        merge_idx_scan_cte_cost = cte_costs[(
+            'MERGE', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        merge_seq_scan_cost = costs[('MERGE', f'INDEX(0) FORCESCAN')]
+        merge_seq_scan_cte_cost = cte_costs[('MERGE', f'INDEX(0) FORCESCAN')]
+
+        nl_idx_scan_query = queries[(
+            'LOOP', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        nl_seq_scan_query = costs[('LOOP', f'INDEX(0) FORCESCAN')]
+
+        hash_idx_scan_query = queries[(
+            'HASH', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        hash_seq_scan_query = queries[('HASH', f'INDEX(0) FORCESCAN')]
+
+        merge_idx_scan_query = queries[(
+            'MERGE', f'INDEX({"PK_" + base_table}) FORCESEEK')]
+        merge_seq_scan_query = queries[('MERGE', f'INDEX(0) FORCESCAN')]
 
         # ==============================================
         # collect all the features needed for training
@@ -241,341 +500,130 @@ class QuerySampler:
         # left cardinality; base cardinality; left ordered on join key; base ordered on joined key; selectivity on indexed attr;
 
         features = {}
+        left_ratio = random_size / base_size
+        features['query'] = query_template % ('', '')
+
+        features['hj_idx_query'] = hash_idx_scan_query
+        features['hj_seq_query'] = hash_seq_scan_query
+        features['nl_idx_query'] = nl_idx_scan_query
+        features['nl_seq_query'] = nl_seq_scan_query
+        features['mj_idx_query'] = merge_idx_scan_query
+        features['mj_seq_query'] = merge_seq_scan_query
 
         features['left_cardinality'] = random_size
         features['left_cardinality_ratio'] = left_ratio
         features['base_cardinality'] = base_size
-        features['selectivity_on_indexed_attr'] = sel_on_indexed_attr
-        features['left_ordered'] = 1 if left_order == left_table_key else 0
+
+        features['left_ordered'] = 1 if left_indexed_key == left_table_key else 0
         features['base_ordered'] = 1 if base_table_key == base_indexed_key else 0
-        features['index_size'] = self.indexes[base_table][base_indexed_key]
-        features['result_size'] = q.cardinalities['estimated'][0]
-        features['sel_on_indexed_attr_with_join_predicate'] = sel_on_indexed_attr_with_join_predicate
+        features['index_size'] = self.schema.indexes[base_table][base_indexed_key]
+        features['result_size'] = q['estimated_result_size']
+
+        features['sel_of_pred_on_indexed_attr'] = sel_of_pred_on_indexed_attr
+        features['sel_of_pred_on_indexed_attr_and_join_pred'] = sel_of_pred_on_indexed_attr_and_join_pred
+        features['sel_of_pred_on_non_indexed_attr_and_join_pred'] = sel_of_pred_on_non_indexed_attr_and_join_pred
+        features['sel_of_join_pred'] = sel_of_join_pred
+        features['sel_of_pred_on_non_indexed_attr'] = sel_of_pred_on_non_indexed_attr
+        features['sel_of_pred_on_indexed_attr_and_non_indexed_attr'] = sel_of_pred_on_indexed_attr_and_non_indexed_attr
+        features['total_sel_on_base_table'] = total_sel_on_base_table
+
+        features['predicate_op_num_on_indexed_attr'] = random_indexed_predicate_num
+        features['predicate_op_num_on_non_indexed_attr'] = random_non_indexed_predicate_num
 
         features['hj_idx_cost'] = hash_idx_scan_cost
         features['hj_seq_cost'] = hash_seq_scan_cost
-
         features['nl_idx_cost'] = nl_idx_scan_cost
         features['nl_seq_cost'] = nl_seq_scan_cost
-
         features['mj_idx_cost'] = merge_idx_scan_cost
         features['mj_seq_cost'] = merge_seq_scan_cost
 
+        features['hj_idx_cte_cost'] = hash_idx_scan_cte_cost
+        features['hj_seq_cte_cost'] = hash_seq_scan_cte_cost
+        features['nl_idx_cte_cost'] = nl_idx_scan_cte_cost
+        features['nl_seq_cte_cost'] = nl_seq_scan_cte_cost
+        features['mj_idx_cte_cost'] = merge_idx_scan_cte_cost
+        features['mj_seq_cte_cost'] = merge_seq_scan_cte_cost
+
         features['optimal_decision'] = np.argmin(
             [hash_idx_scan_cost, hash_seq_scan_cost, nl_idx_scan_cost, nl_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost])
-        features['visualization_features'] = (sel_on_indexed_attr, left_ratio, nl_idx_scan_cost, nl_seq_scan_cost,
-                                              hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
+        features['visualization_features'] = (sel_of_pred_on_indexed_attr, left_ratio, hash_idx_scan_cost, hash_seq_scan_cost,
+                                                nl_idx_scan_cost, nl_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
         # features['visualization_features'] = (q.cardinalities['estimated'][0], left_ratio, nl_idx_scan_cost, nl_seq_scan_cost,
         #                                       hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost)
         # ==============================================
+        # print(features)
         return features
         # return sel_on_indexed_attr, left_ratio, , nl_idx_scan_cost, nl_seq_scan_cost, hash_idx_scan_cost, hash_seq_scan_cost, merge_idx_scan_cost, merge_seq_scan_cost
 
-    def parse_costs(self, plan, primary_table):
-        pass
-        # return scan cost and join cost repectively
+
+class IMDB_lite_QuerySampler:
+
+    def __init__(self, db_engine='postgres', left_size_ratio_threshold=0.5):
+
+        self.schema = IMDB_lite_schema()
+
+        if db_engine == 'postgres':
+            db_connector = Postgres_Connector
+            self.query_sampler = Postgres_QuerySampler(db_name='imdb',
+                                                       left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+        elif db_engine == 'mssql':
+            # db_connector = Postgres_Connector
+            self.query_sampler = Mssql_QuerySampler(db_name='imdb',
+                                                    left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+            # self.query_sampler.db = db_connector(db_name='imdb')
+        else:
+            exit(f"db_engine = {db_engine} is not supported yet")
 
 
-class IMDB_lite_query_sampler(QuerySampler):
-    def __init__(self):
-        super(IMDB_lite_query_sampler, self).__init__()
-        self.tables = ['movie_info_idx', 'movie_info',
-                       'movie_companies', 'movie_keyword', 'cast_info', 'title']
+class TPCH_QuerySampler:
 
-        self.primary_keys = {
-            'movie_info_idx': 'id',
-            'movie_info': 'id',
-            'movie_companies': 'id',
-            'movie_keyword': 'id',
-            'cast_info': 'id',
-            'title': 'id'
-        }  # table: primary key
-        self.join_keys = {
-            ('title', 'movie_info_idx'): ('id', 'movie_id'),
-            ('movie_info_idx', 'title'): ('movie_id', 'id'),
+    def __init__(self, db_engine='postgres', left_size_ratio_threshold=0.5):
 
-            ('title', 'movie_info'): ('id', 'movie_id'),
-            ('movie_info', 'title'): ('movie_id', 'id'),
+        self.schema = TPCH_Schema()
 
-            ('title', 'movie_companies'): ('id', 'movie_id'),
-            ('movie_companies', 'title'): ('movie_id', 'id'),
+        if db_engine == 'postgres':
+            self.query_sampler = Postgres_QuerySampler(db_name='tpch',
+                                                       left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+        elif db_engine == 'mssql':
+            self.query_sampler = Mssql_QuerySampler(db_name='tpch',
+                                                    left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+        else:
+            exit(f"db = {db_engine} is not supported yet")
 
 
-            ('title', 'movie_keyword'): ('id', 'movie_id'),
-            ('movie_keyword', 'title'): ('movie_id', 'id'),
+class SSB_QuerySampler:
 
-            ('title', 'cast_info'): ('id', 'movie_id'),
-            ('cast_info', 'title'): ('movie_id', 'id'),
-        }  # (table, table) : (key1, key2)
-        self.table_features = {
-            'movie_info_idx': {
-                'table_size': 1380035,
-                'key_range': [1, 1380035]
-            },
-            'movie_info': {
-                'table_size': 14835714,
-                'key_range': [1, 14835720]
-            },
-            'movie_companies': {
-                'table_size': 2609129,
-                'key_range': [1, 2609129]
-            },
-            'movie_keyword': {
-                'table_size': 4523930,
-                'key_range': [1, 4523930]
-            },
-            'cast_info': {
-                'table_size': 36244344,
-                'key_range': [1, 36244344]
-            },
-            'title': {
-                'table_size': 2528312,
-                'key_range': [1, 2528312]
-            }
-        }  # table features
+    def __init__(self, db_engine='postgres', left_size_ratio_threshold=0.5):
 
-        self.db = Database(db_name='imdb')  # the database used by sampler
+        self.schema = SSB_Schema()
 
-        self.left_size_ratio_threshold = 0.5
-
-        self.join_graph = {
-            # constructed by base table + left table list
-            'movie_info_idx': ['title'],
-            'movie_info': ['title'],
-            'movie_companies': ['title'],
-            'movie_keyword': ['title'],
-            'cast_info': ['title'],
-            'title': ['movie_info_idx', 'movie_info',
-                      'movie_companies', 'movie_keyword', 'cast_info']
-        }
-
-        self.indexes = {
-            'movie_info_idx': {
-                'id': 31014912
-            },
-            'movie_info': {
-                'id': 482312192
-            },
-            'movie_companies': {
-                'id':  58621952
-            },
-            'movie_keyword': {
-                'id':  101629952
-            },
-            'cast_info': {
-                'id':  814112768
-            },
-            'title': {
-                'id':  73875456
-            },
-        }
-
-
-class TPCH_query_sampler(QuerySampler):
-
-    def __init__(self):
-        super(TPCH_query_sampler, self).__init__()
-        self.tables = ['part', 'lineitem', 'supplier', 'orders']
-
-        self.primary_keys = {
-            'part': 'p_partkey',
-            'supplier': 's_suppkey',
-            'orders': 'o_orderkey',
-            # 'orders': 'o_custkey',
-            'customer': 'c_custkey',
-            'partsupp': 'ps_partkey'
-        }  # table: primary key
-        self.join_keys = {
-            ('part', 'lineitem'): ('p_partkey', 'l_partkey'),
-            ('lineitem', 'part'): ('l_partkey', 'p_partkey'),
-
-            ('orders', 'lineitem'): ('o_orderkey', 'l_orderkey'),
-            ('lineitem', 'orders'): ('l_orderkey', 'o_orderkey'),
-
-            ('orders', 'customer'): ('o_custkey', 'c_custkey'),
-            ('customer', 'orders'): ('c_custkey', 'o_custkey'),
-
-            ('supplier', 'lineitem'): ('s_suppkey', 'l_suppkey'),
-            ('lineitem', 'supplier'): ('l_suppkey', 's_suppkey'),
-
-            ('supplier', 'partsupp'): ('s_suppkey', 'ps_suppkey'),
-            ('partsupp', 'supplier'): ('ps_suppkey', 's_suppkey'),
-
-            ('part', 'partsupp'): ('p_partkey', 'ps_partkey'),
-            ('partsupp', 'part'): ('ps_partkey', 'p_partkey'),
-
-            ('lineitem', 'partsupp'): ('l_partkey', 'ps_partkey'),
-            ('partsupp', 'lineitem'): ('ps_partkey', 'l_partkey'),
-
-            # ('lineitem', 'partsupp'): ('l_suppkey', 'ps_suppkey'),
-            # ('partsupp', 'lineitem'): ('ps_suppkey', 'l_suppkey'),
-
-
-        }  # (table, table) : (key1, key2)
-        self.table_features = {
-            'part': {
-                'table_size': 200000,
-                'key_range': [1, 200000]
-            },
-            'lineitem': {
-                'table_size': 6000003,
-                'key_range': []
-            },
-            'orders': {
-                'table_size': 1500000,
-                'key_range': [1, 6000000]
-                # 'table_size': 1500000,
-                # 'key_range': [1,  149999]
-            },
-            'supplier': {
-                'table_size': 10000,
-                'key_range': [1, 10000]
-            },
-            'customer': {
-                'table_size': 150000,
-                'key_range': [1, 150000]
-            },
-            'partsupp': {
-                'table_size': 800000,
-                'key_range': [1, 200000]
-            }
-        }  # table features
-
-        self.db = Database(db_name='tpch')  # the database used by sampler
-
-        self.left_size_ratio_threshold = 0.5
-
-        self.join_graph = {
-            # constructed by base table + left table list
-            'part': ['lineitem', 'partsupp'],
-            'orders': ['customer', 'lineitem'],
-            'supplier': ['lineitem', 'partsupp'],
-            'customer': ['orders'],
-            'partsupp': ['lineitem', 'part',  'supplier'],
-        }
-
-        self.indexes = {
-            'part': {
-                'p_partkey': 4513792
-            },
-            'orders': {
-                'o_orderkey': 33718272
-            },
-            'supplier': {
-                's_suppkey': 245760
-            },
-            'customer': {
-                'c_custkey':  3391488
-            },
-            'partsupp': {
-                'ps_partkey': 17989632
-            },
-            'lineitem': {},
-        }
-
-        self.index_size = {
-
-        }
-
-
-class SSB_query_sampler(QuerySampler):
-
-    def __init__(self):
-        super(SSB_query_sampler, self).__init__()
-        self.tables = ['part', 'lineitem', 'supplier', 'orders']
-
-        self.primary_keys = {
-            'part': 'p_partkey',
-            'supplier': 's_suppkey',
-            'ddate': 'd_datekey',
-            'customer': 'c_custkey'
-        }  # table: primary key
-        self.join_keys = {
-            ('lineorder', 'customer'): ('lo_custkey', 'c_custkey'),
-            ('customer', 'lineorder'): ('c_custkey', 'lo_custkey'),
-
-            ('supplier', 'lineorder'): ('s_suppkey', 'lo_suppkey'),
-            ('lineorder', 'supplier'): ('lo_suppkey', 's_suppkey'),
-
-            ('part', 'lineorder'): ('p_part', 'lo_partkey'),
-            ('lineorder', 'part'): ('lo_partkey', 'p_partkey'),
-
-            ('ddate', 'lineorder'): ('d_datekey', 'lo_orderdate'),
-            ('lineorder', 'ddate'): ('lo_orderdate', 'd_datekey'),
-
-        }  # (table, table) : (key1, key2)
-
-        self.table_features = {
-            'part': {
-                'table_size': 200000,
-                'key_range': [1, 200000]
-            },
-            'supplier': {
-                'table_size': 2000,
-                'key_range': [1, 2000]
-            },
-            'ddate': {
-                'table_size': 2556,
-                'key_range': [19920101,  19981230]
-            },
-            'customer': {
-                'table_size': 30000,
-                'key_range': [1,  30000]
-            },
-            'lineorder': {
-                'table_size':  6001171,
-                'key_range': []
-            }
-        }  # table features
-
-        self.db = Database(db_name='ssb')  # the database used by sampler
-
-        self.left_size_ratio_threshold = 0.5
-
-        self.join_graph = {
-            # constructed by base table + left table list
-            'part': ['lineorder'],
-            'customer': ['lineorder'],
-            'ddate': ['lineorder'],
-            'supplier': ['lineorder']
-        }
-
-        self.indexes = {
-            'part': {
-                'p_partkey': 4513792
-            },
-            'supplier': {
-                's_suppkey': 65536
-            },
-            'ddate': {
-                'd_datekey': 73728
-            },
-            'customer': {
-                'c_custkey': 688128
-            },
-            'lineorder': {
-                'lo_orderkey':  134815744,
-                # 'lo_linenumber'
-            },
-        }
+        if db_engine == 'postgres':
+            db_connector = Postgres_Connector
+            self.query_sampler = Postgres_QuerySampler(db_name='ssb',
+                                                       left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+        elif db_engine == 'mssql':
+            self.query_sampler = Mssql_QuerySampler(db_name='ssb',
+                                                    left_size_ratio_threshold=left_size_ratio_threshold, schema=self.schema)
+        else:
+            exit(f"db = {db_engine} is not supported yet")
 
 
 def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
 
     if db_name.lower() == 'tpch':
-        sampler = TPCH_query_sampler()
+        sampler = TPCH_QuerySampler(db_engine='postgres')
     elif db_name.lower() == 'imdb':
-        sampler = IMDB_lite_query_sampler()
+        sampler = IMDB_lite_QuerySampler(db_engine='postgres')
     elif db_name.lower() == 'ssb':
-        sampler = SSB_query_sampler()
+        sampler = SSB_QuerySampler(db_engine='postgres')
 
     # sampler.left_size_ratio_threshold = 0.01
 
-    for base_table in sampler.join_graph:
-        for left_table in sampler.join_graph[base_table]:
+    for base_table in sampler.schema.join_graph:
+        for left_table in sampler.schema.join_graph[base_table]:
             for left_order in ['random']:
 
-                res = sampler.sample_for_table(
+                res = sampler.query_sampler.sample_for_table(
                     base_table, [left_table], sample_size=500, sample_with_replacement=sample_with_replacement, left_order=left_order)
 
                 if sample_with_replacement:
@@ -595,36 +643,44 @@ def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
                 #                                                 'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
 
 
-def prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False):
+def prepare_data_on_dataset(db_name='tpch', db_engine='postgres', sample_with_replacement=False):
 
     if db_name.lower() == 'tpch':
-        sampler = TPCH_query_sampler()
+        sampler = TPCH_QuerySampler(db_engine=db_engine)
     elif db_name.lower() == 'imdb':
-        sampler = IMDB_lite_query_sampler()
+        sampler = IMDB_lite_QuerySampler(db_engine=db_engine)
     elif db_name.lower() == 'ssb':
-        sampler = SSB_query_sampler()
+        sampler = SSB_QuerySampler(db_engine=db_engine)
 
     result = []
 
-    for base_table in sampler.join_graph:
-        for left_table in sampler.join_graph[base_table]:
+    for base_table in sampler.schema.join_graph:
+        for left_table in sampler.schema.join_graph[base_table]:
             result = []
 
-            for left_order in ['random', 'left_join_key']:
+            for left_order in ['random']:
 
-                res = sampler.sample_for_table(
-                    base_table, [left_table], sample_size=1000, sample_with_replacement=sample_with_replacement, left_order=left_order)
+                res = sampler.query_sampler.sample_for_table(
+                    base_table, [left_table], sample_size=2000, sample_with_replacement=sample_with_replacement, left_order=left_order)
                 result += res
 
             if sample_with_replacement:
-                data_filename = f"{left_table}_{base_table}_optimal_rep.csv"
+                data_filename = f"{db_engine}_{left_table}_{base_table}_optimal_rep.csv"
             else:
-                data_filename = f"{left_table}_{base_table}_optimal.csv"
+                data_filename = f"{db_engine}_{left_table}_{base_table}_optimal.csv"
 
-            save_data(result, save_path=f'./data/{db_name.lower()}/{base_table}/',
-                      filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr',
-                                                            'left_ordered', 'base_ordered', 'result_size', 'sel_on_indexed_attr_with_join_predicate',
-                                                            'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
+            save_data(result, save_path=f'./sample_results/{db_name.lower()}/{base_table}/',
+                      filename=data_filename, column_names=['query', 'hj_idx_query', 'hj_seq_query', 'nl_idx_query', 'nl_seq_query', 'mj_idx_query', 'mj_seq_query',
+                                                            'left_cardinality', 'left_cardinality_ratio', 'base_cardinality',
+                                                            'sel_of_join_pred', 'sel_of_pred_on_indexed_attr', 'sel_of_pred_on_non_indexed_attr',
+                                                            'sel_of_pred_on_indexed_attr_and_join_pred',
+                                                            'sel_of_pred_on_non_indexed_attr_and_join_pred', 'sel_of_pred_on_indexed_attr_and_non_indexed_attr',
+                                                            'total_sel_on_base_table',
+                                                            'left_ordered', 'base_ordered', 'result_size', 'predicate_op_num_on_indexed_attr',
+                                                            'predicate_op_num_on_non_indexed_attr',
+                                                            'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost',
+                                                            'hj_idx_cte_cost', 'hj_seq_cte_cost', 'nl_idx_cte_cost', 'nl_seq_cte_cost', 'mj_idx_cte_cost', 'mj_seq_cte_cost',
+                                                            'optimal_decision'])
 
 
 def save_data(results, column_names, save_path, filename):
@@ -639,24 +695,26 @@ def save_data(results, column_names, save_path, filename):
 
     df = pd.DataFrame(data=data, columns=column_names)
     df.to_csv(os.path.join(save_path, filename), index=False)
+    # print("Saving data to ", os.path.join(save_path, filename))
+    # exit(1)
 
 
 if __name__ == "__main__":
 
-    visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
+    import itertools
+
+    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
     # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=False)
 
-    # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=True)
     # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=False)
 
     # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=True)
     # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False)
 
-    # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=True)
-    # prepare_data_on_dataset(db_name='ssb', sample_with_replacement=False)
+    for db_engine, db_name, sample_w_rep in itertools.product(['postgres'], ['imdb'], [False]):
+        prepare_data_on_dataset(db_engine=db_engine,
+                                db_name=db_name, sample_with_replacement=sample_w_rep)
 
-    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=True)
-    # prepare_data_on_dataset(db_name='imdb', sample_with_replacement=False)
-
-    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=True)
-    # prepare_data_on_dataset(db_name='tpch', sample_with_replacement=False)
+    # for db_engine, db_name, sample_w_rep in itertools.product(['mssql'], ['ssb', 'tpch', 'imdb'], [False]):
+    #     prepare_data_on_dataset(db_engine=db_engine,
+    #                             db_name=db_name, sample_with_replacement=sample_w_rep)
