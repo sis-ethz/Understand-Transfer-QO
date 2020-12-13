@@ -9,7 +9,7 @@ class m_RandomForestRegressor(Regressor):
     def __init__(self,):
         super(Regressor).__init__()
 
-    def fit(self, n_estimator, max_depth, X_train, y_train, sample_weight=None, y_scaler='exp'):
+    def fit(self, X_train, y_train, n_estimator=1, max_depth=10, sample_weight=None, y_scaler='exp'):
         if y_scaler is None:
             rgr = RandomForestRegressor(n_estimators=n_estimator, max_depth=max_depth).fit(
                 X_train, y_train, sample_weight=sample_weight)

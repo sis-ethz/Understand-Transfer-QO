@@ -75,9 +75,16 @@ class MLPClassifier(Classifier):
         super(MLPClassifier, self).__init__()
         self.n_classes = n_classes
         self.model = mlp_classifier_module(n_layers, n_features, n_classes)
+        self.n_features = n_features
 
     def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, lr=0.01):
+        
+        if X_train.shape[-1] != self.n_features:
+            self.n_features = X_train.shape[-1]
+            self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
+        
         # transform y into list of digits
+        
         y_train = np.array(y_train)
 
         X_tensor = torch.Tensor(X_train).to(device)
@@ -141,6 +148,7 @@ class MLPClassifier_with_confidence(MLPClassifier):
     def __init__(self, n_layers=5, n_features=2, n_classes=6):
         super(MLPClassifier_with_confidence, self).__init__(
             n_layers=n_layers, n_features=n_features, n_classes=n_classes)
+        self.n_features = n_features
 
     def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
 
@@ -168,6 +176,10 @@ class MLPClassifier_with_confidence(MLPClassifier):
             else:
                 loss = torch.sum(torch.sum(-target * logsoftmax(input), dim=1))
             return loss
+
+        if X_train.shape[-1] != self.n_features:
+            self.n_features = X_train.shape[-1]
+            self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
 
         # transform y into list of digits
         y_train = np.array(y_train)
@@ -216,12 +228,18 @@ class MLPClassifier_with_confidence(MLPClassifier):
 
 
 class MLPRegressor(Regressor):
-    def __init__(self, n_layers=5, n_features=7):
+    def __init__(self, n_layers=5, n_features=2):
         super(MLPRegressor, self).__init__()
+        self.n_features = n_features
         self.model = mlp_regressor_module(n_layers, n_features)
 
-    def fit(self, X_train, y_train, batch_size=500, max_iter=100, device='cpu', y_scaler='exp', debug_print=True, test_kit=None):
+    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', y_scaler='exp', debug_print=False, test_kit=None):
         # transform y into list of digits
+
+        if X_train.shape[-1] != self.n_features:
+            self.n_features = X_train.shape[-1]
+            self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
+
 
         X_train = np.array(X_train)
         y_train = np.array(y_train).reshape(-1, 1)

@@ -1,7 +1,8 @@
 from core.models.Regressor import Regressor
 from core.models.Classifier import Classifier
 from sklearn import svm
-
+import numpy as np
+import pandas as pd
 
 class SVMClassifier(Classifier):
     
@@ -27,7 +28,7 @@ class SVMRegressor(Regressor):
             self.y_inv_scale_func = lambda x: x
             return self
         elif y_scaler == 'exp':
-            rgr = Esvm.SVR().fit(X, np.log(y), sample_weight=sample_weight)
+            rgr = svm.SVR().fit(X, np.log(y), sample_weight=sample_weight)
             self.y_inv_scale_func = np.exp
             self.model = rgr
             return self
