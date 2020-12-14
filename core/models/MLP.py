@@ -77,7 +77,7 @@ class MLPClassifier(Classifier):
         self.model = mlp_classifier_module(n_layers, n_features, n_classes)
         self.n_features = n_features
 
-    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, lr=0.01):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, lr=0.01):
         
         if X_train.shape[-1] != self.n_features:
             self.n_features = X_train.shape[-1]
@@ -89,18 +89,23 @@ class MLPClassifier(Classifier):
 
         X_tensor = torch.Tensor(X_train).to(device)
         y_tensor = torch.Tensor(y_train).to(device)
-        # form data loader
+        if sample_weight is not None:
+            sample_weight = np.array(sample_weight).flatten()
+            assert sample_weight.shape == y_train.shape
+            sample_weight_tensor = torch.Tensor(sample_weight).to(device)
+        else:
+            sample_weight_tensor = torch.Tensor(y_train).to(device)
+
+
         torch_dataset = Data.TensorDataset(
-            X_tensor, y_tensor)
+                X_tensor, y_tensor, sample_weight_tensor)
         loader = Data.DataLoader(
             dataset=torch_dataset,      # torch TensorDataset format
             batch_size=batch_size,      # mini batch size
-            shuffle=True,               #
-            # num_workers=5,  #
-            # pin_memory=True
+            shuffle=True
         )
 
-        criterion = nn.CrossEntropyLoss()
+        criterion = nn.CrossEntropyLoss(reduction='none')
 
         optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
 
@@ -109,13 +114,19 @@ class MLPClassifier(Classifier):
         self.history_acc_during_training = []
 
         for epoch in tqdm(range(max_iter)):
-            for step, (batch_x, batch_y) in enumerate(loader):
+            for step, (batch_x, batch_y, batch_sample_weight) in enumerate(loader):
 
                 batch_x = batch_x.to(device)
                 batch_y = batch_y.to(device).long()
 
                 pred_y = self.model.forward(batch_x)
                 loss = criterion(pred_y, batch_y)
+
+                if sample_weight is not None:
+                    loss = loss * batch_sample_weight
+                
+                loss = torch.mean(loss)
+
                 optimizer.zero_grad()
                 loss.backward()
 
@@ -150,7 +161,7 @@ class MLPClassifier_with_confidence(MLPClassifier):
             n_layers=n_layers, n_features=n_features, n_classes=n_classes)
         self.n_features = n_features
 
-    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
+    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
 
         def manual_cross_entropy(input, target, size_average=True):
             """ 
@@ -233,13 +244,12 @@ class MLPRegressor(Regressor):
         self.n_features = n_features
         self.model = mlp_regressor_module(n_layers, n_features)
 
-    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', y_scaler='exp', debug_print=False, test_kit=None):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', y_scaler='exp', debug_print=False, test_kit=None):
         # transform y into list of digits
 
         if X_train.shape[-1] != self.n_features:
             self.n_features = X_train.shape[-1]
             self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
-
 
         X_train = np.array(X_train)
         y_train = np.array(y_train).reshape(-1, 1)
@@ -254,19 +264,23 @@ class MLPRegressor(Regressor):
 
         X_tensor = torch.Tensor(X_train).to(device)
         y_tensor = torch.Tensor(y_train).to(device)
+        if sample_weight is not None:
+            sample_weight = np.array(sample_weight)
+            sample_weight_tensor = torch.Tensor(sample_weight).to(device)
+        else:
+            sample_weight_tensor = torch.Tensor(y_train).to(device)
 
         # form data loader
-        torch_dataset = Data.TensorDataset(
-            X_tensor, y_tensor)
+        torch_dataset = Data.TensorDataset(˜
+            X_tensor, y_tensor, sample_weight_tensor)
         loader = Data.DataLoader(
             dataset=torch_dataset,      # torch TensorDataset format
             batch_size=batch_size,      # mini batch size
             shuffle=True,               #
-            # num_workers=5,  #
-            # pin_memory=True
         )
 
-        criterion = torch.nn.MSELoss(size_average=False)
+        criterion = torch.nn.MSELoss(reduction='none')
+
         optimizer = torch.optim.Adam(
             self.model.parameters(), lr=0.001, weight_decay=0.0001)
 
@@ -275,13 +289,18 @@ class MLPRegressor(Regressor):
         self.history_loss_during_training = []
 
         for epoch in tqdm(range(max_iter)):
-            for step, (batch_x, batch_y) in enumerate(loader):
+            for step, (batch_x, batch_y, batch_sample_weight) in enumerate(loader):
 
                 batch_x = batch_x.to(device).float()
                 batch_y = batch_y.to(device).float()
 
                 pred_y = self.model.forward(batch_x)
                 loss = criterion(pred_y, batch_y)
+
+                if sample_weight is not None:
+                    loss = loss * batch_sample_weight
+                
+                loss = torch.mean(loss)
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
