@@ -1,1261 +1,0 @@
-[I 02:11:10.659 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.6/site-packages/jupyterlab
-[I 02:11:10.659 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
-[I 02:11:10.661 NotebookApp] Serving notebooks from local directory: /mnt/interpretable-cost-model
-[I 02:11:10.661 NotebookApp] Jupyter Notebook 6.1.4 is running at:
-[I 02:11:10.661 NotebookApp] http://639e7e157c5e:8080/?token=1b9ce70b05a5a86533ebccb8afef7854265c0f968b2e6396
-[I 02:11:10.661 NotebookApp]  or http://127.0.0.1:8080/?token=1b9ce70b05a5a86533ebccb8afef7854265c0f968b2e6396
-[I 02:11:10.661 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[W 02:11:10.665 NotebookApp] No web browser found: could not locate runnable browser.
-[C 02:11:10.665 NotebookApp] 
-    
-    To access the notebook, open this file in a browser:
-        file:///root/.local/share/jupyter/runtime/nbserver-41-open.html
-    Or copy and paste one of these URLs:
-        http://639e7e157c5e:8080/?token=1b9ce70b05a5a86533ebccb8afef7854265c0f968b2e6396
-     or http://127.0.0.1:8080/?token=1b9ce70b05a5a86533ebccb8afef7854265c0f968b2e6396
-[I 02:14:01.531 NotebookApp] Writing notebook-signing key to /root/.local/share/jupyter/notebook_secret
-[W 02:14:01.532 NotebookApp] Notebook interpretable_models/Task1&2/mlp_all_features.ipynb is not trusted
-[W 02:14:01.696 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 18.80ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_all_features.ipynb
-[I 02:14:02.206 NotebookApp] Kernel started: f4e7a785-5a50-4cda-b1be-b0849e6923ff, name: python3
-[I 02:15:43.141 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:16:02.262 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:18:02.220 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:18:33.685 NotebookApp] Kernel interrupted: f4e7a785-5a50-4cda-b1be-b0849e6923ff
-[I 02:20:02.237 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:24:02.228 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:25:17.379 NotebookApp] Kernel interrupted: f4e7a785-5a50-4cda-b1be-b0849e6923ff
-[I 02:25:36.827 NotebookApp] Kernel interrupted: f4e7a785-5a50-4cda-b1be-b0849e6923ff
-[I 02:26:02.244 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:27:34.283 NotebookApp] Starting buffering for f4e7a785-5a50-4cda-b1be-b0849e6923ff:3bf6155b306b4b7f96ab81a3cd8580cd
-Error in atexit._run_exitfuncs:
-Traceback (most recent call last):
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 1945, in shutdown
-    h.flush()
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 978, in flush
-    self.stream.flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 357, in flush
-    self._flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 384, in _flush
-    parent=self.parent_header, ident=self.topic)
-  File "/opt/conda/lib/python3.6/site-packages/jupyter_client/session.py", line 751, in send
-    stream.send_multipart(to_send, copy=copy)
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in send_multipart
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 207, in schedule
-    f()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in <lambda>
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 222, in _really_send
-    self.socket.send_multipart(msg, *args, **kwargs)
-AttributeError: 'NoneType' object has no attribute 'send_multipart'
-[I 02:27:35.421 NotebookApp] Kernel restarted: f4e7a785-5a50-4cda-b1be-b0849e6923ff
-[I 02:27:35.552 NotebookApp] Restoring connection for f4e7a785-5a50-4cda-b1be-b0849e6923ff:3bf6155b306b4b7f96ab81a3cd8580cd
-[I 02:27:35.552 NotebookApp] Replaying 3 buffered messages
-[I 02:28:02.233 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:30:02.239 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:32:02.217 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:34:02.219 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:36:02.223 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:37:34.204 NotebookApp] Creating new directory in /interpretable_models
-[I 02:38:02.918 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_all_features.ipynb
-[I 02:39:09.384 NotebookApp] Starting buffering for f4e7a785-5a50-4cda-b1be-b0849e6923ff:3bf6155b306b4b7f96ab81a3cd8580cd
-[I 02:39:11.532 NotebookApp] Discarding 2 buffered messages for f4e7a785-5a50-4cda-b1be-b0849e6923ff:3bf6155b306b4b7f96ab81a3cd8580cd
-[I 02:39:11.533 NotebookApp] Kernel shutdown: f4e7a785-5a50-4cda-b1be-b0849e6923ff
-[W 02:39:18.471 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 5.06ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_all_features.ipynb
-[I 02:39:19.321 NotebookApp] Kernel started: ed90c291-0521-4446-b5d6-d844f3536a9d, name: python3
-[W 02:40:27.344 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.71ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[W 02:40:28.385 NotebookApp] Notebook interpretable_models/Task1&2/mlp_key_features.ipynb is not trusted
-[I 02:40:29.805 NotebookApp] Kernel started: cec146f3-c7ff-4bab-8f69-015242b0d1e3, name: python3
-[W 02:40:29.960 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 5.59ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_key_features.ipynb
-[I 02:40:43.862 NotebookApp] Starting buffering for cec146f3-c7ff-4bab-8f69-015242b0d1e3:e921a4c6a27f4e0f8e6cea8b8cd6c381
-[I 02:40:53.123 NotebookApp] Kernel shutdown: cec146f3-c7ff-4bab-8f69-015242b0d1e3
-[W 02:41:05.047 NotebookApp] Notebook interpretable_models/task1&2_mlp_all_features.ipynb is not trusted
-[W 02:41:05.225 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 1.24ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/task1%262_mlp_all_features.ipynb
-[I 02:41:06.216 NotebookApp] Kernel started: 82651afd-4aae-4e5a-a6b5-8e66f78937cd, name: python3
-[I 02:41:19.894 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:41:41.390 NotebookApp] Starting buffering for 82651afd-4aae-4e5a-a6b5-8e66f78937cd:cef628a9166e4478860749e9181a99d4
-[I 02:41:44.471 NotebookApp] Kernel shutdown: 82651afd-4aae-4e5a-a6b5-8e66f78937cd
-[I 02:42:24.303 NotebookApp] Copying interpretable_models/Task3&4/ebm_all_features.ipynb to /interpretable_models/Task3&4
-[W 02:42:24.338 NotebookApp] Notebook interpretable_models/Task3&4/ebm_all_features.ipynb is not trusted
-[W 02:42:24.363 NotebookApp] Notebook interpretable_models/Task3&4/ebm_all_features-Copy1.ipynb is not trusted
-[W 02:42:43.330 NotebookApp] Notebook interpretable_models/Task3&4/gam_all_features.ipynb is not trusted
-[W 02:42:43.397 NotebookApp] Notebook interpretable_models/Task3&4/ebm_all_features.ipynb is not trusted
-[W 02:42:44.884 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 02:42:45.071 NotebookApp] Kernel started: a602b55a-69b9-4078-a76c-f49b34b34a03, name: python3
-[W 02:42:45.125 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.24ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest_all_features.ipynb
-[I 02:42:45.230 NotebookApp] Kernel started: 4842710f-9a16-469e-b7f5-e7ccab7c900e, name: python3
-[W 02:42:45.371 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 5.25ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/gam_all_features.ipynb
-[W 02:42:45.430 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.69ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm_all_features.ipynb
-[I 02:42:47.313 NotebookApp] Kernel started: db2aeb33-5047-451f-80e7-93f6078cf70c, name: python3
-[I 02:43:19.897 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:44:45.918 NotebookApp] Saving file at /interpretable_models/Task3&4/gam_all_features.ipynb
-[W 02:44:45.919 NotebookApp] Notebook interpretable_models/Task3&4/gam_all_features.ipynb is not trusted
-[I 02:44:45.982 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm_all_features.ipynb
-[W 02:44:45.983 NotebookApp] Notebook interpretable_models/Task3&4/ebm_all_features.ipynb is not trusted
-[I 02:44:48.048 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 02:44:48.050 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 02:45:20.295 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:47:19.908 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:49:05.406 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.py
-[I 02:49:19.902 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:50:04.155 NotebookApp] Starting buffering for db2aeb33-5047-451f-80e7-93f6078cf70c:c815c52f300f46239703593a7fa8a235
-[W 02:50:06.650 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 02:50:18.789 NotebookApp] Starting buffering for db2aeb33-5047-451f-80e7-93f6078cf70c:a06710cad7b848a4bc6fa2a22538b489
-[W 02:50:19.245 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 02:50:20.743 NotebookApp] Kernel started: fefeb2ef-60db-4e2b-b92b-f77a35e30ce6, name: python3
-[W 02:50:21.021 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 1.87ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/random_forest_key_features.ipynb
-[I 02:51:19.924 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:51:34.841 NotebookApp] Starting buffering for 4842710f-9a16-469e-b7f5-e7ccab7c900e:4abc5f13746d4dc2ab72ddf23a447aca
-[I 02:51:34.985 NotebookApp] Starting buffering for a602b55a-69b9-4078-a76c-f49b34b34a03:65b2050fae9647b186481bb9d3436f73
-[I 02:52:20.990 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 02:52:20.992 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 02:53:19.918 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:54:20.900 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 02:54:20.903 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 02:55:19.904 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:57:19.921 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:59:19.897 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:01:19.948 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:02:21.007 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:02:21.009 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:03:19.912 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:05:20.242 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:06:20.874 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:06:20.875 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:07:19.913 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:08:20.901 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:08:20.903 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:09:19.896 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:10:20.876 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:10:20.877 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:11:19.932 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:12:20.895 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:12:20.897 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:13:19.907 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:14:21.248 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:14:21.250 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:15:19.919 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:16:20.892 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:16:20.894 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:17:19.911 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:18:21.007 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:18:21.009 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:19:19.910 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:21:19.407 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:23:19.414 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:25:19.923 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:27:19.914 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:28:20.896 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:28:20.898 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:32:20.911 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:32:20.913 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:34:20.896 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:34:20.898 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:36:20.895 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:36:20.897 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:38:21.009 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:38:21.011 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:40:21.014 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:40:21.016 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:46:21.022 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:46:21.025 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:48:20.908 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:48:20.910 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:50:21.012 NotebookApp] Saving file at /interpretable_models/random_forest_key_features.ipynb
-[W 03:50:21.014 NotebookApp] Notebook interpretable_models/random_forest_key_features.ipynb is not trusted
-[I 03:51:19.405 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:51:45.240 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 03:51:46.081 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 03:51:46.212 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 03:51:46.212 NotebookApp] Replaying 3 buffered messages
-[I 03:53:19.926 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:55:19.942 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:57:19.955 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:59:19.983 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:01:20.530 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:03:20.516 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:05:19.968 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:07:19.995 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:09:20.289 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:11:19.971 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:13:19.979 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[W 04:14:50.717 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[W 04:14:50.872 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.33ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest_all_features.ipynb
-[I 04:14:52.278 NotebookApp] Starting buffering for fefeb2ef-60db-4e2b-b92b-f77a35e30ce6:cce3e94c31bb4f5d961110a79ac8e3cb
-[I 04:15:19.939 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:16:52.725 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 04:16:52.727 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 04:17:19.932 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:18:52.688 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 04:18:52.689 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 04:19:19.951 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:20:53.081 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 04:20:53.083 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 04:21:19.937 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:23:19.962 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:25:19.952 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:27:19.952 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:29:19.504 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:31:19.439 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:33:19.933 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:35:19.939 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:37:19.971 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:39:20.568 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:41:19.938 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:43:19.940 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[W 08:15:22.608 NotebookApp] WebSocket ping timeout after 119957 ms.
-[I 08:15:27.614 NotebookApp] Starting buffering for db2aeb33-5047-451f-80e7-93f6078cf70c:c5c2de4aa9194f01bf0351034ac3ff10
-[W 08:15:46.213 NotebookApp] WebSocket ping timeout after 119939 ms.
-[I 08:15:51.214 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 18:24:27.318 NotebookApp] Restoring connection for db2aeb33-5047-451f-80e7-93f6078cf70c:c5c2de4aa9194f01bf0351034ac3ff10
-[I 18:24:27.454 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 21:19:14.514 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:21:14.296 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:23:14.288 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:25:14.314 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:27:14.289 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:31:14.300 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:35:14.292 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:39:14.290 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:41:14.288 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:43:14.302 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:47:14.313 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:49:14.325 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:51:14.306 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:53:14.325 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 21:55:14.314 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:01:14.903 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:03:14.298 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:05:14.296 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:05:16.276 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:06:06.691 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:07:14.299 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:09:14.294 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:09:51.947 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:09:58.783 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:10:04.789 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-Error in atexit._run_exitfuncs:
-Traceback (most recent call last):
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 1945, in shutdown
-    h.flush()
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 978, in flush
-    self.stream.flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 357, in flush
-    self._flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 384, in _flush
-    parent=self.parent_header, ident=self.topic)
-  File "/opt/conda/lib/python3.6/site-packages/jupyter_client/session.py", line 751, in send
-    stream.send_multipart(to_send, copy=copy)
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in send_multipart
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 207, in schedule
-    f()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in <lambda>
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 222, in _really_send
-    self.socket.send_multipart(msg, *args, **kwargs)
-AttributeError: 'NoneType' object has no attribute 'send_multipart'
-[I 22:10:05.718 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:10:05.847 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:10:05.847 NotebookApp] Replaying 3 buffered messages
-[I 22:10:30.774 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:11:14.306 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:12:40.760 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:13:14.294 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:15:14.301 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:17:14.288 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:19:14.298 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:21:14.303 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:25:14.304 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:27:14.301 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:29:14.319 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:31:14.298 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:33:14.306 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:35:14.821 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:37:14.834 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:45:14.473 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:47:14.377 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:49:14.343 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:51:02.718 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
-kernel ed90c291-0521-4446-b5d6-d844f3536a9d restarted
-[I 22:51:12.884 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:51:14.340 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:51:16.379 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:51:16.707 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:51:16.826 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:51:16.826 NotebookApp] Replaying 3 buffered messages
-[I 22:52:52.708 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
-kernel ed90c291-0521-4446-b5d6-d844f3536a9d restarted
-[W 22:53:07.205 NotebookApp] Replacing stale connection: ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:53:12.207 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:53:12.210 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:53:14.448 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[W 22:53:17.814 NotebookApp] Replacing stale connection: db2aeb33-5047-451f-80e7-93f6078cf70c:c5c2de4aa9194f01bf0351034ac3ff10
-[I 22:53:22.815 NotebookApp] Starting buffering for db2aeb33-5047-451f-80e7-93f6078cf70c:c5c2de4aa9194f01bf0351034ac3ff10
-[I 22:53:22.818 NotebookApp] Restoring connection for db2aeb33-5047-451f-80e7-93f6078cf70c:c5c2de4aa9194f01bf0351034ac3ff10
-[I 22:54:18.067 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:54:27.312 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:54:27.642 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:54:27.768 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:54:27.768 NotebookApp] Replaying 3 buffered messages
-[I 22:54:56.213 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:55:14.338 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:55:42.288 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:57:14.351 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:58:57.643 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
-kernel ed90c291-0521-4446-b5d6-d844f3536a9d restarted
-[I 22:59:14.354 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 22:59:22.672 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:59:23.302 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 22:59:23.435 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 22:59:23.435 NotebookApp] Replaying 3 buffered messages
-[I 23:00:32.304 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
-kernel ed90c291-0521-4446-b5d6-d844f3536a9d restarted
-[I 23:01:06.449 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 23:01:07.074 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 23:01:07.204 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 23:01:07.205 NotebookApp] Replaying 3 buffered messages
-[I 23:01:14.374 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 23:03:11.529 NotebookApp] Kernel interrupted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 23:03:14.354 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 23:35:14.550 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 23:37:14.903 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 23:39:14.908 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:00:05.740 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-Error in atexit._run_exitfuncs:
-Traceback (most recent call last):
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 1945, in shutdown
-    h.flush()
-  File "/opt/conda/lib/python3.6/logging/__init__.py", line 978, in flush
-    self.stream.flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 357, in flush
-    self._flush()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 384, in _flush
-    parent=self.parent_header, ident=self.topic)
-  File "/opt/conda/lib/python3.6/site-packages/jupyter_client/session.py", line 751, in send
-    stream.send_multipart(to_send, copy=copy)
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in send_multipart
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 207, in schedule
-    f()
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 214, in <lambda>
-    self.schedule(lambda : self._really_send(*args, **kwargs))
-  File "/opt/conda/lib/python3.6/site-packages/ipykernel/iostream.py", line 222, in _really_send
-    self.socket.send_multipart(msg, *args, **kwargs)
-AttributeError: 'NoneType' object has no attribute 'send_multipart'
-[I 01:00:07.040 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 01:00:07.183 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 01:00:07.183 NotebookApp] Replaying 3 buffered messages
-[I 01:01:14.456 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:03:14.419 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:05:14.431 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:07:14.421 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:09:14.420 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:13:14.435 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:15:14.420 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:17:14.427 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:19:14.954 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:21:14.944 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:23:15.297 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:25:14.951 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:27:14.963 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:28:07.913 NotebookApp] Creating new notebook in /interpretable_models/Task3&4/random_forest
-[I 01:28:09.490 NotebookApp] Kernel started: 8d58a31a-40bf-45d9-a12d-2534976e9a42, name: python3
-[W 01:28:09.533 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 4.42ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/Untitled.ipynb?kernel_name=python3
-[I 01:29:15.017 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:30:09.903 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:31:14.965 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:32:09.552 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:33:15.354 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:34:09.532 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:35:14.976 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:36:09.541 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:37:14.986 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:38:09.545 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:39:14.990 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:40:09.555 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:41:14.976 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:43:15.026 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:45:15.011 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:47:15.015 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:48:09.919 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:49:15.017 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:50:09.536 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:51:15.031 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:52:09.549 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:52:47.674 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 01:52:47.675 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[I 01:53:15.043 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:54:09.533 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:55:15.032 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:57:15.037 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 01:58:09.560 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 01:59:15.096 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:00:09.553 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:02:09.968 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:04:09.569 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:08:09.573 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:10:09.593 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:12:09.602 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:14:09.628 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:16:09.985 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:18:09.610 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:20:09.614 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:20:57.126 NotebookApp] Kernel interrupted: 8d58a31a-40bf-45d9-a12d-2534976e9a42
-[I 02:22:09.697 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:23:14.585 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:25:15.545 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:26:09.723 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:27:15.086 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:28:09.702 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:29:15.084 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:30:10.069 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:31:15.093 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 02:32:09.736 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:34:09.701 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:36:09.623 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:36:12.814 NotebookApp] Kernel interrupted: 8d58a31a-40bf-45d9-a12d-2534976e9a42
-[I 02:38:09.706 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_visualizer_all_features.ipynb
-[I 02:51:19.663 NotebookApp] Creating new directory in /interpretable_models/Task3&4
-[I 02:51:37.783 NotebookApp] Kernel shutdown: 4842710f-9a16-469e-b7f5-e7ccab7c900e
-[W 02:51:49.314 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_all_features.ipynb is not trusted
-[W 02:51:49.358 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.60ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm/ebm_all_features.ipynb
-[I 02:51:50.241 NotebookApp] Kernel started: e32f9377-ec6f-41e3-801d-b7a165947edf, name: python3
-[I 02:53:50.312 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 02:53:50.314 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 02:55:50.308 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 02:55:50.309 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 02:57:50.320 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 02:57:50.321 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[W 03:01:12.063 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[W 03:01:14.019 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.79ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm/ebm_visualizer_all_features.ipynb
-[I 03:03:07.253 NotebookApp] Creating new directory in /interpretable_models/Task3&4
-[I 03:03:19.214 NotebookApp] Kernel shutdown: db2aeb33-5047-451f-80e7-93f6078cf70c
-[W 03:03:20.035 NotebookApp] 404 DELETE /api/sessions/a8ba888a-64c0-4358-9e4b-67632f51929b (10.130.182.60): Session not found: session_id='a8ba888a-64c0-4358-9e4b-67632f51929b'
-[W 03:03:20.035 NotebookApp] Session not found: session_id='a8ba888a-64c0-4358-9e4b-67632f51929b'
-[W 03:03:20.036 NotebookApp] 404 DELETE /api/sessions/a8ba888a-64c0-4358-9e4b-67632f51929b (10.130.182.60) 2.67ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest_all_features.ipynb
-[I 03:03:21.976 NotebookApp] Kernel shutdown: a602b55a-69b9-4078-a76c-f49b34b34a03
-[W 03:03:40.957 NotebookApp] 409 PATCH /api/contents/interpretable_models/Task3%264/random_forest_all_features.ipynb (10.130.182.60): File already exists: interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 03:03:40.957 NotebookApp] File already exists: interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 03:03:40.958 NotebookApp] 409 PATCH /api/contents/interpretable_models/Task3%264/random_forest_all_features.ipynb (10.130.182.60) 2.75ms referer=http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models/Task3%264
-[W 03:03:50.821 NotebookApp] Notebook interpretable_models/Task3&4/gam/gam_all_features.ipynb is not trusted
-[I 03:03:51.788 NotebookApp] Kernel started: f96b479f-2b27-4f8b-a2a5-c2b20737b8b7, name: python3
-[W 03:03:52.117 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.182.60) 3.94ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/gam/gam_all_features.ipynb
-[I 03:05:51.955 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[W 03:05:51.957 NotebookApp] Notebook interpretable_models/Task3&4/gam/gam_all_features.ipynb is not trusted
-[I 03:11:51.941 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[W 03:11:51.942 NotebookApp] Notebook interpretable_models/Task3&4/gam/gam_all_features.ipynb is not trusted
-[I 03:13:51.863 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[W 03:13:51.864 NotebookApp] Notebook interpretable_models/Task3&4/gam/gam_all_features.ipynb is not trusted
-[I 03:15:51.846 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[W 03:15:51.847 NotebookApp] Notebook interpretable_models/Task3&4/gam/gam_all_features.ipynb is not trusted
-[I 03:17:51.852 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:19:51.849 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:27:51.974 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:29:51.972 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:37:52.032 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:51:15.282 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[W 09:49:22.443 NotebookApp] WebSocket ping timeout after 119945 ms.
-[I 09:49:27.448 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:7727ddd9fcea46d48b8e73187e680089
-[W 09:49:37.184 NotebookApp] WebSocket ping timeout after 119946 ms.
-[W 09:49:40.150 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 09:49:42.187 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[W 09:49:43.494 NotebookApp] WebSocket ping timeout after 119951 ms.
-[I 09:49:45.154 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:8bda63ff75244cd3ace7e2bc64677326
-[I 09:49:48.496 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:209acce28a1549d8904ce994f55e75f2
-[I 19:20:34.848 NotebookApp] Restoring connection for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:7727ddd9fcea46d48b8e73187e680089
-[I 19:20:34.987 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 19:20:35.245 NotebookApp] Restoring connection for e32f9377-ec6f-41e3-801d-b7a165947edf:209acce28a1549d8904ce994f55e75f2
-[I 19:20:36.514 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:8bda63ff75244cd3ace7e2bc64677326
-[I 19:21:52.795 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:83224c9f5c0a45e48e954fd6103008b9
-[I 19:21:52.806 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:209acce28a1549d8904ce994f55e75f2
-[I 19:21:52.813 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:7727ddd9fcea46d48b8e73187e680089
-[I 19:21:52.814 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:8bda63ff75244cd3ace7e2bc64677326
-[I 20:42:50.783 NotebookApp] 302 GET / (68.187.68.42) 1.32ms
-[W 20:43:01.640 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.61ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 20:47:13.381 NotebookApp] Creating new directory in /interpretable_models
-[I 21:39:03.013 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 21:41:02.569 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 21:59:02.702 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:03:02.566 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:13:02.766 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:15:02.676 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:19:02.594 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:21:02.640 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:27:02.653 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:33:02.791 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:35:02.589 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:41:02.627 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:43:02.483 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:45:02.545 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 22:47:02.578 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 01:48:53.378 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.63ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[I 02:29:02.885 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 02:31:02.910 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 02:31:13.133 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:5b14e32fb37143928ecba2fde7a167aa
-[I 02:31:13.779 NotebookApp] Kernel restarted: 8d58a31a-40bf-45d9-a12d-2534976e9a42
-[I 02:31:13.924 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:5b14e32fb37143928ecba2fde7a167aa
-[I 02:31:13.924 NotebookApp] Replaying 3 buffered messages
-[I 02:33:03.652 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 02:47:57.088 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.28ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 02:49:04.273 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:13:56.560 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:01.113 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:01.764 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:03.459 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:04.147 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:06.861 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:07.002 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:07.332 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:07.474 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:08.534 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:14:08.674 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 03:31:14.597 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.53ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/gam/gam_all_features.ipynb
-[W 03:38:49.746 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[W 03:38:50.525 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.54ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm/ebm_visualizer_all_features.ipynb
-[I 03:46:50.528 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 03:46:50.529 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 03:50:50.446 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 03:50:50.447 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 04:08:51.195 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 04:08:51.196 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 04:12:50.459 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 04:12:50.460 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 04:14:50.451 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 04:14:50.452 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 04:18:50.455 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[W 04:18:50.456 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[I 04:20:53.315 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:22:54.248 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 05:20:13.653 NotebookApp] Kernel shutdown: fefeb2ef-60db-4e2b-b92b-f77a35e30ce6
-[W 05:20:28.896 NotebookApp] Notebook interpretable_models/Task5&6/random_forest_key_features.ipynb is not trusted
-[W 05:20:29.046 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.57ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task5%266/random_forest_key_features.ipynb
-[I 05:20:30.140 NotebookApp] Kernel started: dcff73d5-24d5-4ee7-a992-f8e21b4c338d, name: python3
-[W 05:21:12.021 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[W 05:21:12.191 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.30ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest_all_features.ipynb
-[I 05:21:13.086 NotebookApp] Kernel started: 557297a9-38d4-401b-98a7-58dc804a5f62, name: python3
-[I 05:21:20.271 NotebookApp] Starting buffering for 557297a9-38d4-401b-98a7-58dc804a5f62:7b39409181ad42a48751c594f2bc937b
-[I 05:21:24.956 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:4bef8c2bc69545f990fa5c248c04c20a
-[W 05:21:25.052 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.33ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 05:21:26.114 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:2e9da0e43733483283b3e735636ba779
-[I 05:21:28.026 NotebookApp] Starting buffering for dcff73d5-24d5-4ee7-a992-f8e21b4c338d:0324058f07c042dd9b33afa777e033b0
-[I 05:21:28.777 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:c7f61026d35a40a5b50fe3d2c414e95f
-[I 05:21:29.426 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:a402c77bb91e496d8ba348657709f791
-[I 05:21:41.287 NotebookApp] Copying interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb to /interpretable_models/Task3&4/random_forest
-[W 05:22:06.790 NotebookApp] 500 PATCH /api/contents/interpretable_models/Task3%264/random_forest/random_forest_key_features.ipynb (68.187.68.42): Unknown error renaming file: interpretable_models/Task3&4/random_forest/random_forest_key_features.ipynb [Errno 2] No such file or directory: '/mnt/interpretable-cost-model/interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb'
-[W 05:22:06.790 NotebookApp] Unknown error renaming file: interpretable_models/Task3&4/random_forest/random_forest_key_features.ipynb [Errno 2] No such file or directory: '/mnt/interpretable-cost-model/interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb'
-[E 05:22:06.791 NotebookApp] {
-      "Host": "cosmos2.chtc.wisc.edu:23334",
-      "Connection": "keep-alive",
-      "Content-Length": "87",
-      "Accept": "application/json, text/javascript, */*; q=0.01",
-      "X-Requested-With": "XMLHttpRequest",
-      "X-Xsrftoken": "2|95499012|ccba6335f2f2751baf3b3ef2e23f5921|1603946447",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36",
-      "Content-Type": "application/json",
-      "Origin": "http://cosmos2.chtc.wisc.edu:23334",
-      "Referer": "http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models/Task3%264/random_forest",
-      "Accept-Encoding": "gzip, deflate",
-      "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8",
-      "Cookie": "_ga=GA1.2.67195289.1567047216; AMCV_8E929CC25A1FB2B30A495C97%40AdobeOrg=1687686476%7CMCIDTS%7C18445%7CMCMID%7C00938376157090920112596013593655426152%7CMCAAMLH-1594313130%7C7%7CMCAAMB-1594313130%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1593715530s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C3.0.0; utag_main=v_id:01730b6a6b1d00200177a31ca1a003073004606b00fb8$_sn:2$_ss:0$_st:1593710130545$vapi_domain:wisc.edu$ses_id:1593708286727%3Bexp-session$_pn:2%3Bexp-session; AMCV_4D6368F454EC41940A4C98A6%40AdobeOrg=-432600572%7CMCIDTS%7C18445%7CMCMID%7C01144387241371208642656302592262385827%7CMCAAMLH-1594313182%7C7%7CMCAAMB-1594313182%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1593715582s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C4.5.2%7CMCCIDH%7C1487330824; s_pers=%20v8%3D1593708382492%7C1688316382492%3B%20v8_s%3DLess%2520than%25201%2520day%7C1593710182492%3B%20c19%3Dsd%253Apdfft%253Apdf%253Aurl%7C1593710182503%3B%20v68%3D1593708382128%7C1593710182513%3B; __unam=736a372-17318954647-674b2f9b-2; _xsrf=2|95499012|ccba6335f2f2751baf3b3ef2e23f5921|1603946447; username-cosmos2-chtc-wisc-edu-23333=\"2|1:0|10:1603946458|36:username-cosmos2-chtc-wisc-edu-23333|44:Mjc2ZTkwOTQ5NmJhNGEyNGFiYmVhYWZmZjcwMTI0MmM=|ed568ea1f98c6ffa76ab95823d61ce96d32733f68e2d97e91b0406a6c85216f0\"; username-cosmos2-chtc-wisc-edu-23334=\"2|1:0|10:1604110250|36:username-cosmos2-chtc-wisc-edu-23334|44:OWNjYWJlZjU2MzcyNDFiMzk2ODJmNWRkZGM4NGZlMDI=|d2b36ad9c0f69830d6dd8dd1cc1377c9a44bfac57ef6149afe4bf84fb6a8486b\""
-    }
-[E 05:22:06.792 NotebookApp] 500 PATCH /api/contents/interpretable_models/Task3%264/random_forest/random_forest_key_features.ipynb (68.187.68.42) 3.56ms referer=http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models/Task3%264/random_forest
-[W 05:22:15.816 NotebookApp] 409 PATCH /api/contents/interpretable_models/Task3%264/random_forest/random_forest_key_features.ipynb (68.187.68.42): File already exists: interpretable_models/Task5&6/random_forest_key_features.ipynb
-[W 05:22:15.817 NotebookApp] File already exists: interpretable_models/Task5&6/random_forest_key_features.ipynb
-[W 05:22:15.817 NotebookApp] 409 PATCH /api/contents/interpretable_models/Task3%264/random_forest/random_forest_key_features.ipynb (68.187.68.42) 3.19ms referer=http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models/Task3%264/random_forest
-[I 05:22:33.049 NotebookApp] Kernel shutdown: dcff73d5-24d5-4ee7-a992-f8e21b4c338d
-[W 05:22:33.354 NotebookApp] delete /interpretable_models/Task5&6/random_forest_key_features.ipynb
-[W 05:22:33.355 NotebookApp] Skipping trash for /mnt/interpretable-cost-model/interpretable_models/Task5&6/random_forest_key_features.ipynb, on different device to home directory
-[I 05:22:50.251 NotebookApp] Creating new directory in /interpretable_models/Task5&6
-[I 05:23:09.510 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:7290a5fcbbd849c3be8d0fd4d6de0d76
-[W 05:23:10.603 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 2.30ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task5%266/random_forest/random_forest_key_features.ipynb
-[I 05:23:11.408 NotebookApp] Kernel started: 0c2e890d-15c4-4933-9f41-1446a8ae4482, name: python3
-[W 05:24:18.371 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 2.33ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 05:25:13.316 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[W 05:25:13.804 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.32ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest_all_features.ipynb
-[I 05:25:13.819 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:25:19.354 NotebookApp] Starting buffering for 557297a9-38d4-401b-98a7-58dc804a5f62:6af7bd18c824423db2847be8b54d0235
-[W 05:25:23.391 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.60ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 05:30:02.160 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[W 05:30:02.204 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.31ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/gam/gam_all_features.ipynb
-[W 05:30:03.167 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 6.89ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm/ebm_visualizer_all_features.ipynb
-[W 05:30:12.551 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.60ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[I 05:30:20.639 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:30:24.721 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:32:20.677 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:34:19.996 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:36:20.810 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:38:24.017 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:38:37.233 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:39:12.894 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:39:13.659 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[W 05:40:36.051 NotebookApp] Notebook interpretable_models/Task3&4/random_forest_all_features.ipynb is not trusted
-[W 05:40:39.574 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.57ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 05:40:49.657 NotebookApp] delete /interpretable_models/Task3&4/random_forest_all_features.ipynb
-[W 05:40:49.658 NotebookApp] Skipping trash for /mnt/interpretable-cost-model/interpretable_models/Task3&4/random_forest_all_features.ipynb, on different device to home directory
-[I 05:40:49.663 NotebookApp] Kernel shutdown: 557297a9-38d4-401b-98a7-58dc804a5f62
-[W 05:40:55.092 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.63ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 05:41:12.621 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:42:04.892 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 05:42:05.231 NotebookApp] Kernel restarted: 0c2e890d-15c4-4933-9f41-1446a8ae4482
-[I 05:42:05.363 NotebookApp] Restoring connection for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 05:42:05.363 NotebookApp] Replaying 3 buffered messages
-[I 05:43:13.148 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:47:12.481 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:49:13.367 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 05:53:13.141 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[W 09:10:13.543 NotebookApp] WebSocket ping timeout after 119936 ms.
-[I 09:10:18.547 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:1fcbf5de7e2b49ef8d0dd936aee05139
-[W 09:10:19.402 NotebookApp] WebSocket ping timeout after 119946 ms.
-[W 09:10:25.063 NotebookApp] WebSocket ping timeout after 119955 ms.
-[I 09:10:30.067 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:96f941c85d64475abd51ee3428845c95
-[W 09:10:31.747 NotebookApp] WebSocket ping timeout after 119949 ms.
-[W 09:10:33.165 NotebookApp] WebSocket ping timeout after 119947 ms.
-[W 09:10:35.363 NotebookApp] WebSocket ping timeout after 119958 ms.
-[I 09:10:36.750 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:973cb66e47f44d278f93bf0db29cabc2
-[I 09:10:38.167 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:d318fb6b81c446c1804019f587cde089
-[I 09:10:40.366 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 16:03:40.178 NotebookApp] Restoring connection for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 16:03:40.452 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:1fcbf5de7e2b49ef8d0dd936aee05139
-[I 16:03:40.594 NotebookApp] Restoring connection for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:973cb66e47f44d278f93bf0db29cabc2
-[I 16:03:41.070 NotebookApp] Restoring connection for e32f9377-ec6f-41e3-801d-b7a165947edf:d318fb6b81c446c1804019f587cde089
-[I 20:00:14.780 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:973cb66e47f44d278f93bf0db29cabc2
-[I 20:00:14.813 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:1fcbf5de7e2b49ef8d0dd936aee05139
-[I 20:00:14.854 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:d318fb6b81c446c1804019f587cde089
-[W 04:16:11.188 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 7.48ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[I 04:35:02.072 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 04:35:44.802 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 04:35:45.449 NotebookApp] Kernel restarted: 0c2e890d-15c4-4933-9f41-1446a8ae4482
-[I 04:35:45.607 NotebookApp] Restoring connection for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 04:35:45.607 NotebookApp] Replaying 3 buffered messages
-[I 04:37:01.695 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[I 04:39:01.993 NotebookApp] Saving file at /interpretable_models/Task5&6/random_forest/random_forest_key_features.ipynb
-[W 08:56:40.728 NotebookApp] WebSocket ping timeout after 119947 ms.
-[W 08:56:42.135 NotebookApp] WebSocket ping timeout after 119949 ms.
-[W 08:56:45.607 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 08:56:45.730 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:96f941c85d64475abd51ee3428845c95
-[I 08:56:47.138 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:d012dc1f702045aa89109ee56e9aeba8
-[I 08:56:50.610 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 14:49:25.025 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:96f941c85d64475abd51ee3428845c95
-[I 14:49:25.333 NotebookApp] Restoring connection for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 14:49:26.328 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:d012dc1f702045aa89109ee56e9aeba8
-[I 01:42:54.225 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:96f941c85d64475abd51ee3428845c95
-[W 09:12:25.335 NotebookApp] WebSocket ping timeout after 119921 ms.
-[W 09:12:26.328 NotebookApp] WebSocket ping timeout after 119947 ms.
-[I 09:12:30.339 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 09:12:31.331 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:d012dc1f702045aa89109ee56e9aeba8
-[I 17:18:22.258 NotebookApp] Restoring connection for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[I 17:18:22.394 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:d012dc1f702045aa89109ee56e9aeba8
-[I 22:05:22.369 NotebookApp] Starting buffering for 0c2e890d-15c4-4933-9f41-1446a8ae4482:e8acfb766d5e4424a5ec46b09144169e
-[W 04:26:55.879 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 17.10ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[I 04:27:00.689 NotebookApp] Copying interpretable_models/Task1&2/mlp_torch_all_features.ipynb to /interpretable_models/Task1&2
-[W 04:27:15.398 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.35ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_aug_features.ipynb
-[I 04:27:16.447 NotebookApp] Kernel started: ad4af0fb-a875-4f5e-84fc-24feee398fb4, name: python3
-[I 04:29:16.711 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:31:17.403 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:33:17.406 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:35:16.500 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:37:16.512 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:39:17.397 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:41:17.427 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:41:32.344 NotebookApp] Kernel shutdown: 0c2e890d-15c4-4933-9f41-1446a8ae4482
-[I 04:43:17.413 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:45:17.440 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:47:17.408 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:49:17.448 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:51:17.451 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[W 04:52:37.365 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 1.69ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 04:52:38.623 NotebookApp] Kernel started: 2e4480d5-ee5f-4d1c-935a-a2019a0c4947, name: python3
-[I 04:53:17.472 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:55:17.455 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:57:17.450 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 04:59:17.459 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:01:17.466 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:02:39.984 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:03:17.448 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:05:17.461 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:06:39.990 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:07:17.467 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:09:17.463 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:10:39.960 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:11:17.475 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:12:39.075 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:13:17.495 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:14:39.558 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:15:16.671 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:16:41.281 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:17:16.618 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:18:40.256 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:19:17.499 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:20:40.641 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 05:21:17.479 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:23:17.550 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_aug_features.ipynb
-[I 05:46:40.582 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[W 06:02:08.030 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.42ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 07:57:59.514 NotebookApp] Replacing stale connection: 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:1acab547cfc64c87927a7bddffa3e0f4
-[I 07:58:04.516 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:1acab547cfc64c87927a7bddffa3e0f4
-[I 07:58:04.519 NotebookApp] Restoring connection for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:1acab547cfc64c87927a7bddffa3e0f4
-[W 07:58:04.645 NotebookApp] Replacing stale connection: 8d58a31a-40bf-45d9-a12d-2534976e9a42:433d0d5c2602414b9c1a3341054d700b
-[I 07:58:09.647 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:433d0d5c2602414b9c1a3341054d700b
-[I 07:58:09.649 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:433d0d5c2602414b9c1a3341054d700b
-[W 07:58:09.772 NotebookApp] Replacing stale connection: ad4af0fb-a875-4f5e-84fc-24feee398fb4:2e8399e312dc4a818cbd15f5055f0633
-[I 07:58:14.774 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:2e8399e312dc4a818cbd15f5055f0633
-[I 07:58:14.776 NotebookApp] Restoring connection for ad4af0fb-a875-4f5e-84fc-24feee398fb4:2e8399e312dc4a818cbd15f5055f0633
-[W 07:58:18.448 NotebookApp] Replacing stale connection: ed90c291-0521-4446-b5d6-d844f3536a9d:5b4fb93927f34d54bb3ac035845325e9
-[I 07:58:23.450 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:5b4fb93927f34d54bb3ac035845325e9
-[I 07:58:23.452 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:5b4fb93927f34d54bb3ac035845325e9
-[I 08:55:36.199 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:433d0d5c2602414b9c1a3341054d700b
-[I 08:55:36.324 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:1acab547cfc64c87927a7bddffa3e0f4
-[I 08:55:37.067 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:5b4fb93927f34d54bb3ac035845325e9
-[I 08:55:37.095 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:2e8399e312dc4a818cbd15f5055f0633
-[W 08:56:29.545 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.176.157) 3.45ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[W 08:56:33.801 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.176.157) 3.49ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_aug_features.ipynb
-[W 09:06:03.137 NotebookApp] WebSocket ping timeout after 119932 ms.
-[I 09:06:08.139 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[W 09:06:29.325 NotebookApp] WebSocket ping timeout after 119936 ms.
-[I 09:06:34.329 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[I 19:59:22.302 NotebookApp] Restoring connection for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 19:59:22.392 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[W 20:50:13.213 NotebookApp] Replacing stale connection: ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[I 20:50:18.216 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[I 20:50:18.219 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[W 20:50:18.371 NotebookApp] Replacing stale connection: ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 20:50:23.373 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 20:50:23.376 NotebookApp] Restoring connection for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 03:35:48.420 NotebookApp] 302 GET / (10.130.178.131) 2.42ms
-[W 03:36:06.322 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 5.50ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 03:36:07.175 NotebookApp] Copying interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb to /interpretable_models/Task13&14/random_forest
-[W 03:37:28.997 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 5.08ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_aug_features.ipynb
-[I 03:37:30.024 NotebookApp] Kernel started: 2803b92d-ffec-4b37-b477-cc8d22c5fe47, name: python3
-[I 03:39:30.221 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 03:41:34.109 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 03:45:33.003 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 03:46:10.495 NotebookApp] Starting buffering for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:d220f2aa642b42f68c509d6a2ccd76c6
-[I 03:46:11.325 NotebookApp] Kernel restarted: 2803b92d-ffec-4b37-b477-cc8d22c5fe47
-[I 03:46:11.459 NotebookApp] Restoring connection for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:d220f2aa642b42f68c509d6a2ccd76c6
-[I 03:46:11.459 NotebookApp] Replaying 3 buffered messages
-[I 03:47:30.093 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 03:49:31.029 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 03:51:32.966 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:01:33.797 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:03:32.496 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[W 04:04:24.643 NotebookApp] Notebook interpretable_models/mlp_key_features.ipynb is not trusted
-[W 04:04:24.804 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.51ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/mlp_key_features.ipynb
-[I 04:04:25.608 NotebookApp] Kernel started: 0cac1431-f585-4abb-8355-38080ee43086, name: python3
-[W 04:04:37.042 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.97ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 04:04:44.964 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:8989ed07c4d54b559dc273963598c8d9
-[I 04:04:55.313 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:bcb291ac80334ffea43778d2b270280b
-[I 04:05:32.000 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:06:26.481 NotebookApp] Saving file at /interpretable_models/mlp_key_features.ipynb
-[W 04:06:26.482 NotebookApp] Notebook interpretable_models/mlp_key_features.ipynb is not trusted
-[I 04:07:32.695 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:11:32.505 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:13:32.477 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:15:32.494 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:17:32.916 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:19:33.349 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:21:31.898 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:27:34.949 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:29:33.154 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:31:32.743 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_features.ipynb
-[I 04:35:32.321 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:39:32.773 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:41:32.304 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:43:30.519 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:47:30.533 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:53:30.542 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[I 04:55:32.345 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_aug_key_features.ipynb
-[W 05:03:56.243 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.27ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 05:05:58.453 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 05:07:59.179 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 08:51:28.116 NotebookApp] WebSocket ping timeout after 119957 ms.
-[I 08:51:33.120 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a390140ed7be47a783a4066da78b5535
-[W 08:51:41.460 NotebookApp] WebSocket ping timeout after 119956 ms.
-[I 08:51:46.462 NotebookApp] Starting buffering for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:d220f2aa642b42f68c509d6a2ccd76c6
-[W 08:51:48.222 NotebookApp] WebSocket ping timeout after 119959 ms.
-[I 08:51:53.223 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[W 08:51:53.377 NotebookApp] WebSocket ping timeout after 119958 ms.
-[W 08:51:56.098 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 08:51:58.379 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 08:52:01.100 NotebookApp] Starting buffering for 0cac1431-f585-4abb-8355-38080ee43086:96e53f6ab4294f0c802c5083512b84ac
-[I 17:26:30.945 NotebookApp] Restoring connection for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:d220f2aa642b42f68c509d6a2ccd76c6
-[I 17:26:31.084 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[I 17:26:31.228 NotebookApp] Restoring connection for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 17:26:31.356 NotebookApp] Restoring connection for 0cac1431-f585-4abb-8355-38080ee43086:96e53f6ab4294f0c802c5083512b84ac
-[I 17:26:31.605 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a390140ed7be47a783a4066da78b5535
-[I 17:28:01.672 NotebookApp] Starting buffering for ad4af0fb-a875-4f5e-84fc-24feee398fb4:b262f34262cd4a2dbcefac03970848d7
-[I 17:28:01.687 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:61abcce489ce466b81560612f22fc3b5
-[I 18:14:30.593 NotebookApp] Starting buffering for 0cac1431-f585-4abb-8355-38080ee43086:96e53f6ab4294f0c802c5083512b84ac
-[I 18:14:30.601 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a390140ed7be47a783a4066da78b5535
-[I 18:14:30.607 NotebookApp] Starting buffering for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:d220f2aa642b42f68c509d6a2ccd76c6
-[W 21:03:22.446 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 1.64ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 21:03:26.759 NotebookApp] Notebook interpretable_models/mlp_key_features.ipynb is not trusted
-[W 21:03:27.031 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 2.34ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_aug_key_features.ipynb
-[W 21:03:30.017 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 7.25ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/mlp_key_features.ipynb
-[I 21:05:42.610 NotebookApp] Starting buffering for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:1f1a01cf443f4f7b804c0688d7e63c39
-[I 21:05:42.645 NotebookApp] Starting buffering for 0cac1431-f585-4abb-8355-38080ee43086:f5543ba3a8b2448382d98f4f4284dd88
-[I 21:05:46.172 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:9d367a26cc1c4d689bea1860501e6700
-[W 21:09:00.457 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 2.58ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[W 04:41:21.903 NotebookApp] Replacing stale connection: 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[I 04:41:26.906 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[I 04:41:26.909 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[W 06:16:25.374 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 7.63ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task13%2614/random_forest/random_forest_key_features.ipynb
-[W 06:16:53.807 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.52ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_aug_key_features.ipynb
-[W 06:17:13.886 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 4.12ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 06:17:19.196 NotebookApp] Starting buffering for 2803b92d-ffec-4b37-b477-cc8d22c5fe47:3a5cff6c4661477492627ccba8016932
-[I 06:17:19.991 NotebookApp] Kernel shutdown: 2803b92d-ffec-4b37-b477-cc8d22c5fe47
-[W 06:17:39.189 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 4.01ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[I 06:17:40.597 NotebookApp] Kernel started: 82d450d4-7a14-4810-b6e7-b2a61333dd97, name: python3
-[I 06:19:42.678 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 06:21:43.676 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 06:23:22.145 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:23:22.479 NotebookApp] Kernel restarted: 82d450d4-7a14-4810-b6e7-b2a61333dd97
-[I 06:23:22.624 NotebookApp] Restoring connection for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:23:22.624 NotebookApp] Replaying 3 buffered messages
-[I 06:23:40.689 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 06:24:11.931 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:24:12.567 NotebookApp] Kernel restarted: 82d450d4-7a14-4810-b6e7-b2a61333dd97
-[I 06:24:12.698 NotebookApp] Restoring connection for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:24:12.698 NotebookApp] Replaying 3 buffered messages
-[I 06:24:48.065 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:24:48.687 NotebookApp] Kernel restarted: 82d450d4-7a14-4810-b6e7-b2a61333dd97
-[I 06:24:48.818 NotebookApp] Restoring connection for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 06:24:48.818 NotebookApp] Replaying 3 buffered messages
-[I 06:25:41.047 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 06:27:42.667 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[W 09:09:13.630 NotebookApp] WebSocket ping timeout after 119949 ms.
-[W 09:09:18.820 NotebookApp] WebSocket ping timeout after 119952 ms.
-[I 09:09:23.822 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[W 09:09:26.912 NotebookApp] WebSocket ping timeout after 119947 ms.
-[W 09:09:27.973 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 09:09:31.914 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[I 09:09:32.975 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[I 18:05:19.407 NotebookApp] Restoring connection for 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[I 18:05:19.683 NotebookApp] Restoring connection for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 18:05:19.820 NotebookApp] Restoring connection for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[W 18:43:09.977 NotebookApp] Replacing stale connection: 8d58a31a-40bf-45d9-a12d-2534976e9a42:a37910e2cb774455b639c899500a564d
-[W 18:43:15.111 NotebookApp] Replacing stale connection: 8d58a31a-40bf-45d9-a12d-2534976e9a42:a624a1d104194d1b812174377eee80e4
-[W 18:43:20.241 NotebookApp] Replacing stale connection: 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 18:43:25.244 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 18:43:25.246 NotebookApp] Restoring connection for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[W 18:43:25.383 NotebookApp] Replacing stale connection: 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[I 18:43:30.386 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[I 18:43:30.388 NotebookApp] Restoring connection for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[I 02:15:33.415 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 02:17:33.188 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 02:19:33.724 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 02:21:33.896 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 02:23:34.163 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 02:25:34.095 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[W 03:44:24.321 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 7.60ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task1%262/mlp_torch_all_features.ipynb
-[I 03:45:04.193 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:e95abacbf643497192da87f9681c00d7
-[I 03:45:04.921 NotebookApp] Kernel restarted: ed90c291-0521-4446-b5d6-d844f3536a9d
-[I 03:45:05.048 NotebookApp] Restoring connection for ed90c291-0521-4446-b5d6-d844f3536a9d:e95abacbf643497192da87f9681c00d7
-[I 03:45:05.048 NotebookApp] Replaying 3 buffered messages
-[I 03:46:24.871 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:48:24.222 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:50:24.243 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[W 03:51:38.792 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 4.15ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 03:51:45.603 NotebookApp] Kernel restarted: 8d58a31a-40bf-45d9-a12d-2534976e9a42
-[I 03:52:25.236 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:53:41.270 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 03:54:25.158 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:55:41.995 NotebookApp] Saving file at /interpretable_models/Task3&4/random_forest/random_forest_all_features.ipynb
-[W 03:56:16.197 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.65ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/gam/gam_all_features.ipynb
-[W 03:56:18.030 NotebookApp] Notebook interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb is not trusted
-[W 03:56:19.282 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.18ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task3%264/ebm/ebm_visualizer_all_features.ipynb
-[I 03:56:24.796 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:4cc72452846e4d10891b27cd528ad336
-[I 03:56:25.434 NotebookApp] Kernel restarted: e32f9377-ec6f-41e3-801d-b7a165947edf
-[I 03:56:25.533 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:56:25.588 NotebookApp] Restoring connection for e32f9377-ec6f-41e3-801d-b7a165947edf:4cc72452846e4d10891b27cd528ad336
-[I 03:56:25.589 NotebookApp] Replaying 3 buffered messages
-[I 03:56:29.988 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:fe090f2ac1664bcdb16ad2b2c68011db
-[I 03:56:30.513 NotebookApp] Kernel restarted: f96b479f-2b27-4f8b-a2a5-c2b20737b8b7
-[I 03:56:30.666 NotebookApp] Restoring connection for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:fe090f2ac1664bcdb16ad2b2c68011db
-[I 03:56:30.666 NotebookApp] Replaying 3 buffered messages
-[I 03:56:35.688 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:c5fdcb8606d3459f86019f9bf7ff3662
-[W 03:56:44.521 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.46ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/interpretable_models/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 03:57:32.967 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 03:58:16.225 NotebookApp] Saving file at /interpretable_models/Task3&4/gam/gam_all_features.ipynb
-[I 03:58:19.192 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[I 03:58:25.211 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 03:58:48.736 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 03:59:35.517 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 04:00:25.285 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:00:48.694 NotebookApp] Saving file at /interpretable_models/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 04:02:25.167 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:04:25.176 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:06:19.161 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[I 04:06:25.223 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:08:19.151 NotebookApp] Saving file at /interpretable_models/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[I 04:08:25.179 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:10:25.179 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:12:25.192 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:14:26.120 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:16:26.530 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:18:25.825 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:20:26.438 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:22:25.297 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:24:25.475 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:26:25.389 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:28:25.417 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:30:25.412 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:32:25.457 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:34:25.500 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:36:25.429 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:38:25.454 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 04:40:25.512 NotebookApp] Saving file at /interpretable_models/Task1&2/mlp_torch_all_features.ipynb
-[I 05:05:28.781 NotebookApp] Starting buffering for 2e4480d5-ee5f-4d1c-935a-a2019a0c4947:d230e7dd81a64c8b9ecfbe5b9bf55656
-[I 05:05:29.045 NotebookApp] Starting buffering for e32f9377-ec6f-41e3-801d-b7a165947edf:4cc72452846e4d10891b27cd528ad336
-[I 05:05:29.257 NotebookApp] Starting buffering for f96b479f-2b27-4f8b-a2a5-c2b20737b8b7:fe090f2ac1664bcdb16ad2b2c68011db
-[I 05:05:29.537 NotebookApp] Starting buffering for ed90c291-0521-4446-b5d6-d844f3536a9d:e95abacbf643497192da87f9681c00d7
-[I 05:05:29.784 NotebookApp] Starting buffering for 82d450d4-7a14-4810-b6e7-b2a61333dd97:1c238e1f89734a6eacb63d0517f9cd9f
-[I 05:05:30.308 NotebookApp] Starting buffering for 8d58a31a-40bf-45d9-a12d-2534976e9a42:f34ba40f8bb5418abda543e857fc035d
-[W 05:05:31.010 NotebookApp] 404 GET /api/contents/interpretable_models/Task13%2614/random_forest?type=directory&_=1604729712115 (10.130.178.131): No such file or directory: interpretable_models/Task13&14/random_forest
-[W 05:05:31.011 NotebookApp] No such file or directory: interpretable_models/Task13&14/random_forest
-[W 05:05:31.011 NotebookApp] 404 GET /api/contents/interpretable_models/Task13%2614/random_forest?type=directory&_=1604729712115 (10.130.178.131) 2.92ms referer=http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models/Task13%2614/random_forest
-[W 05:05:32.829 NotebookApp] 404 GET /api/contents/interpretable_models?type=directory&_=1604729712116 (10.130.178.131): No such file or directory: interpretable_models
-[W 05:05:32.829 NotebookApp] No such file or directory: interpretable_models
-[W 05:05:32.830 NotebookApp] 404 GET /api/contents/interpretable_models?type=directory&_=1604729712116 (10.130.178.131) 2.87ms referer=http://cosmos2.chtc.wisc.edu:23334/tree/interpretable_models
-[W 07:11:52.038 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.86ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task1%262/mlp_torch_aug_features.ipynb
-[I 07:11:52.762 NotebookApp] Kernel started: 566f0572-75b0-411a-9d2b-d5bac31f3eb3, name: python3
-[I 07:12:12.054 NotebookApp] Saving file at /experiments/Task1&2/mlp_torch_aug_features.ipynb
-[W 07:12:16.410 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.37ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task1%262/mlp_torch_all_features.ipynb
-[I 07:12:17.242 NotebookApp] Kernel started: 39a03887-bc61-43f2-8c8f-c9e56d174c1f, name: python3
-[I 07:12:32.380 NotebookApp] Saving file at /experiments/Task1&2/mlp_torch_all_features.ipynb
-[W 07:12:38.342 NotebookApp] Notebook experiments/Task1&2/mlp_all_features.ipynb is not trusted
-[I 07:12:39.251 NotebookApp] Kernel started: cc5e3294-1b8e-438c-992e-91262381f7f4, name: python3
-[W 07:12:39.344 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.53ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task1%262/mlp_all_features.ipynb
-[I 07:12:52.302 NotebookApp] Saving file at /experiments/Task1&2/mlp_all_features.ipynb
-[W 07:12:52.304 NotebookApp] Notebook experiments/Task1&2/mlp_all_features.ipynb is not trusted
-[I 07:12:53.842 NotebookApp] Starting buffering for cc5e3294-1b8e-438c-992e-91262381f7f4:a4c52045516442acbdf9e88f42db0027
-[I 07:12:53.899 NotebookApp] Starting buffering for 566f0572-75b0-411a-9d2b-d5bac31f3eb3:1fdcffc3d36445cfb4c510f1884a6678
-[I 07:12:54.019 NotebookApp] Starting buffering for 39a03887-bc61-43f2-8c8f-c9e56d174c1f:aee56aa8293b4f0f86961deab8497c7a
-[W 07:13:01.491 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.81ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task3%264/random_forest/random_forest_all_features.ipynb
-[I 07:13:03.296 NotebookApp] Kernel started: 02f32560-d984-4bb2-b754-97d054f5c956, name: python3
-[I 07:13:19.572 NotebookApp] Saving file at /experiments/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 07:13:20.213 NotebookApp] Saving file at /experiments/Task3&4/random_forest/random_forest_all_features.ipynb
-[I 07:13:21.705 NotebookApp] Starting buffering for 02f32560-d984-4bb2-b754-97d054f5c956:816f1e00a98e40369fffa38cf8eb9241
-[I 07:13:27.602 NotebookApp] Kernel started: 81f73c93-8b74-4903-901a-7e4781951f5d, name: python3
-[W 07:13:27.661 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 5.85ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task3%264/gam/gam_all_features.ipynb
-[I 07:13:32.522 NotebookApp] Saving file at /experiments/Task3&4/gam/gam_all_features.ipynb
-[I 07:13:34.058 NotebookApp] Starting buffering for 81f73c93-8b74-4903-901a-7e4781951f5d:a7527c8f484d4681b63d19be1df0529d
-[W 07:13:38.562 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.70ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task3%264/ebm/ebm_visualizer_all_features.ipynb
-[I 07:13:39.100 NotebookApp] Kernel started: a1bd08fd-36df-4199-8301-52965d3f6428, name: python3
-[I 07:13:43.612 NotebookApp] Saving file at /experiments/Task3&4/ebm/ebm_visualizer_all_features.ipynb
-[I 07:13:45.630 NotebookApp] Starting buffering for a1bd08fd-36df-4199-8301-52965d3f6428:b146af5dc0db44188dd1ebd714a8a601
-[W 07:13:56.281 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 5.02ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[I 07:13:57.400 NotebookApp] Kernel started: 8b6b79d8-fc0f-47c7-ba3c-9dabdc72c13f, name: python3
-[I 07:14:06.809 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 07:14:09.781 NotebookApp] Starting buffering for 8b6b79d8-fc0f-47c7-ba3c-9dabdc72c13f:e6a69e6b3b404a05b5cbfe8c39e99a8a
-[W 07:14:11.935 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.41ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 07:14:13.967 NotebookApp] Kernel started: 030401a7-7c4f-4f5f-842b-8482440b4d70, name: python3
-[I 07:14:27.029 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 07:14:28.882 NotebookApp] Starting buffering for 030401a7-7c4f-4f5f-842b-8482440b4d70:36aa233de77b47baa0f766cd80c7a3ab
-[I 07:14:32.817 NotebookApp] Kernel shutdown: 8b6b79d8-fc0f-47c7-ba3c-9dabdc72c13f
-[I 07:14:33.124 NotebookApp] Kernel shutdown: 030401a7-7c4f-4f5f-842b-8482440b4d70
-[W 07:14:39.590 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.34ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/mlp_key_features.ipynb
-[W 07:14:39.898 NotebookApp] Notebook experiments/mlp_key_features.ipynb is not trusted
-[I 07:14:40.947 NotebookApp] Kernel started: fc2ac8ef-6669-440e-b2e2-e443dd44ddc2, name: python3
-[I 07:14:48.944 NotebookApp] Saving file at /experiments/mlp_key_features.ipynb
-[W 07:14:48.947 NotebookApp] Notebook experiments/mlp_key_features.ipynb is not trusted
-[I 07:14:51.674 NotebookApp] Starting buffering for fc2ac8ef-6669-440e-b2e2-e443dd44ddc2:61813deb6c8144938898987706007ff7
-[I 07:14:53.519 NotebookApp] Kernel shutdown: fc2ac8ef-6669-440e-b2e2-e443dd44ddc2
-[I 07:14:57.147 NotebookApp] Kernel shutdown: 39a03887-bc61-43f2-8c8f-c9e56d174c1f
-[I 07:14:57.453 NotebookApp] Kernel shutdown: cc5e3294-1b8e-438c-992e-91262381f7f4
-[I 07:14:57.765 NotebookApp] Kernel shutdown: 566f0572-75b0-411a-9d2b-d5bac31f3eb3
-[I 07:15:05.474 NotebookApp] Kernel shutdown: a1bd08fd-36df-4199-8301-52965d3f6428
-[I 07:15:09.043 NotebookApp] Kernel shutdown: 81f73c93-8b74-4903-901a-7e4781951f5d
-[I 07:15:13.484 NotebookApp] Kernel shutdown: 02f32560-d984-4bb2-b754-97d054f5c956
-[W 08:21:28.982 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 2.63ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task1%262/mlp_torch_all_features.ipynb
-[I 08:21:30.138 NotebookApp] Kernel started: 1416021e-1bbf-4fb9-b60f-e9da187e4c84, name: python3
-[W 09:00:00.938 NotebookApp] WebSocket ping timeout after 119947 ms.
-[I 09:00:05.941 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 19:14:43.171 NotebookApp] Restoring connection for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[W 02:04:03.542 NotebookApp] Replacing stale connection: 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 02:04:08.545 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 02:04:08.548 NotebookApp] Restoring connection for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[W 06:48:44.853 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.87ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[W 06:48:47.310 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 3.28ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[I 06:48:47.358 NotebookApp] Kernel started: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d, name: python3
-[I 06:48:48.382 NotebookApp] Kernel started: c10f4142-3906-4540-9f91-56d842c14099, name: python3
-[W 06:49:31.049 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (10.130.178.131) 4.08ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[W 09:06:18.035 NotebookApp] WebSocket ping timeout after 119949 ms.
-[W 09:06:19.035 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 09:06:23.037 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:19be5e50d1df4cda8b8b0aaa8e485518
-[I 09:06:24.038 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6194400a95b246998a18881fb58ef430
-[W 09:06:38.548 NotebookApp] WebSocket ping timeout after 119943 ms.
-[I 09:06:43.550 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 16:03:43.048 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6194400a95b246998a18881fb58ef430
-[I 16:03:43.187 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:19be5e50d1df4cda8b8b0aaa8e485518
-[I 16:03:43.312 NotebookApp] Restoring connection for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 08:12:52.994 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6194400a95b246998a18881fb58ef430
-[W 08:56:13.189 NotebookApp] WebSocket ping timeout after 119834 ms.
-[W 08:56:13.312 NotebookApp] WebSocket ping timeout after 119936 ms.
-[I 08:56:18.192 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:19be5e50d1df4cda8b8b0aaa8e485518
-[I 08:56:18.314 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 14:54:21.238 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:19be5e50d1df4cda8b8b0aaa8e485518
-[I 14:54:52.770 NotebookApp] Restoring connection for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[I 14:55:12.592 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:19be5e50d1df4cda8b8b0aaa8e485518
-[I 14:55:12.600 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:a8cc930add9b4d76a88c3f56b82ff1f8
-[W 14:57:25.320 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.70ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[W 14:57:35.703 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.45ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task1%262/mlp_torch_all_features.ipynb
-[I 21:40:47.207 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:65c21af44c434ccabb2213f0e432c898
-[I 21:40:47.208 NotebookApp] Starting buffering for 1416021e-1bbf-4fb9-b60f-e9da187e4c84:22f3b80b32df4e7e961f7265fef3fe2b
-[I 21:24:09.281 NotebookApp] 302 GET / (68.185.172.47) 2.80ms
-[W 21:24:22.675 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.185.172.47) 4.67ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 21:26:25.862 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 21:28:25.887 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 21:30:26.515 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 21:32:26.967 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[W 21:43:45.005 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.185.172.47) 3.55ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[I 21:45:48.343 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 21:47:48.260 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 21:49:48.244 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 21:55:49.256 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_aug_key_features.ipynb
-[I 22:03:45.448 NotebookApp] Kernel started: 0879b84e-b2dc-4c30-a498-105e6c263838, name: python3
-[W 22:03:46.040 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.185.172.47) 4.22ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task7%268/random_forest/random_forest_all_features.ipynb
-[I 22:05:47.289 NotebookApp] Saving file at /experiments/Task7&8/random_forest/random_forest_all_features.ipynb
-[W 23:02:54.167 NotebookApp] WebSocket ping timeout after 119909 ms.
-[I 23:02:59.169 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:095d8a68f13e4904b29f55b4d3d27c46
-[W 23:03:16.106 NotebookApp] WebSocket ping timeout after 119926 ms.
-[W 23:03:16.611 NotebookApp] WebSocket ping timeout after 119920 ms.
-[I 23:03:21.109 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:34567dc0ef2e463a9c887ebeccaa9b43
-[I 23:03:21.613 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:734529b739174e298bd9d892b226c251
-[I 00:10:23.515 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:734529b739174e298bd9d892b226c251
-[I 00:10:23.642 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:34567dc0ef2e463a9c887ebeccaa9b43
-[I 00:10:23.784 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:095d8a68f13e4904b29f55b4d3d27c46
-[I 00:11:13.853 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:734529b739174e298bd9d892b226c251
-[I 00:11:13.862 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:095d8a68f13e4904b29f55b4d3d27c46
-[I 00:11:13.863 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:34567dc0ef2e463a9c887ebeccaa9b43
-[W 00:12:49.285 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 2.51ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[W 00:12:50.677 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.29ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task7%268/random_forest/random_forest_all_features.ipynb
-[W 00:12:56.737 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.22ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[I 04:58:59.435 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 04:58:59.438 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 04:59:23.107 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 04:59:30.524 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 05:01:00.525 NotebookApp] WebSocket ping timeout after 90000 ms.
-[I 05:01:05.527 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 05:01:49.404 NotebookApp] WebSocket ping timeout after 119936 ms.
-[W 05:01:53.108 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 05:01:54.405 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:01:58.110 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:02:38.436 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:02:38.564 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 05:02:38.694 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 09:16:08.437 NotebookApp] WebSocket ping timeout after 119952 ms.
-[W 09:16:08.565 NotebookApp] WebSocket ping timeout after 119948 ms.
-[W 09:16:08.695 NotebookApp] WebSocket ping timeout after 119959 ms.
-[I 09:16:13.440 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 09:16:13.567 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 09:16:13.696 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 19:29:43.141 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 19:29:43.266 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 19:29:43.383 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 21:46:46.548 NotebookApp] Saving file at /experiments/Task7&8/random_forest/random_forest_all_features.ipynb
-[I 21:48:46.302 NotebookApp] Saving file at /experiments/Task7&8/random_forest/random_forest_all_features.ipynb
-[I 21:50:46.328 NotebookApp] Saving file at /experiments/Task7&8/random_forest/random_forest_all_features.ipynb
-[I 21:52:46.512 NotebookApp] Saving file at /experiments/Task7&8/random_forest/random_forest_all_features.ipynb
-[I 21:58:52.805 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 22:00:52.651 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 22:02:52.725 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 22:04:52.738 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[I 22:06:52.603 NotebookApp] Saving file at /experiments/Task13&14/random_forest/random_forest_key_features.ipynb
-[W 23:24:17.266 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 23:24:22.270 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 23:24:22.274 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 23:24:22.397 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:24:27.399 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:24:27.402 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[W 23:24:27.565 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:24:29.798 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:24:29.801 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 05:01:34.376 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:01:39.378 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:01:39.381 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[W 05:01:39.497 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 05:01:44.499 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 05:01:44.501 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 05:01:44.643 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:01:49.644 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:01:49.645 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 09:19:09.382 NotebookApp] WebSocket ping timeout after 119947 ms.
-[I 09:19:14.384 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[W 09:19:14.502 NotebookApp] WebSocket ping timeout after 119948 ms.
-[I 09:19:19.504 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 09:19:19.645 NotebookApp] WebSocket ping timeout after 119948 ms.
-[I 09:19:24.647 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 15:08:42.867 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 15:08:43.786 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 15:08:44.788 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:07:15.923 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 23:07:16.742 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:07:19.070 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:07:19.458 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 23:07:19.631 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:07:24.633 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:07:24.635 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 23:09:49.071 NotebookApp] WebSocket ping timeout after 119683 ms.
-[W 23:09:49.458 NotebookApp] WebSocket ping timeout after 119811 ms.
-[I 23:09:54.073 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:09:54.460 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 23:09:54.637 NotebookApp] WebSocket ping timeout after 119834 ms.
-[I 23:09:59.638 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:10:27.034 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:10:53.036 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:11:22.962 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 04:25:41.293 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 04:25:46.296 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 04:25:46.300 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 04:25:46.418 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 04:25:51.420 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 04:25:51.422 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 04:25:51.533 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 04:25:56.535 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 04:25:56.537 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[W 09:13:16.301 NotebookApp] WebSocket ping timeout after 119937 ms.
-[I 09:13:21.303 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[W 09:13:21.423 NotebookApp] WebSocket ping timeout after 119946 ms.
-[I 09:13:26.424 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 09:13:26.538 NotebookApp] WebSocket ping timeout after 119956 ms.
-[I 09:13:31.539 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 14:47:53.716 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 14:47:54.705 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 14:47:54.841 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 17:35:24.571 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 17:35:24.573 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 17:35:28.078 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 17:35:28.228 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:45:06.135 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:45:06.173 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:45:06.174 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 05:45:08.197 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 05:45:08.343 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 05:45:08.574 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[W 09:18:08.199 NotebookApp] WebSocket ping timeout after 119938 ms.
-[W 09:18:08.345 NotebookApp] WebSocket ping timeout after 119939 ms.
-[W 09:18:08.575 NotebookApp] WebSocket ping timeout after 119938 ms.
-[I 09:18:13.203 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 09:18:13.347 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 09:18:13.578 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 20:32:17.848 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 20:32:17.988 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 20:32:18.767 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[I 23:40:57.121 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:b71b0cebd4a543a0b69d891b35423a7b
-[I 23:40:57.202 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:2c612031df974e3f8fc958fd8f43a390
-[I 23:40:57.281 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:6a21b7a8584546c880e6c02a17ab503d
-[W 23:41:16.790 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.74ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task7%268/random_forest/random_forest_all_features.ipynb
-[W 23:41:21.663 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.75ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_aug_key_features.ipynb
-[W 23:41:22.814 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20201031021110 (68.187.68.42) 3.65ms referer=http://cosmos2.chtc.wisc.edu:23334/notebooks/experiments/Task13%2614/random_forest/random_forest_key_features.ipynb
-[W 23:46:19.977 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 23:46:24.980 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 23:46:24.983 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 23:46:25.151 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:46:30.153 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:46:30.155 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 05:21:07.027 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 05:21:12.030 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 05:21:12.032 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 05:21:15.965 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:21:20.968 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:21:20.971 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 05:21:21.128 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:21:26.131 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:21:26.133 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 09:21:42.035 NotebookApp] WebSocket ping timeout after 119950 ms.
-[I 09:21:47.036 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 09:21:50.972 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 09:21:55.975 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 09:21:56.134 NotebookApp] WebSocket ping timeout after 119949 ms.
-[I 09:22:01.135 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 19:37:13.772 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 19:37:14.752 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 19:37:14.904 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 21:29:34.702 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 21:29:39.703 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 21:29:39.706 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 21:29:39.843 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 21:29:44.845 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 21:29:44.847 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 21:29:44.983 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 21:29:49.984 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 21:29:49.986 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 23:47:26.658 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 23:47:31.660 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 23:47:31.663 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 23:47:31.939 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:47:36.942 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:47:36.944 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 05:10:57.674 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 05:11:02.677 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 05:11:02.680 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 05:11:02.796 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:11:07.799 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:11:07.801 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 05:11:08.197 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:11:13.199 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:11:13.201 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 05:12:21.570 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:12:26.572 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 05:12:26.575 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 05:12:42.249 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:12:47.251 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 05:12:47.253 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 09:19:02.680 NotebookApp] WebSocket ping timeout after 119955 ms.
-[I 09:19:07.683 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 09:19:17.254 NotebookApp] WebSocket ping timeout after 119957 ms.
-[I 09:19:22.258 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 09:19:26.576 NotebookApp] WebSocket ping timeout after 119957 ms.
-[I 09:19:31.578 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 22:13:13.967 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 22:13:14.191 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 22:13:15.732 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 23:35:59.164 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 23:36:04.167 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 23:36:04.169 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 23:36:04.321 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:36:09.323 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 23:36:09.325 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 23:36:09.462 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 23:36:14.463 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 23:36:14.465 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[W 01:56:55.051 NotebookApp] Replacing stale connection: c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 01:57:00.053 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[I 01:57:00.056 NotebookApp] Restoring connection for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-[W 01:57:00.201 NotebookApp] Replacing stale connection: 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 01:57:05.203 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 01:57:05.205 NotebookApp] Restoring connection for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[W 01:57:05.352 NotebookApp] Replacing stale connection: 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 01:57:10.354 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 01:57:10.356 NotebookApp] Restoring connection for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 03:37:24.252 NotebookApp] Starting buffering for 0879b84e-b2dc-4c30-a498-105e6c263838:455f46423a4540d2bd88827a2cb034f7
-[I 03:37:24.470 NotebookApp] Starting buffering for 4f17d956-4df2-4c69-aa0a-8bbd88b6736d:020c1b5f90f842dab40193bbca2ca112
-[I 03:37:24.471 NotebookApp] Starting buffering for c10f4142-3906-4540-9f91-56d842c14099:854692581bd8424dbefebe177841512e
-  0%|          | 0/1000 [00:00<?, ?it/s]  0%|          | 2/1000 [00:00<01:11, 14.02it/s]  0%|          | 4/1000 [00:00<01:06, 14.99it/s]  1%|          | 7/1000 [00:00<01:00, 16.36it/s]  1%|1         | 10/1000 [00:00<00:55, 17.79it/s]  1%|1         | 13/1000 [00:00<00:51, 19.13it/s]  2%|1         | 16/1000 [00:00<00:48, 20.14it/s]  2%|1         | 19/1000 [00:00<00:46, 21.27it/s]  2%|2         | 22/1000 [00:01<00:43, 22.36it/s]  2%|2         | 25/1000 [00:01<00:41, 23.60it/s]  3%|2         | 28/1000 [00:01<00:39, 24.42it/s]  3%|3         | 31/1000 [00:01<00:38, 24.98it/s]  3%|3         | 34/1000 [00:01<00:38, 25.29it/s]  4%|3         | 37/1000 [00:01<00:37, 25.44it/s]  4%|4         | 40/1000 [00:01<00:37, 25.77it/s]  4%|4         | 43/1000 [00:01<00:36, 25.88it/s]  5%|4         | 46/1000 [00:01<00:37, 25.66it/s]  5%|4         | 49/1000 [00:02<00:36, 25.98it/s]  5%|5         | 52/1000 [00:02<00:36, 26.06it/s]  6%|5         | 55/1000 [00:02<00:36, 26.16it/s]  6%|5         | 58/1000 [00:02<00:35, 26.32it/s]  6%|6         | 61/1000 [00:02<00:35, 26.37it/s]  6%|6         | 64/1000 [00:02<00:35, 26.40it/s]  7%|6         | 67/1000 [00:02<00:35, 26.40it/s]  7%|7         | 70/1000 [00:02<00:35, 25.94it/s]  7%|7         | 73/1000 [00:02<00:35, 26.06it/s]  8%|7         | 76/1000 [00:03<00:35, 26.11it/s]  8%|7         | 79/1000 [00:03<00:35, 26.05it/s]  8%|8         | 82/1000 [00:03<00:35, 26.21it/s]  8%|8         | 85/1000 [00:03<00:35, 26.12it/s]  9%|8         | 88/1000 [00:03<00:34, 26.08it/s]  9%|9         | 91/1000 [00:03<00:34, 26.18it/s]  9%|9         | 94/1000 [00:03<00:34, 26.19it/s] 10%|9         | 97/1000 [00:03<00:35, 25.70it/s] 10%|9         | 97/1000 [00:03<00:36, 24.66it/s]
-Set numpy random seed 0 for reproducibility
-ssb: Samping for part, with left tables: ['lineorder'], left table sorted on RANDOM
-Traceback (most recent call last):
-  File "/usr/lib/python3.6/encodings/utf_16_le.py", line 15, in decode
-    def decode(input, errors='strict'):
-KeyboardInterrupt
-
-The above exception was the direct cause of the following exception:
-
-KeyboardInterrupt: decoding with 'utf-16le' codec failed (KeyboardInterrupt: )
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "./core/QuerySampler.py", line 702, in <module>
-    db_name=db_name, sample_with_replacement=sample_w_rep)
-  File "./core/QuerySampler.py", line 649, in prepare_data_on_dataset
-    base_table, [left_table], sample_size=1000, sample_with_replacement=sample_with_replacement, left_order=left_order)
-  File "./core/QuerySampler.py", line 49, in sample_for_table
-    primary_table, rand_table, sample_with_replacement, left_order=left_order))
-  File "./core/QuerySampler.py", line 437, in collect_random_query_2_table_all_op
-    q = self.db.explain(query)
-  File "/mnt/interpretable-cost-model/core/DB_connector.py", line 78, in explain
-    self.cursor.execute(query)
-SystemError: <class 'pyodbc.Error'> returned a result with an error set
-  0%|          | 0/1000 [00:00<?, ?it/s]  0%|          | 2/1000 [00:00<01:26, 11.57it/s]  0%|          | 4/1000 [00:00<01:18, 12.64it/s]  1%|          | 7/1000 [00:00<01:09, 14.35it/s]  1%|1         | 10/1000 [00:00<01:01, 16.08it/s]  1%|1         | 13/1000 [00:00<00:55, 17.75it/s]  2%|1         | 16/1000 [00:00<00:51, 19.00it/s]  2%|1         | 19/1000 [00:00<00:48, 20.07it/s]  2%|2         | 22/1000 [00:01<00:46, 20.84it/s]  2%|2         | 25/1000 [00:01<00:45, 21.60it/s]  3%|2         | 28/1000 [00:01<00:45, 21.49it/s]  3%|3         | 31/1000 [00:01<00:44, 21.55it/s]  3%|3         | 34/1000 [00:01<00:50, 19.18it/s]  4%|3         | 36/1000 [00:01<00:51, 18.75it/s]  4%|3         | 39/1000 [00:01<00:48, 19.76it/s]  4%|4         | 42/1000 [00:02<00:45, 20.84it/s]  4%|4         | 45/1000 [00:02<00:44, 21.64it/s]  5%|4         | 48/1000 [00:02<00:42, 22.14it/s]  5%|5         | 51/1000 [00:02<00:42, 22.30it/s]  5%|5         | 54/1000 [00:02<00:44, 21.16it/s]  6%|5         | 57/1000 [00:02<00:45, 20.75it/s]  6%|6         | 60/1000 [00:02<00:44, 20.92it/s]  6%|6         | 63/1000 [00:03<00:49, 18.93it/s]  6%|6         | 65/1000 [00:03<00:49, 19.01it/s]  7%|6         | 67/1000 [00:03<00:52, 17.65it/s]  7%|7         | 70/1000 [00:03<00:50, 18.56it/s]  7%|7         | 73/1000 [00:03<00:47, 19.67it/s]  8%|7         | 76/1000 [00:03<00:45, 20.33it/s]  8%|7         | 79/1000 [00:03<00:48, 19.09it/s]  8%|8         | 81/1000 [00:04<00:49, 18.63it/s]  8%|8         | 84/1000 [00:04<00:46, 19.67it/s]  9%|8         | 87/1000 [00:04<00:44, 20.56it/s]  9%|9         | 90/1000 [00:04<00:42, 21.28it/s]  9%|9         | 93/1000 [00:04<00:41, 21.79it/s] 10%|9         | 96/1000 [00:04<00:41, 21.98it/s] 10%|9         | 99/1000 [00:04<00:47, 19.10it/s] 10%|#         | 102/1000 [00:05<00:44, 20.01it/s] 10%|#         | 105/1000 [00:05<00:42, 21.11it/s] 11%|#         | 108/1000 [00:05<00:42, 20.87it/s] 11%|#1        | 111/1000 [00:05<00:50, 17.62it/s] 11%|#1        | 113/1000 [00:05<00:49, 17.92it/s] 12%|#1        | 116/1000 [00:05<00:47, 18.72it/s] 12%|#1        | 119/1000 [00:05<00:44, 19.71it/s] 12%|#2        | 122/1000 [00:06<00:42, 20.53it/s] 12%|#2        | 125/1000 [00:06<00:41, 20.97it/s] 13%|#2        | 128/1000 [00:06<00:40, 21.38it/s] 13%|#3        | 131/1000 [00:06<00:40, 21.68it/s] 13%|#3        | 134/1000 [00:06<00:40, 21.63it/s] 14%|#3        | 137/1000 [00:06<00:40, 21.55it/s] 14%|#4        | 140/1000 [00:06<00:41, 20.83it/s] 14%|#4        | 143/1000 [00:07<00:41, 20.72it/s] 15%|#4        | 146/1000 [00:07<00:40, 21.03it/s] 15%|#4        | 149/1000 [00:07<00:39, 21.55it/s] 15%|#5        | 152/1000 [00:07<00:38, 21.76it/s] 16%|#5        | 155/1000 [00:07<00:38, 21.89it/s] 16%|#5        | 158/1000 [00:07<00:37, 22.32it/s] 16%|#6        | 161/1000 [00:07<00:36, 22.72it/s] 16%|#6        | 164/1000 [00:07<00:35, 23.25it/s] 17%|#6        | 167/1000 [00:08<00:35, 23.71it/s] 17%|#7        | 170/1000 [00:08<00:34, 23.77it/s] 17%|#7        | 173/1000 [00:08<00:34, 23.74it/s] 18%|#7        | 176/1000 [00:08<00:35, 23.47it/s] 18%|#7        | 179/1000 [00:08<00:35, 23.37it/s] 18%|#8        | 182/1000 [00:08<00:34, 23.57it/s] 18%|#8        | 185/1000 [00:08<00:33, 24.14it/s] 19%|#8        | 188/1000 [00:08<00:35, 23.09it/s] 19%|#9        | 191/1000 [00:09<00:35, 22.57it/s] 19%|#9        | 194/1000 [00:09<00:35, 22.47it/s] 20%|#9        | 197/1000 [00:09<00:35, 22.52it/s] 20%|##        | 200/1000 [00:09<00:35, 22.67it/s] 20%|##        | 203/1000 [00:09<00:34, 23.06it/s] 21%|##        | 206/1000 [00:09<00:34, 23.01it/s] 21%|##        | 209/1000 [00:09<00:33, 23.64it/s] 21%|##1       | 212/1000 [00:10<00:32, 24.20it/s] 22%|##1       | 215/1000 [00:10<00:31, 24.89it/s] 22%|##1       | 218/1000 [00:10<00:30, 25.27it/s] 22%|##2       | 221/1000 [00:10<00:30, 25.70it/s] 22%|##2       | 224/1000 [00:10<00:29, 26.00it/s] 23%|##2       | 227/1000 [00:10<00:29, 26.05it/s] 23%|##3       | 230/1000 [00:10<00:29, 26.10it/s] 23%|##3       | 233/1000 [00:10<00:29, 26.27it/s] 24%|##3       | 236/1000 [00:10<00:29, 26.01it/s] 24%|##3       | 239/1000 [00:11<00:29, 26.04it/s] 24%|##4       | 242/1000 [00:11<00:29, 26.09it/s] 24%|##4       | 245/1000 [00:11<00:28, 26.12it/s] 25%|##4       | 248/1000 [00:11<00:28, 26.29it/s] 25%|##5       | 251/1000 [00:11<00:28, 26.43it/s] 25%|##5       | 254/1000 [00:11<00:28, 26.38it/s] 26%|##5       | 257/1000 [00:11<00:28, 26.46it/s] 26%|##6       | 260/1000 [00:11<00:28, 26.43it/s] 26%|##6       | 263/1000 [00:11<00:28, 25.91it/s] 27%|##6       | 266/1000 [00:12<00:28, 25.86it/s] 27%|##6       | 269/1000 [00:12<00:28, 25.84it/s] 27%|##7       | 272/1000 [00:12<00:28, 25.74it/s] 28%|##7       | 275/1000 [00:12<00:28, 25.74it/s] 28%|##7       | 278/1000 [00:12<00:27, 25.81it/s] 28%|##8       | 281/1000 [00:12<00:28, 25.31it/s] 28%|##8       | 284/1000 [00:12<00:29, 23.97it/s] 29%|##8       | 287/1000 [00:12<00:30, 23.21it/s] 29%|##9       | 290/1000 [00:13<00:31, 22.75it/s] 29%|##9       | 293/1000 [00:13<00:31, 22.13it/s] 30%|##9       | 296/1000 [00:13<00:31, 22.16it/s] 30%|##9       | 299/1000 [00:13<00:31, 22.32it/s] 30%|###       | 302/1000 [00:13<00:31, 22.15it/s] 30%|###       | 305/1000 [00:13<00:31, 21.80it/s] 31%|###       | 308/1000 [00:13<00:32, 21.52it/s] 31%|###1      | 311/1000 [00:14<00:31, 21.92it/s] 31%|###1      | 314/1000 [00:14<00:30, 22.43it/s] 32%|###1      | 317/1000 [00:14<00:30, 22.71it/s] 32%|###2      | 320/1000 [00:14<00:29, 23.08it/s] 32%|###2      | 323/1000 [00:14<00:28, 23.88it/s] 33%|###2      | 326/1000 [00:14<00:27, 24.45it/s] 33%|###2      | 329/1000 [00:14<00:26, 24.85it/s] 33%|###3      | 332/1000 [00:14<00:26, 25.19it/s] 34%|###3      | 335/1000 [00:14<00:26, 25.36it/s] 34%|###3      | 338/1000 [00:15<00:25, 25.47it/s]
