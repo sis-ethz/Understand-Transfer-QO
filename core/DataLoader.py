@@ -105,6 +105,8 @@ class DataLoader:
 
         self.classification_target = ['optimal_decision']
 
+        self.piecewise_split_features = ['left_ordered', 'base_ordered']
+
         self.costs = self.regression_targets
 
     def get_clustered_files_ds(self, datasets=['ssb', 'tpch', 'imdb']):

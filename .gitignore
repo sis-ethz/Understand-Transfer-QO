@@ -136,3 +136,4 @@ core/*.txt
 *.csv
 *.sql
 *.tbl
+nohup.out
