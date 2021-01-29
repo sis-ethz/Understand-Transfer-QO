@@ -1,0 +1,10 @@
+
+==================================
+Query job_light_1.sql : 313.7978138923645, result size: 1
+Query job_light_10.sql : 92.10960292816162, result size: 1
+Query job_light_20.sql : -100, result size: -100
+Query job_light_30.sql : -100, result size: -100
+Query job_light_40.sql : 239.72315168380737, result size: 1
+Query job_light_50.sql : -100, result size: -100
+Query job_light_60.sql : -100, result size: -100
+Query job_light_70.sql : -100, result size: -100
