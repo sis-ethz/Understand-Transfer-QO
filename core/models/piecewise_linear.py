@@ -37,7 +37,8 @@ class piecewiseLinearClassifier(Classifier):
     def fit(self, X,  X_split_features, X_conditions, y, sample_weight=None):
         self.models = []
         Xs, ys, sample_weights = self.split_Xs(X,  X_split_features, X_conditions, y=y, sample_weight=sample_weight)
-        for X, y, sample_weight in zip(Xs, ys, sample_weights):
+        for idx, X, y, sample_weight in zip([i+1 for i in range(len(Xs))], Xs, ys, sample_weights):
+            print(f"Sample size for subspace {idx}: {X.shape[0]}")
             model = self.model_type().fit(X, y, sample_weight=sample_weight)
             self.models.append(model)
         return self
