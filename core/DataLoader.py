@@ -45,11 +45,28 @@ def calculate_importance_from_costs(costs_arr):
     second_min_costs = np.min(costs_arr, axis=1)
     return (second_min_costs - min_costs) / min_costs
 
+def filter_out_disabled_decisions(ds, cost_features, decision_feature, disabled_decisions):
+    
+    for feat in disabled_decisions:
+        assert feat in cost_features, f"Feature '{feat}' not in all cost_features. Pls make sure disabled features are in cost features"
+
+    decisions = []
+
+    ds[disabled_decisions] = np.inf
+    for i in range(ds.shape[0]):
+        # decisions.append()
+        # print(ds.iloc[i][cost_features])
+        ds.iloc[i, ds.columns.get_loc(decision_feature)] = np.argmin(ds.iloc[i][cost_features].to_numpy())
+
+
+    return ds
+
+
 class DataLoader:
 
     def __init__(self, engine='postgres', base_dir='../../sample_results/'):
-        assert engine in ['postgres',
-                          'mssql'], f"Engine {engine} not supported yet!"
+        # assert engine in ['postgres',
+        #                   'mssql', 'couchbase'], f"Engine {engine} not supported yet!"
         self.engine = engine
         self.base_dir = base_dir
 
@@ -87,11 +104,12 @@ class DataLoader:
 
         self.one_file_location = 'ssb/part/{}_lineorder_part_optimal.csv'
 
-        self.all_features = ['left_cardinality', 'base_cardinality', 'sel_of_join_pred', 'sel_of_pred_on_indexed_attr', 'sel_of_pred_on_non_indexed_attr',
+        self.all_features = ['left_cardinality_ratio', 'left_cardinality', 'base_cardinality', 'sel_of_join_pred', 'sel_of_pred_on_indexed_attr', 
+                                'sel_of_pred_on_non_indexed_attr',
                              'sel_of_pred_on_indexed_attr_and_join_pred', 'sel_of_pred_on_non_indexed_attr_and_join_pred', 'sel_of_pred_on_indexed_attr_and_non_indexed_attr',
                              'total_sel_on_base_table', 'left_ordered', 'base_ordered', 'result_size', 'predicate_op_num_on_indexed_attr', 'predicate_op_num_on_non_indexed_attr']
 
-        self.aug_features = ['left_cardinality_ratio', 'left+right', 'left-right', 'left*right', 'left/right', 'left^2', 'right^2', 'left*logleft', 'right*logright',
+        self.aug_features = ['left+right', 'left-right', 'left*right', 'left/right', 'left^2', 'right^2', 'left*logleft', 'right*logright',
                              'sel_of_pred_on_indexed_attr*right', 'sel_of_pred_on_non_indexed_attr*right', 'sel_of_pred_on_indexed_attr_and_join_pred*right', 'sel_of_pred_on_indexed_attr_and_non_indexed_attr*right']
 
         self.key_features = ['left_cardinality_ratio', 'sel_of_pred_on_indexed_attr_and_non_indexed_attr',
@@ -128,20 +146,47 @@ class DataLoader:
         ds = pd.concat(dfs)
         return self.augment_features(ds)
 
-    def get_one_file_ds(self, return_type='ds'):
-        # ds = pd.read_csv(os.path.join(
-        #     "../../sample_results/", self.one_file_location.format(self.engine)))
-        # return self.augment_features(ds)
+    def get_one_file_ds(self, return_type='ds', datasets=['ssb', 'tpch', 'imdb'], allow_file_does_not_exist=True):
         dfs = []
         names = []
-        for d in ['ssb', 'tpch', 'imdb']:
+        for d in datasets:
             for f in self.all_file_locations[d]:
-                dfs.append(pd.read_csv(os.path.join(
-                    self.base_dir, d, f.format(self.engine))))
-                names.append(' '.join([d, f.format(self.engine)]))
+                file_loc = os.path.join(self.base_dir, d, f.format(self.engine))
+                if not os.path.exists(file_loc) or not os.path.isfile(file_loc):
+                    print(f"[Warning]: file {file_loc} does not exist. Passed.")
+                else:
+                    dfs.append(pd.read_csv(file_loc))
+                    names.append(' '.join([d, f.format(self.engine)]))
 
         for idx, ds in enumerate(dfs):
             dfs[idx] = self.augment_features(ds)
+        if return_type == 'ds and names':
+            return dfs, names
+        else:
+            return dfs
+    
+    def transfer_features(self, datasets=['ssb'], from_engine='postgres', write_back=True, return_type='ds'):
+        assert 'couchbase' in self.engine, "Transfer_features only support couchbase"
+        dfs = []
+        names = []
+        transfered_features = ['query_id'] + self.all_features
+        for d in datasets:
+            for f in self.all_file_locations[d]:
+                
+                raw_file_loc = os.path.join(self.base_dir, d, f.format(self.engine))
+
+                if not os.path.exists(raw_file_loc) or not os.path.isfile(raw_file_loc):
+                    print(f"[Warning]: file {raw_file_loc} does not exist. Passed.")
+                else:
+                    raw_df = pd.read_csv(raw_file_loc)
+                    from_df = pd.read_csv(os.path.join(
+                        self.base_dir, d, f.format(self.engine).replace(self.engine, from_engine) ))
+                    raw_df[transfered_features] = from_df[transfered_features]
+                    dfs.append(raw_df)
+                    names.append(' '.join([d, f.format(self.engine)])) 
+                    if write_back:
+                        raw_df.to_csv(os.path.join(self.base_dir, d, f.format(self.engine)))  
+        
         if return_type == 'ds and names':
             return dfs, names
         else:

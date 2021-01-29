@@ -1,11 +1,23 @@
 # Database Connectors
 # import pyodbc
-from cardinality_estimation_quality.cardinality_estimation_quality import *
+from core.cardinality_estimation_quality import *
 import numpy as np
 import pandas as pd
 import xml.etree.ElementTree as ET
 from collections import *
 
+# import couchbase stuffs
+import couchbase.search as FT
+import couchbase.subdocument as SD
+# import jwt  # from PyJWT
+from couchbase.cluster import Cluster, ClusterOptions, PasswordAuthenticator, ClusterTimeoutOptions
+from couchbase.exceptions import *
+from couchbase.search import SearchOptions
+from couchbase.exceptions import TimeoutException
+
+import time
+import json
+from datetime import timedelta
 
 class Postgres_Connector:
     def __init__(self, server='localhost', username='postgres', password='postgres', db_name=None):
@@ -38,9 +50,124 @@ class Postgres_Connector:
         return self.db.execute(query, set_env=set_env)
 
 
-class Mongo_Connector:
-    pass
+class Couchbase_Connector:
+    def __init__(self, server='127.0.0.1:8091', username='couchbase', password='couchbase', db_name=None, execution_pass=False):
+        self.server = server
+        self.username = username
+        self.password = password
+        self.db_name = db_name
+        # timeout_options = ClusterTimeoutOptions(config_total_timeout=timedelta(hours=5), kv_timeout=timedelta(hours=1), query_timeout=timedelta(hours=1), views_timeout=timedelta(hours=1))
+        timeout_options = ClusterTimeoutOptions(config_total_timeout=timedelta(minutes=20), kv_timeout=timedelta(minutes=20), query_timeout=timedelta(minutes=20))
+        options = ClusterOptions(PasswordAuthenticator(username, password), timeout_options=timeout_options)
+        # print("Set timeout: 10min")
+        self.cluster = Cluster(f'couchbase://{server}', options)
+        self.execution_pass = execution_pass
+        if execution_pass:
+            print("[Warning]: each execution of this Couchbase node is passed for futher execution. Remember to re-execute the queries!")
+            
+        # self.cluster.authenticate(PasswordAuthenticator(username, password))
 
+    def refresh(self, timeout=None):
+        if timeout is None:
+            # Default timeout: 20min
+            timeout = 20
+        timeout_options = ClusterTimeoutOptions(config_total_timeout=timedelta(minutes=timeout), kv_timeout=timedelta(minutes=timeout), query_timeout=timedelta(minutes=timeout))
+        options = ClusterOptions(PasswordAuthenticator(self.username, self.password), timeout_options=timeout_options)
+        self.cluster = Cluster(f'couchbase://{self.server}', options)
+
+
+    def explain(self, query):
+        if 'explain' not in query.lower():
+            query = 'EXPLAIN ' + query
+        result = self.cluster.query(query)
+        for row in result:
+            return row
+        # return result[0]
+        return None
+
+    def execute(self, query):
+        # reconnect using new user
+
+        # must have at least one open bucket to submit cluster query
+        # bucket = cluster.open_bucket('travel-sample')
+
+        # Perform a N1QL Query to return document IDs from the bucket. These IDs will be
+        # used to reference each document in turn, and check for extended attributes
+        # corresponding to discounts.
+        if 'create' in query:
+            self.refresh(timeout=40)
+        else:
+            self.refresh()
+
+        query = query.replace('\n', ' ').strip(' ')
+        # print("Execute: ", query)
+
+        q = {
+            'execution_cost': 0,
+            'estimated_result_size': 0
+        }
+        
+        if len(query) <= 0:
+            return q
+        elif self.execution_pass:
+            q = {
+                'estimated_result_size': -3,
+                'execution_cost': -3
+            }
+            return q
+        else:
+            if ';' in query:
+                # print(query.split(';'))
+                # exit(1)
+                quries = query.split(';')
+
+                for sql in quries:
+                    assert ';' not in sql
+
+                    print("Execute: ", sql)
+                    
+                    current_q = self.execute(sql)
+                    if 'delete' in sql.lower() or 'drop' in sql.lower() or 'create' in sql.lower():
+                        q['execution_cost'] += 0
+                        # q['estimated_result_size'] = current_q['estimated_result_size']
+                    elif "select" in sql.lower() :
+                        q['execution_cost'] = current_q['execution_cost']
+                        q['estimated_result_size'] = current_q['estimated_result_size']
+
+                return q
+
+            else:
+                q = {}
+                start = time.time()
+                result = self.cluster.query(query)
+                try:
+                    row_cnt = 0
+                    for row in result:
+                        # make sure rows are materialized, rather than intermediate representation
+                        # print(row)
+                        row_cnt += 1
+                    end = time.time()
+                except TimeoutException as e:
+                    row_cnt = -100
+                    end = 0
+                    start = 100
+                    print(f"Timeout query: {query}")
+                except Exception as e:
+                    row_cnt = -2
+                    end = 0
+                    start = 2
+                    print("Error: ")
+                    print(e)
+                    print("Query: ")
+                    print(query)
+                    # exit(1)
+                    
+                q['estimated_result_size'] = row_cnt
+                q['execution_cost'] = end - start
+                # print(f"return with size {row_cnt}")
+                return q
+
+    
 
 class Mssql_Connector:
     def __init__(self, server='localhost', username='SA', password='SQLServer123', db_name=None):
@@ -210,12 +337,34 @@ class Mssql_Connector:
 
 
 if __name__ == '__main__':
-    mssql = Mssql_Connector(db_name='imdb')
+    couchbase = Couchbase_Connector(db_name='ssb')
+    # q = """
+    #     WITH prev_result_view AS (select TOP 43568 * from lineitem ORDER BY NEWID())
+    #     select * from prev_result_view, part WITH (INDEX(part_partkey))  where part.p_partkey = prev_result_view.l_partkey and part.p_partkey > 199341 OPTION (MERGE JOIN);
+    #     """
+    # query1 = """ WITH left_table AS (
+    #                 SELECT *
+    #                 FROM ssb_ddate
+    #                 WHERE ssb_ddate.d_year = 1993),
+    #             right_table AS (
+    #                 SELECT *
+    #                 FROM ssb_lineorder
+    #                 WHERE ssb_lineorder.lo_discount BETWEEN 1 AND 3
+    #                     AND ssb_lineorder.lo_quantity < 25)
+    #             SELECT SUM(right_table.lo_extendedprice * right_table.lo_discount) AS revenue
+    #             FROM left_table
+    #             INNER JOIN right_table ON right_table.lo_orderdate = left_table.d_datekey;"""
+    query2 =  """ 
+                SELECT SUM(ssb_lineorder.lo_extendedprice * ssb_lineorder.lo_discount) AS revenue
+                FROM ssb_lineorder INNER JOIN  ssb_ddate ON  ssb_lineorder.lo_orderdate = ssb_ddate.d_datekey
+                WHERE ssb_ddate.d_year = 1993
+                AND ssb_lineorder.lo_discount BETWEEN 1 AND 3
+                AND ssb_lineorder.lo_quantity < 25;
+            """
 
-    q = """
-    WITH prev_result_view AS (select TOP 43568 * from lineitem ORDER BY NEWID())
- select * from prev_result_view, part WITH (INDEX(part_partkey))  where part.p_partkey = prev_result_view.l_partkey and part.p_partkey > 199341 OPTION (MERGE JOIN);
-    """
-    plan = mssql.explain(q)
-
-    print(plan)
+    # query = 'select * from ssb_ddate;'
+    # result1 = couchbase.execute(query1)
+    result2 = couchbase.execute(query2)
+    # print(result1)
+    print(result2)
+    

@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestRegressor
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier, MLPRegressor
+import sklearn.neural_network as sk_nn
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 import os
 import numpy as np
@@ -76,12 +76,13 @@ class MLPClassifier(Classifier):
         self.n_classes = n_classes
         self.model = mlp_classifier_module(n_layers, n_features, n_classes)
         self.n_features = n_features
+        self.n_layers = n_layers
 
-    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, lr=0.01):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cuda', debug_print=False, test_kit=None, lr=0.01):
         
         if X_train.shape[-1] != self.n_features:
             self.n_features = X_train.shape[-1]
-            self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
+            self.model = mlp_regressor_module(self.n_layers, X_train.shape[-1])
         
         # transform y into list of digits
         
@@ -161,7 +162,7 @@ class MLPClassifier_with_confidence(MLPClassifier):
             n_layers=n_layers, n_features=n_features, n_classes=n_classes)
         self.n_features = n_features
 
-    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
+    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cuda', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
 
         def manual_cross_entropy(input, target, size_average=True):
             """ 
@@ -244,7 +245,7 @@ class MLPRegressor(Regressor):
         self.n_features = n_features
         self.model = mlp_regressor_module(n_layers, n_features)
 
-    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', y_scaler='exp', debug_print=False, test_kit=None):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cuda', y_scaler='exp', debug_print=False, test_kit=None):
         # transform y into list of digits
 
         if X_train.shape[-1] != self.n_features:
@@ -271,7 +272,7 @@ class MLPRegressor(Regressor):
             sample_weight_tensor = torch.Tensor(y_train).to(device)
 
         # form data loader
-        torch_dataset = Data.TensorDataset(˜
+        torch_dataset = Data.TensorDataset(
             X_tensor, y_tensor, sample_weight_tensor)
         loader = Data.DataLoader(
             dataset=torch_dataset,      # torch TensorDataset format
