@@ -64,32 +64,11 @@ def filter_out_disabled_decisions(ds, cost_features, decision_feature, disabled_
 
 class DataLoader:
 
-    def __init__(self, engine='postgres', base_dir='../../sample_results/'):
-        # assert engine in ['postgres',
-        #                   'mssql', 'couchbase'], f"Engine {engine} not supported yet!"
+    def __init__(self, engine='postgres', base_dir='../sample_results/'):
+        assert engine in ['postgres',
+                          'mssql'], f"Engine {engine} not supported yet. Please use 'postgres' or 'mssql'."
         self.engine = engine
         self.base_dir = base_dir
-
-        # self.all_file_locations = {
-        #     'tpch': ['customer/{}_orders_customer_optimal.csv', 'orders/{}_customer_orders_optimal.csv',
-        #              'orders/{}_lineitem_orders_optimal.csv', 'part/{}_lineitem_part_optimal.csv',
-        #              'part/{}_partsupp_part_optimal.csv', 'partsupp/{}_lineitem_partsupp_optimal.csv',
-        #              'partsupp/{}_part_partsupp_optimal.csv', 'partsupp/{}_supplier_partsupp_optimal.csv',
-        #              'supplier/{}_lineitem_supplier_optimal.csv', 'supplier/{}_partsupp_supplier_optimal.csv',
-        #              'nation/{}_region_nation_optimal.csv', 
-        #              'lineitem/{}_orders_lineitem_optimal.csv'
-        #              ],
-        #     'imdb': ['cast_info/{}_title_cast_info_optimal.csv',
-        #              'movie_companies/{}_title_movie_companies_optimal.csv', 'movie_info/{}_title_movie_info_optimal.csv',
-        #              'movie_info_idx/{}_title_movie_info_idx_optimal.csv', 'movie_keyword/{}_title_movie_keyword_optimal.csv',
-        #              'title/{}_cast_info_title_optimal.csv', 'title/{}_movie_companies_title_optimal.csv',
-        #              'title/{}_movie_info_idx_title_optimal.csv', 'title/{}_movie_info_title_optimal.csv',
-        #              'title/{}_movie_keyword_title_optimal.csv'
-        #              ],
-        #     'ssb': ['part/{}_lineorder_part_optimal.csv', 'customer/{}_lineorder_customer_optimal.csv', 'ddate/{}_lineorder_ddate_optimal.csv',
-        #             'supplier/{}_lineorder_supplier_optimal.csv'
-        #             ]
-        # }
 
         self.all_file_locations = {
             'tpch': ['customer/{}_orders_customer_optimal.csv', 'orders/{}_customer_orders_optimal.csv',
