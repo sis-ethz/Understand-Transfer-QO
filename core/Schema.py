@@ -136,8 +136,10 @@ class SSB_Schema(Schema):
             'part': 'p_partkey',
             'supplier': 's_suppkey',
             'ddate': 'd_datekey',
-            'customer': 'c_custkey'
+            'customer': 'c_custkey',
+            'lineorder': "",
         }  # table: primary key
+
         self.join_keys = {
             ('lineorder', 'customer'): ('lo_custkey', 'c_custkey'),
             ('customer', 'lineorder'): ('c_custkey', 'lo_custkey'),
@@ -145,7 +147,7 @@ class SSB_Schema(Schema):
             ('supplier', 'lineorder'): ('s_suppkey', 'lo_suppkey'),
             ('lineorder', 'supplier'): ('lo_suppkey', 's_suppkey'),
 
-            ('part', 'lineorder'): ('p_part', 'lo_partkey'),
+            ('part', 'lineorder'): ('p_partkey', 'lo_partkey'),
             ('lineorder', 'part'): ('lo_partkey', 'p_partkey'),
 
             ('ddate', 'lineorder'): ('d_datekey', 'lo_orderdate'),
@@ -181,7 +183,10 @@ class SSB_Schema(Schema):
             'part': ['lineorder'],
             'customer': ['lineorder'],
             'ddate': ['lineorder'],
-            'supplier': ['lineorder']
+            'supplier': ['lineorder'],
+
+            # full graphs: 
+            'lineorder': ['part', 'customer', 'ddate', 'supplier'],
         }
 
         self.non_indexed_attr = {
@@ -190,6 +195,7 @@ class SSB_Schema(Schema):
             'customer': ('c_name', ['Customer#000000001', 'Customer#000030000']),
             'ddate': ('d_daynuminyear', [1, 366]),
             'supplier': ('s_name', ['Supplier#000000001', 'Supplier#000002000']),
+            'lineorder': ('lo_custkey', [1,  30000])
         }
 
         self.indexes = {
@@ -206,7 +212,7 @@ class SSB_Schema(Schema):
                 'c_custkey': 688128
             },
             'lineorder': {
-                'lo_orderkey':  134815744,
+                '':  -1,
                 # 'lo_linenumber'
             },
         }
@@ -230,7 +236,8 @@ class TPCH_Schema(Schema):
     def __init__(self,):
         super(TPCH_Schema, self).__init__()
         self.tables = ['part', 'lineitem',
-                       'supplier', 'orders', 'partsupp']
+                       'supplier', 'orders', 'partsupp', 'customer',
+                       'nation', 'region']
 
         self.primary_keys = {
             # table: primary key
@@ -238,7 +245,10 @@ class TPCH_Schema(Schema):
             'supplier': 's_suppkey',
             'orders': 'o_orderkey',
             'customer': 'c_custkey',
-            'partsupp': 'ps_partkey'
+            'partsupp': '',
+            'lineitem': '',
+            'nation': 'n_nationkey',
+            'region': 'r_regionkey'
         }
 
         self.join_keys = {
@@ -266,6 +276,10 @@ class TPCH_Schema(Schema):
 
             # ('lineitem', 'partsupp'): ('l_suppkey', 'ps_suppkey'),
             # ('partsupp', 'lineitem'): ('ps_suppkey', 'l_suppkey')
+
+            ('nation', 'region') : ('n_regionkey', 'r_regionkey'),
+            ('region', 'nation') : ('r_regionkey', 'n_regionkey')
+
         }
 
         self.table_features = {
@@ -273,10 +287,7 @@ class TPCH_Schema(Schema):
                 'table_size': 200000,
                 'key_range': [1, 200000]
             },
-            'lineitem': {
-                'table_size': 6000003,
-                'key_range': []
-            },
+
             'orders': {
                 'table_size': 1500000,
                 'key_range': [1, 6000000]
@@ -293,19 +304,45 @@ class TPCH_Schema(Schema):
             },
             'partsupp': {
                 'table_size': 800000,
-                'key_range': [1, 200000]
+                'key_range': [-1, -1]
+            },
+            'nation': {
+                'table_size': 25,
+                'key_range': [1, 25]
+            },
+            'region': {
+                'table_size': 5,
+                'key_range': [1, 5]
+            },
+
+            'lineitem': {
+                'table_size': 6000003,
+                'key_range': [-1, -1]
             }
         }  # table features
 
         self.left_size_ratio_threshold = 0.5
 
         self.join_graph = {
+            # # constructed by base table + left table list
+            # 'part': ['lineitem', 'partsupp'],
+            # 'orders': ['lineitem', 'customer'],
+            # 'supplier': ['lineitem', 'partsupp'],
+            # 'customer': ['orders'],
+            # 'partsupp': ['lineitem', 'part',  'supplier'],
+            # 'lineitem': ['orders', 'part', 'partsupp'],
+            # 'region': ['nation'],
+            # 'nation': ['region'],
+
             # constructed by base table + left table list
+            'supplier': ['partsupp', 'lineitem'],
+            'customer': ['orders'],
+            'region': ['nation'],
+            'nation': ['region'],
             'part': ['lineitem', 'partsupp'],
             'orders': ['lineitem', 'customer'],
-            'supplier': ['lineitem', 'partsupp'],
-            'customer': ['orders'],
             'partsupp': ['lineitem', 'part',  'supplier'],
+            'lineitem': ['orders', 'part', 'partsupp'],
         }
 
         self.non_indexed_attr = {
@@ -315,6 +352,9 @@ class TPCH_Schema(Schema):
             'supplier': ('s_nationkey', [0, 24]),
             'customer': ('c_nationkey', [0, 24]),
             'partsupp': ('ps_suppkey', [1, 10000]),
+            'lineitem': ('l_partkey', [1, 200000]),
+            'nation': ('n_regionkey', [1, 5]), 
+            'region': ('', [-1, 0])
         }
 
         self.indexes = {
@@ -331,11 +371,186 @@ class TPCH_Schema(Schema):
                 'c_custkey':  3391488
             },
             'partsupp': {
-                'ps_partkey': 17989632
+                '': -1
             },
-            # 'lineitem': {},
+            'lineitem': {
+                '': -1
+            },
+            'nation': {
+                'n_nationkey': -1
+            }, 
+            'region': {
+                'r_regionkey': -1
+            }
         }
 
         self.index_size = {
 
+        }
+
+
+class TPCH_100_Schema(TPCH_Schema):
+
+    def __init__(self,):
+        super(TPCH_100_Schema, self).__init__()
+
+        self.table_features = {
+            'part': {
+                'table_size': 20000000,
+                'key_range': [1, 20000000]
+            },
+
+            'orders': {
+                'table_size': 150000000,
+                'key_range': [1, 600000000]
+                # 'table_size': 1500000,
+                # 'key_range': [1,  149999]
+            },
+            'supplier': {
+                'table_size': 1000000,
+                'key_range': [1, 1000000]
+            },
+            'customer': {
+                'table_size': 15000000,
+                'key_range': [1, 15000000]
+            },
+            'partsupp': {
+                'table_size': 80000000,
+                'key_range': [-1, -1]
+            },
+            'nation': {
+                'table_size': 25,
+                'key_range': [1, 25]
+            },
+            'region': {
+                'table_size': 5,
+                'key_range': [1, 5]
+            },
+
+            'lineitem': {
+                'table_size': 600037902,
+                'key_range': [-1, -1]
+            }
+        }  # table features
+
+        self.non_indexed_attr = {
+                # table: one non_indexed attr, and its range
+                'part': ('p_size', [1, 50]),
+                'orders': ('o_custkey', [1, 14999999]),
+                'supplier': ('s_nationkey', [0, 24]),
+                'customer': ('c_nationkey', [0, 24]),
+                'partsupp': ('ps_suppkey', [1, 1000000]),
+                'lineitem': ('l_partkey', [1, 20000000]),
+                'nation': ('n_regionkey', [1, 5]), 
+                'region': ('', [-1, 0])
+        }
+
+        self.indexes = {
+            'part': {
+                'p_partkey': 451379200
+            },
+            'orders': {
+                'o_orderkey': 3371827200
+            },
+            'supplier': {
+                's_suppkey': 245760000
+            },
+            'customer': {
+                'c_custkey':  339148800
+            },
+            'partsupp': {
+                '': -1
+            },
+            'lineitem': {
+                '': -1
+            },
+            'nation': {
+                'n_nationkey': -1
+            }, 
+            'region': {
+                'r_regionkey': -1
+            }
+        }
+
+class TPCH_10_Schema(TPCH_Schema):
+
+    def __init__(self,):
+        super(TPCH_10_Schema, self).__init__()
+
+        self.table_features = {
+            'part': {
+                'table_size': 2000000,
+                'key_range': [1, 2000000]
+            },
+
+            'orders': {
+                'table_size': 15000000,
+                'key_range': [1, 60000000]
+                # 'table_size': 1500000,
+                # 'key_range': [1,  149999]
+            },
+            'supplier': {
+                'table_size': 100000,
+                'key_range': [1, 100000]
+            },
+            'customer': {
+                'table_size': 1500000,
+                'key_range': [1, 1500000]
+            },
+            'partsupp': {
+                'table_size': 8000000,
+                'key_range': [-1, -1]
+            },
+            'nation': {
+                'table_size': 25,
+                'key_range': [1, 25]
+            },
+            'region': {
+                'table_size': 5,
+                'key_range': [1, 5]
+            },
+
+            'lineitem': {
+                'table_size': 59986052,
+                'key_range': [-1, -1]
+            }
+        }  # table features
+
+        self.non_indexed_attr = {
+                # table: one non_indexed attr, and its range
+                'part': ('p_size', [1, 50]),
+                'orders': ('o_custkey', [1, 1499999]),
+                'supplier': ('s_nationkey', [0, 24]),
+                'customer': ('c_nationkey', [0, 24]),
+                'partsupp': ('ps_suppkey', [1, 100000]),
+                'lineitem': ('l_partkey', [1, 2000000]),
+                'nation': ('n_regionkey', [1, 5]), 
+                'region': ('', [-1, 0])
+        }
+
+        self.indexes = {
+            'part': {
+                'p_partkey': 45137920
+            },
+            'orders': {
+                'o_orderkey': 337182720
+            },
+            'supplier': {
+                's_suppkey': 24576000
+            },
+            'customer': {
+                'c_custkey':  33914880
+            },
+            'partsupp': {
+                '': -1
+            },
+            'lineitem': {
+                '': -1
+            },
+            'nation': {
+                'n_nationkey': -1
+            }, 
+            'region': {
+                'r_regionkey': -1
+            }
         }

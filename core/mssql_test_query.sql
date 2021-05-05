@@ -1,0 +1,2 @@
+WITH  prev_result_view AS (select Top 1 * from title where title.id > 10000)
+select * from prev_result_view, movie_info_idx WITH (INDEX(movie_info_idx_id)) where movie_info_idx.movie_id = prev_result_view.id and movie_info_idx.id > 0 OPTION (MERGE JOIN) ;

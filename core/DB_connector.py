@@ -1,19 +1,19 @@
 # Database Connectors
-# import pyodbc
-from core.cardinality_estimation_quality import *
+import pyodbc
+# from core.cardinality_estimation_quality.cardinality_estimation_quality import *
 import numpy as np
 import pandas as pd
 import xml.etree.ElementTree as ET
 from collections import *
 
-# import couchbase stuffs
-import couchbase.search as FT
-import couchbase.subdocument as SD
-# import jwt  # from PyJWT
-from couchbase.cluster import Cluster, ClusterOptions, PasswordAuthenticator, ClusterTimeoutOptions
-from couchbase.exceptions import *
-from couchbase.search import SearchOptions
-from couchbase.exceptions import TimeoutException
+## import couchbase stuffs
+# import couchbase.search as FT
+# import couchbase.subdocument as SD
+# # import jwt  # from PyJWT
+# from couchbase.cluster import Cluster, ClusterOptions, PasswordAuthenticator, ClusterTimeoutOptions
+# from couchbase.exceptions import *
+# from couchbase.search import SearchOptions
+# from couchbase.exceptions import TimeoutException
 
 import time
 import json
@@ -27,7 +27,7 @@ class Postgres_Connector:
         self.db_name = db_name
 
         if db_name:
-            self.db_url = f'host={server} port=5432 user={username} dbname={db_name} password={password}'
+            self.db_url = f"host={server} port=5432 user={username} dbname={db_name} password={password} options='-c statement_timeout={12000000}' "
             self.init_db(db_name)
 
     def init_db(self, db_name):
@@ -40,14 +40,22 @@ class Postgres_Connector:
         self.execute(
             'LOAD \'pg_hint_plan\';SET max_parallel_workers_per_gather=0;SET max_parallel_workers=0;', set_env=True)
 
-    def explain(self, query):
+    def explain(self, query, timeout=0):
         q = QueryResult(None)
         q.query = query
-        q.explain(self.db, execute=False)
+        q.explain(self.db, execute=False, timeout=timeout)
         return q
 
     def execute(self, query, set_env=False):
-        return self.db.execute(query, set_env=set_env)
+        start_time = time.time()
+        res = self.db.execute(query, set_env=set_env)
+        end_time = time.time()
+        q = {
+            'execution_cost': end_time - start_time,
+            'estimated_result_size': len(res)
+        }
+        # print(res)
+        return q
 
 
 class Couchbase_Connector:

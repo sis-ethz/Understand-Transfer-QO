@@ -2,12 +2,13 @@ from pygam import LinearGAM, s, f, LogisticGAM, l
 from pygam.datasets import wage
 from interpret.glassbox import ExplainableBoostingClassifier, ExplainableBoostingRegressor
 
-from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.linear_model import LogisticRegression
 
 from core.models.Regressor import Regressor
-from core.models.Classifier import Classifier
+from core.models.Classifier import *
 
 import numpy as np
+
 
 
 class LinearGAMClassifier(Classifier):
@@ -79,3 +80,23 @@ class LinearGAMRegressor(Regressor):
 
     def predict(self, X):
         return self.y_inv_scale_func(self.model.predict(X))
+
+class m_LogisticRegression(Classifier):
+
+    def __init__(self,):
+        pass
+
+    def fit(self, X, y, sample_weight=None):
+        if y[0] * len(y) == sum(y):
+            self.model = unified_predictor(y[0])
+        else:
+            clf = LogisticRegression().fit(X,y, sample_weight=sample_weight)
+            self.model = clf
+        
+        return self
+
+    def predict(self, X):
+        return self.model.predict(X)
+
+    def score(self, X, y):
+        return self.model.score(X, y)

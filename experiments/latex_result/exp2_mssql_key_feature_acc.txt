@@ -1,0 +1,126 @@
+ssb part/mssql_lineorder_part_optimal.csv 
+& \textbf{ .96 }& \textbf{ .97 }& \textbf{ .95 }& \textbf{ .97 }& .89& \textbf{ .95 }& .86& .79
+ssb customer/mssql_lineorder_customer_optimal.csv 
+& \textbf{ .97 }& \textbf{ .98 }& \textbf{ .95 }& \textbf{ .98 }& \textbf{ .91 }& \textbf{ .97 }& \textbf{ .91 }& .87
+ssb ddate/mssql_lineorder_ddate_optimal.csv 
+& .86& .88& .87& .88& .83& .86& .74& .78
+ssb supplier/mssql_lineorder_supplier_optimal.csv 
+& .58& .76& .58& .76& .59& .59& .51& .59
+ssb lineorder/mssql_part_lineorder_optimal.csv 
+& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+ssb lineorder/mssql_customer_lineorder_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+ssb lineorder/mssql_ddate_lineorder_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+ssb lineorder/mssql_supplier_lineorder_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch customer/mssql_orders_customer_optimal.csv 
+& \textbf{ .90 }& \textbf{ .98 }& \textbf{ .91 }& \textbf{ .98 }& .01& .88& .17& .48
+tpch orders/mssql_customer_orders_optimal.csv 
+& \textbf{ .96 }& \textbf{ .96 }& \textbf{ .97 }& \textbf{ .96 }& \textbf{ .97 }& \textbf{ .97 }& \textbf{ .97 }& \textbf{ .97 }
+tpch orders/mssql_lineitem_orders_optimal.csv 
+& .90& \textbf{ .98 }& .89& \textbf{ .97 }& .78& .83& .76& .70
+tpch part/mssql_lineitem_part_optimal.csv 
+& .81& \textbf{ .94 }& .81& \textbf{ .94 }& .81& .82& .81& .84
+tpch part/mssql_partsupp_part_optimal.csv 
+& .78& \textbf{ .95 }& .81& \textbf{ .94 }& .81& .75& .81& .84
+tpch partsupp/mssql_lineitem_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch partsupp/mssql_part_partsupp_optimal.csv 
+& \textbf{ .94 }& \textbf{ .91 }& \textbf{ .94 }& \textbf{ .92 }& \textbf{ .94 }& \textbf{ .94 }& \textbf{ .94 }& \textbf{ .94 }
+tpch partsupp/mssql_supplier_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch supplier/mssql_lineitem_supplier_optimal.csv 
+& \textbf{ .95 }& \textbf{ .96 }& \textbf{ .94 }& \textbf{ .96 }& \textbf{ .94 }& \textbf{ .96 }& .89& .89
+tpch supplier/mssql_partsupp_supplier_optimal.csv 
+& \textbf{ .97 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .96 }& \textbf{ .98 }& .90& \textbf{ .90 }
+tpch nation/mssql_region_nation_optimal.csv 
+& .76& .74& .74& .73& .72& .71& .75& .78
+tpch lineitem/mssql_orders_lineitem_optimal.csv 
+& \textbf{ .98 }& \textbf{ .97 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }
+tpch lineitem/mssql_part_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch lineitem/mssql_partsupp_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch region/mssql_nation_region_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 customer/mssql_orders_customer_optimal.csv 
+& \textbf{ .96 }& \textbf{ .97 }& \textbf{ .96 }& \textbf{ .97 }& .89& \textbf{ .94 }& .88& .86
+tpch_10 orders/mssql_customer_orders_optimal.csv 
+& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }
+tpch_10 orders/mssql_lineitem_orders_optimal.csv 
+& \textbf{ .96 }& \textbf{ .99 }& \textbf{ .97 }& \textbf{ 1.00 }& \textbf{ .92 }& \textbf{ .97 }& \textbf{ .90 }& \textbf{ .92 }
+tpch_10 part/mssql_lineitem_part_optimal.csv 
+& .89& \textbf{ .96 }& .89& \textbf{ .97 }& .80& .87& .74& .71
+tpch_10 part/mssql_partsupp_part_optimal.csv 
+& .89& \textbf{ .98 }& .88& \textbf{ .96 }& .79& .84& .73& .68
+tpch_10 partsupp/mssql_lineitem_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 partsupp/mssql_part_partsupp_optimal.csv 
+& \textbf{ .98 }& \textbf{ .97 }& \textbf{ .98 }& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }
+tpch_10 partsupp/mssql_supplier_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 supplier/mssql_lineitem_supplier_optimal.csv 
+& .78& \textbf{ .91 }& .85& \textbf{ .91 }& .77& .74& .86& .82
+tpch_10 supplier/mssql_partsupp_supplier_optimal.csv 
+& .81& \textbf{ .95 }& .86& \textbf{ .96 }& .81& .81& .89& .85
+tpch_10 nation/mssql_region_nation_optimal.csv 
+& .76& .74& .73& .74& .72& .76& .75& .78
+tpch_10 lineitem/mssql_orders_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 lineitem/mssql_part_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 lineitem/mssql_partsupp_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_10 region/mssql_nation_region_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 customer/mssql_orders_customer_optimal.csv 
+& \textbf{ .98 }& \textbf{ .99 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .91 }& \textbf{ .96 }& \textbf{ .91 }& \textbf{ .93 }
+tpch_100 orders/mssql_customer_orders_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 orders/mssql_lineitem_orders_optimal.csv 
+& \textbf{ .94 }& \textbf{ .91 }& \textbf{ .95 }& \textbf{ .91 }& \textbf{ .95 }& \textbf{ .96 }& \textbf{ .94 }& \textbf{ .95 }
+tpch_100 part/mssql_lineitem_part_optimal.csv 
+& \textbf{ .97 }& \textbf{ .98 }& \textbf{ .96 }& \textbf{ .98 }& \textbf{ .91 }& \textbf{ .95 }& \textbf{ .93 }& \textbf{ .90 }
+tpch_100 part/mssql_partsupp_part_optimal.csv 
+& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .94 }& \textbf{ .94 }& \textbf{ .94 }& \textbf{ .93 }
+tpch_100 partsupp/mssql_lineitem_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 partsupp/mssql_part_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 partsupp/mssql_supplier_partsupp_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 supplier/mssql_lineitem_supplier_optimal.csv 
+& .79& .77& .80& .79& .76& .78& .69& .70
+tpch_100 supplier/mssql_partsupp_supplier_optimal.csv 
+& .84& \textbf{ .93 }& .87& \textbf{ .92 }& .76& .80& .65& .60
+tpch_100 nation/mssql_region_nation_optimal.csv 
+& .76& .74& .73& .73& .72& .77& .75& .78
+tpch_100 lineitem/mssql_orders_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 lineitem/mssql_part_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 lineitem/mssql_partsupp_lineitem_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+tpch_100 region/mssql_nation_region_optimal.csv 
+& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }& \textbf{ 1.00 }
+imdb cast_info/mssql_title_cast_info_optimal.csv 
+& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }
+imdb movie_companies/mssql_title_movie_companies_optimal.csv 
+& \textbf{ .91 }& .89& \textbf{ .92 }& .89& \textbf{ .92 }& \textbf{ .91 }& \textbf{ .90 }& \textbf{ .90 }
+imdb movie_info/mssql_title_movie_info_optimal.csv 
+& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }
+imdb movie_info_idx/mssql_title_movie_info_idx_optimal.csv 
+& .86& .86& .90& .86& .89& .90& .85& .89
+imdb movie_keyword/mssql_title_movie_keyword_optimal.csv 
+& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .98 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }& \textbf{ .99 }
+imdb title/mssql_cast_info_title_optimal.csv 
+& \textbf{ .93 }& \textbf{ .99 }& \textbf{ .93 }& \textbf{ .99 }& .86& .81& .79& .73
+imdb title/mssql_movie_companies_title_optimal.csv 
+& \textbf{ .94 }& \textbf{ .99 }& \textbf{ .91 }& \textbf{ .98 }& .87& \textbf{ .96 }& .79& .81
+imdb title/mssql_movie_info_idx_title_optimal.csv 
+& \textbf{ .96 }& \textbf{ .98 }& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .95 }& \textbf{ .96 }& .85& .89
+imdb title/mssql_movie_info_title_optimal.csv 
+& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .97 }& \textbf{ .99 }& \textbf{ .94 }& \textbf{ .98 }& .88& \textbf{ .92 }
+imdb title/mssql_movie_keyword_title_optimal.csv 
+& \textbf{ .95 }& \textbf{ .98 }& \textbf{ .96 }& \textbf{ .99 }& \textbf{ .92 }& \textbf{ .95 }& \textbf{ .92 }& \textbf{ .92 }

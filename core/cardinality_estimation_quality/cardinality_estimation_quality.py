@@ -36,6 +36,7 @@ class Postgres():
 
     def __init__(self, pg_url):
         self._connection = psycopg2.connect(pg_url)
+        self.execute
 
     def execute(self, query, set_env=False):
         '''
@@ -47,7 +48,7 @@ class Postgres():
         if not set_env:
             return cursor.fetchall()
 
-    def explain(self, query):
+    def explain(self, query, timeout=0):
         '''
         Execute an 'EXPLAIN ANALYZE' of the query
         '''
@@ -55,10 +56,22 @@ class Postgres():
             # if not query.lower().startswith('explain'):
             query = 'EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON) ' + query
 
-        cursor = self._connection.cursor(
-            cursor_factory=psycopg2.extras.DictCursor)
-        cursor.execute(query)
-        return cursor.fetchall()
+        if timeout >= 0:
+            self.execute(f'SET statement_timeout = {timeout};', set_env=True)
+        
+        try:
+            cursor = self._connection.cursor(
+                cursor_factory=psycopg2.extras.DictCursor)
+            cursor.execute(query)
+            q = cursor.fetchall()
+        except Exception as e:
+            print("Timeout!!!!", e)
+            return None
+        
+        # if timeout > 0:
+        #     self.execute(f'SET statement_timeout = 0;', set_env=True)
+
+        return q
 
 
 class QueryResult():
@@ -79,11 +92,14 @@ class QueryResult():
             with open(filename) as f:
                 self.query = f.read()
 
-    def explain(self, db, execute=True):
+    def explain(self, db, execute=True, timeout=0):
         '''
         EXPLAIN the query in the given database to populate the execution stats fields
         '''
-        result = db.explain(self.query)[0][0][0]
+        q = db.explain(self.query, timeout=timeout)
+        if q is None:
+            return
+        result = q[0][0][0]
         self.result = result
         self.query_plan = result['Plan']
 
@@ -480,28 +496,32 @@ def plot_q_error_distribution_vs_join_level(queries):
     return plot
 
 
-def postgres_triplet_cost_parse(q, anchor='CTE Scan'):
-    total_cost = q.query_plan['Total Cost']
+def postgres_triplet_cost_parse(q, anchor='CTE Scan', start_up_cost_name='Startup Cost', total_cost_name='Total Cost'):
+    total_cost = q.query_plan[total_cost_name]
     sub_plan = q.query_plan['Plans']
     # print(q.query_plan)
-    assert len(sub_plan) == 3
-    CTE_cost = sub_plan[0]['Total Cost']
+    # assert len(sub_plan) == 3
+    CTE_cost = sub_plan[0][total_cost_name]
 
-    if is_CTE_scan(sub_plan[1], anchor):
-        CTE_scan_cost = is_CTE_scan(sub_plan[1], anchor)
+    if is_CTE_scan(sub_plan[1], anchor, start_up_cost_name=start_up_cost_name, total_cost_name=total_cost_name):
+        CTE_scan_cost = is_CTE_scan(sub_plan[1], anchor, start_up_cost_name=start_up_cost_name, total_cost_name=total_cost_name)
     else:
-        CTE_scan_cost = is_CTE_scan(sub_plan[2], anchor)
+        CTE_scan_cost = is_CTE_scan(sub_plan[2], anchor, start_up_cost_name=start_up_cost_name, total_cost_name=total_cost_name)
+    
+    # if not CTE_scan_cost:
+    #     print(sub_plan)
+    #     exit(1)
 
-    total_useful_cost = total_cost - CTE_scan_cost - CTE_cost
+    # total_useful_cost = total_cost - CTE_scan_cost - CTE_cost
 
     # print("Total cost ", total_cost)
     # print("CTE_cost ", CTE_cost)
     # print("CTE_scan_cost ", CTE_scan_cost)
     # return total_cost, CTE_scan_cost
-    return total_cost, (CTE_scan_cost + CTE_cost)
+    return total_cost, -1 # (CTE_scan_cost + CTE_cost)
 
 
-def is_CTE_scan(plan_json, anchor):
+def is_CTE_scan(plan_json, anchor, start_up_cost_name='Startup Cost', total_cost_name='Total Cost'):
     # print("str(plan)", str(plan_json).lower())
     # exit(1)
 
@@ -515,7 +535,7 @@ def is_CTE_scan(plan_json, anchor):
                     q.append(p)
             else:
                 break
-        return c['Total Cost'] - c['Startup Cost']
+        return c[total_cost_name] - c[start_up_cost_name]
     else:
         return None
 

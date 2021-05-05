@@ -134,6 +134,7 @@ core/*.txt
 
 # avoid large files
 *.csv
-*.sql
+# *.sql
 *.tbl
 nohup.out
+datasets/

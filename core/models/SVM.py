@@ -1,5 +1,5 @@
 from core.models.Regressor import Regressor
-from core.models.Classifier import Classifier
+from core.models.Classifier import *
 from sklearn import svm
 import numpy as np
 import pandas as pd
@@ -9,9 +9,12 @@ class SVMClassifier(Classifier):
     def __init__(self,):
         super(SVMClassifier, self).__init__()
     
-    def fit(self, X, y, sample_weight=None):
-        self.model = svm.SVC()
-        self.model.fit(X, y, sample_weight=sample_weight)
+    def fit(self, X, y, sample_weight=None, kernel='poly'):
+        if y[0] * sum(sample_weight > 0) == sum(y * (sample_weight > 0)):
+            self.model = unified_predictor(y[0])
+        else:
+            self.model = svm.SVC(kernel=kernel)
+            self.model.fit(X, y, sample_weight=sample_weight)
         return self
     
     def predict(self, X):

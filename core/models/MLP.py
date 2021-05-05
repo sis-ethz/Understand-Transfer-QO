@@ -3,6 +3,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 import sklearn.neural_network as sk_nn
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+# import sklearn.neural_network.MLPClassifier as sk_MLP
 import os
 import numpy as np
 import pandas as pd
@@ -78,11 +79,13 @@ class MLPClassifier(Classifier):
         self.n_features = n_features
         self.n_layers = n_layers
 
-    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cuda', debug_print=False, test_kit=None, lr=0.01):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=100, device='cpu', 
+            debug_print=False, test_kit=None, lr=0.01, weight_decay=0):
         
         if X_train.shape[-1] != self.n_features:
             self.n_features = X_train.shape[-1]
-            self.model = mlp_regressor_module(self.n_layers, X_train.shape[-1])
+            self.model = mlp_classifier_module(self.n_layers, X_train.shape[-1], n_classes=self.n_classes)
+            print(f"set features: {self.n_features}")
         
         # transform y into list of digits
         
@@ -108,7 +111,7 @@ class MLPClassifier(Classifier):
 
         criterion = nn.CrossEntropyLoss(reduction='none')
 
-        optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
+        optimizer = torch.optim.Adam(self.model.parameters(), lr=lr, weight_decay=weight_decay)
 
         self.model.to(device)
 
@@ -147,6 +150,14 @@ class MLPClassifier(Classifier):
         pred_y = pred_y.to('cpu')
         _, y_pred_tags = torch.max(pred_y, dim=1)
         return np.array(y_pred_tags)
+    
+    def predict_proba(self, X, device='cpu'):
+        X = torch.Tensor(X).to(device)
+        self.model.to(device)
+        pred_y = self.model.forward(X)
+        pred_y = pred_y.to('cpu')
+        proba = torch.nn.Softmax(pred_y)
+        return proba.detach().numpy()
 
     def accuracy(self, X, y, device='cpu'):
         return self.score(X, y, device)
@@ -162,7 +173,7 @@ class MLPClassifier_with_confidence(MLPClassifier):
             n_layers=n_layers, n_features=n_features, n_classes=n_classes)
         self.n_features = n_features
 
-    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cuda', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
+    def fit(self, X_train, y_train, batch_size=500, max_iter=500, device='cpu', debug_print=False, test_kit=None, loss_func=None, lr=0.01):
 
         def manual_cross_entropy(input, target, size_average=True):
             """ 
@@ -191,7 +202,7 @@ class MLPClassifier_with_confidence(MLPClassifier):
 
         if X_train.shape[-1] != self.n_features:
             self.n_features = X_train.shape[-1]
-            self.model = mlp_regressor_module(n_layers, X_train.shape[-1])
+            self.model = mlp_classifier_module(n_layers, X_train.shape[-1], n_classes=self.n_classes)
 
         # transform y into list of digits
         y_train = np.array(y_train)
@@ -245,7 +256,7 @@ class MLPRegressor(Regressor):
         self.n_features = n_features
         self.model = mlp_regressor_module(n_layers, n_features)
 
-    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cuda', y_scaler='exp', debug_print=False, test_kit=None):
+    def fit(self, X_train, y_train, sample_weight=None, batch_size=500, max_iter=500, device='cpu', y_scaler='exp', debug_print=False, test_kit=None):
         # transform y into list of digits
 
         if X_train.shape[-1] != self.n_features:
@@ -322,3 +333,13 @@ class MLPRegressor(Regressor):
         pred_y = self.model.forward(X)
         pred_y = pred_y.to('cpu').detach().numpy()
         return self.y_inv_scale_func(pred_y)
+
+
+class sklearn_MLP_classifier(Classifier):
+    
+    def __init__(self, n_layers=5, n_features=2, n_classes=6):
+        self.hidden_layer_sizes = (100, 100, 100,)
+
+    def fit(self, X_train, y_train, batch_size='auto', max_iter=100, debug_print=False, test_kit=None, lr=0.01):
+        self.model = sk_nn.MLPClassifier(hidden_layer_sizes=self.hidden_layer_sizes, learning_rate=lr, batch_size=batch_size, alpha=0, max_iter=max_iter)
+
