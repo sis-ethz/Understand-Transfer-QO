@@ -2,7 +2,7 @@
 
 <!-- Code cleaning is in procedure. Cleaned version will be available before May 7. -->
 
-This is the code base of the paper "Towards Understanding and Transferring Query Optimizers" for reproducing the results. 
+This is the codebase of the paper "Towards Understanding and Transferring Query Optimizers". 
 
 ## Requirements
 Sampling random queries and executing benchmark queries require the database systems deployed with data loaded. We use DBMS including [Postgres](), [Microsoft SQL Server]() and [Couchbase](). We use SSB, TPC-H, and IMDB as data sets.
