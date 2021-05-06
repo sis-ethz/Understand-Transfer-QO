@@ -7,7 +7,7 @@ This is the code base of the paper "Towards Understanding and Transferring Query
 ## Requirements
 Sampling random queries and executing benchmark queries require the database systems deployed with data loaded. We use DBMS including [Postgres](), [Microsoft SQL Server]() and [Couchbase](). We use SSB, TPC-H, and IMDB as data sets.
 
-We use [Python3]() and [jupyter notebook]() to implement the experiments. The python requirements are listed in `requirements.txt` (for ML experiments only) and `requirements_engine.txt` (for ML experiments and connecting DB engines). Run the following to install the packages needed.
+We use [Python3]() and [jupyter notebook]() to implement the experiments. The python requirements are listed in `requirements.txt` (for ML experiments only) and `requirements_engine.txt` (for connecting DB engines). Run the following to install the packages needed for ML experiments.
 
 ```python3 -m pip install -r requirements.txt``` 
 
