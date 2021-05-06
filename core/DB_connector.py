@@ -1,11 +1,17 @@
 # Database Connectors
-# import pyodbc
-from core.cardinality_estimation_quality.cardinality_estimation_quality import *
-import numpy as np
-import pandas as pd
-import xml.etree.ElementTree as ET
-from collections import *
 
+# ====================
+# MSSQL
+# import pyodbc
+# ====================
+
+# ====================
+# Postgres
+from core.cardinality_estimation_quality.cardinality_estimation_quality import *
+# ====================
+
+# ====================
+## Couchbase 
 ## load couchbase stuffs
 # import couchbase.search as FT
 # import couchbase.subdocument as SD
@@ -14,7 +20,12 @@ from collections import *
 # from couchbase.exceptions import *
 # from couchbase.search import SearchOptions
 # from couchbase.exceptions import TimeoutException
+# ====================
 
+import numpy as np
+import pandas as pd
+import xml.etree.ElementTree as ET
+from collections import *
 import time
 import json
 from datetime import timedelta
