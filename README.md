@@ -38,23 +38,23 @@ python3 core/QuerySampler.py -e postgres mssql -d ssb tpch tpch_10 tpch_100 imdb
 ## Experimental evaluation 
 
 ### Training and evaluating ML characterization models
-* This corresponds to Section 4.3 in the paper. The experiments are implemented in [exp1-ML characterization.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp1-ML%20characterization.ipynb).
+* This corresponds to Section 4.3 in the paper. The experiments are implemented in [exp1-ML-characterization.ipynb](experiments/exp1-ML-characterization.ipynb).
 
 ### Applying ML models to full queries
-* This corresponds to Section 4.4 in the paper. The queries with hints are under `experiment/benchmark/queries/` (`postgres_original` and `postgres_model`). To run the queries, use `experiments/run_generalized_model_query.sh`. This requires Postgres being deployed on your systems and SSB, TPC-H, IMDB loaded. You can safely skip this and the run time results are in [exp1-ML-generalization.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp1-ML-generalization.ipynb).
+* This corresponds to Section 4.4 in the paper. The queries with hints are under `experiment/benchmark/queries/` (`postgres_original` and `postgres_model`). To run the queries, use `experiments/run_generalized_model_query.sh`. This requires Postgres being deployed on your systems and SSB, TPC-H, IMDB loaded. You can safely skip this and the run time results are in [exp1-ML-generalization.ipynb](experiments/exp1-ML-generalization.ipynb).
 
 ### Feature correlations
-* This corresponds to Section 5.1 (feature correlation part) in the paper. You can find our code in [exp2-feature-corr.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-feature-corr.ipynb).
+* This corresponds to Section 5.1 (feature correlation part) in the paper. You can find our code in [exp2-feature-corr.ipynb](experiments/exp2-feature-corr.ipynb).
 
 ### Ablation study
-* This corresponds to Section 5.1 (ablation study part) in the paper. You can find our code in [exp2-abalation-study-postgres.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-abalation-study-postgres.ipynb) for Postgres and [exp2-abalation-study-mssql.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-abalation-study-mssql.ipynb) for Microsoft SQL Server.
+* This corresponds to Section 5.1 (ablation study part) in the paper. You can find our code in [exp2-abalation-study-postgres.ipynb](experiments/exp2-abalation-study-postgres.ipynb) for Postgres and [exp2-abalation-study-mssql.ipynb](experiments/exp2-abalation-study-mssql.ipynb) for Microsoft SQL Server.
 
 ### Training ML models with two key features
-* This corresponds to Section 5.2 in the paper. You can find our code in [exp2-ML-with-key-features.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-ML%20with%20key%20features.ipynb).
+* This corresponds to Section 5.2 in the paper. You can find our code in [exp2-ML-with-key-features.ipynb](experiments/exp2-ML-with-key-features.ipynb).
 
 
 ### Visualizing decision spaces
-* This corresponds to Section 5.3 in the paper. You can find the visualization in [exp2-plot-decision-space.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-plot%20decision%20space.ipynb). The effect of sample weight is shown in [exp2-effect-of-sample-weights.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp2-effect-of-sample-weights.ipynb).
+* This corresponds to Section 5.3 in the paper. You can find the visualization in [exp2-plot-decision-space.ipynb](experiments/exp2-plot decision space.ipynb). The effect of sample weight is shown in [exp2-effect-of-sample-weights.ipynb](experiments/exp2-effect-of-sample-weights.ipynb).
 
 ### Transferring query optimizers
-* This corresponds to Section 6 in the paper. The queries with hints are under `experiment/benchmark/queries/` (`couchbase_original` for Couchbase with CBO, `couchbase_trans_postgres` for transferring Postgres and `couchbase_trans_mssql` for transferring MSSQL). To run all the queries, use `experiments/run_couchbase_query.sh`. This requires Couchbase being deployed with SSB, TPC-H, IMDB loaded to it. The compare with the CBO in Couchbase, the Couhbase should be Enterprise Edition and the preview mode enabled. The results are listed in [exp3-transfter-learning-plot.ipynb](https://github.com/rekords-uw/Understand-Transfer-QO/blob/a6de3bbbeba10c936a0c2cf3c871871a4aafb5f7/experiments/exp3-transfter-learning-plot.ipynb).
+* This corresponds to Section 6 in the paper. The queries with hints are under `experiment/benchmark/queries/` (`couchbase_original` for Couchbase with CBO, `couchbase_trans_postgres` for transferring Postgres and `couchbase_trans_mssql` for transferring MSSQL). To run all the queries, use `experiments/run_couchbase_query.sh`. This requires Couchbase being deployed with SSB, TPC-H, IMDB loaded to it. The compare with the CBO in Couchbase, the Couhbase should be Enterprise Edition and the preview mode enabled. The results are listed in [exp3-transfter-learning-plot.ipynb](experiments/exp3-transfter-learning-plot.ipynb).
