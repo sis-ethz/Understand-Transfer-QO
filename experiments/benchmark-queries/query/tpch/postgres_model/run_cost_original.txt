@@ -1,0 +1,72 @@
+
+Running queries with repeat = 5 at 2021-02-01 17:40:07.953075
+==================================
+Query tpch_03.sql (0 / 5) : 1.19, result size: 10
+Query tpch_03.sql (1 / 5) : 1.16, result size: 10
+Query tpch_03.sql (2 / 5) : 1.19, result size: 10
+Query tpch_03.sql (3 / 5) : 1.15, result size: 10
+Query tpch_03.sql (4 / 5) : 1.16, result size: 10
+==================================
+==================================
+Query tpch_05.sql (0 / 5) : 1.44, result size: 5
+Query tpch_05.sql (1 / 5) : 1.42, result size: 5
+Query tpch_05.sql (2 / 5) : 1.41, result size: 5
+Query tpch_05.sql (3 / 5) : 1.42, result size: 5
+Query tpch_05.sql (4 / 5) : 1.42, result size: 5
+==================================
+==================================
+Query tpch_09.sql (0 / 5) : 1.41, result size: 175
+Query tpch_09.sql (1 / 5) : 1.43, result size: 175
+Query tpch_09.sql (2 / 5) : 1.41, result size: 175
+Query tpch_09.sql (3 / 5) : 1.42, result size: 175
+Query tpch_09.sql (4 / 5) : 1.42, result size: 175
+==================================
+==================================
+Query tpch_10.sql (0 / 5) : 0.93, result size: 20
+Query tpch_10.sql (1 / 5) : 0.94, result size: 20
+Query tpch_10.sql (2 / 5) : 0.95, result size: 20
+Query tpch_10.sql (3 / 5) : 0.94, result size: 20
+Query tpch_10.sql (4 / 5) : 0.94, result size: 20
+==================================
+==================================
+Query tpch_11.sql (0 / 5) : 0.35, result size: 28574
+Query tpch_11.sql (1 / 5) : 0.44, result size: 28574
+Query tpch_11.sql (2 / 5) : 0.35, result size: 28574
+Query tpch_11.sql (3 / 5) : 0.35, result size: 28574
+Query tpch_11.sql (4 / 5) : 0.43, result size: 28574
+==================================
+==================================
+Query tpch_12.sql (0 / 5) : 1.35, result size: 2
+Query tpch_12.sql (1 / 5) : 1.31, result size: 2
+Query tpch_12.sql (2 / 5) : 1.34, result size: 2
+Query tpch_12.sql (3 / 5) : 1.33, result size: 2
+Query tpch_12.sql (4 / 5) : 1.39, result size: 2
+==================================
+==================================
+Query tpch_14.sql (0 / 5) : 0.41, result size: 1
+Query tpch_14.sql (1 / 5) : 0.37, result size: 1
+Query tpch_14.sql (2 / 5) : 0.38, result size: 1
+Query tpch_14.sql (3 / 5) : 0.37, result size: 1
+Query tpch_14.sql (4 / 5) : 0.38, result size: 1
+==================================
+==================================
+Query tpch_16.sql (0 / 5) : 1.38, result size: 18314
+Query tpch_16.sql (1 / 5) : 1.40, result size: 18314
+Query tpch_16.sql (2 / 5) : 1.38, result size: 18314
+Query tpch_16.sql (3 / 5) : 1.40, result size: 18314
+Query tpch_16.sql (4 / 5) : 1.36, result size: 18314
+==================================
+==================================
+Query tpch_18.sql (0 / 5) : 8.30, result size: 57
+Query tpch_18.sql (1 / 5) : 8.29, result size: 57
+Query tpch_18.sql (2 / 5) : 8.35, result size: 57
+Query tpch_18.sql (3 / 5) : 8.29, result size: 57
+Query tpch_18.sql (4 / 5) : 8.24, result size: 57
+==================================
+==================================
+Query tpch_19.sql (0 / 5) : 0.45, result size: 1
+Query tpch_19.sql (1 / 5) : 0.45, result size: 1
+Query tpch_19.sql (2 / 5) : 0.45, result size: 1
+Query tpch_19.sql (3 / 5) : 0.45, result size: 1
+Query tpch_19.sql (4 / 5) : 0.45, result size: 1
+==================================

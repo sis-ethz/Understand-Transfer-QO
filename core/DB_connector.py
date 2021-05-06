@@ -1,12 +1,12 @@
 # Database Connectors
-import pyodbc
-# from core.cardinality_estimation_quality.cardinality_estimation_quality import *
+# import pyodbc
+from core.cardinality_estimation_quality.cardinality_estimation_quality import *
 import numpy as np
 import pandas as pd
 import xml.etree.ElementTree as ET
 from collections import *
 
-## import couchbase stuffs
+## load couchbase stuffs
 # import couchbase.search as FT
 # import couchbase.subdocument as SD
 # # import jwt  # from PyJWT

@@ -1266,39 +1266,39 @@ class SSB_QuerySampler:
             exit(f"db = {db_engine} is not supported yet")
 
 
-def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
+# def visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False):
 
-    if db_name.lower() == 'tpch':
-        sampler = TPCH_QuerySampler(db_engine='postgres')
-    elif db_name.lower() == 'imdb':
-        sampler = IMDB_lite_QuerySampler(db_engine='postgres')
-    elif db_name.lower() == 'ssb':
-        sampler = SSB_QuerySampler(db_engine='postgres')
+#     if db_name.lower() == 'tpch':
+#         sampler = TPCH_QuerySampler(db_engine='postgres')
+#     elif db_name.lower() == 'imdb':
+#         sampler = IMDB_lite_QuerySampler(db_engine='postgres')
+#     elif db_name.lower() == 'ssb':
+#         sampler = SSB_QuerySampler(db_engine='postgres')
 
-    # sampler.left_size_ratio_threshold = 0.01
+#     # sampler.left_size_ratio_threshold = 0.01
 
-    for base_table in sampler.schema.join_graph:
-        for left_table in sampler.schema.join_graph[base_table]:
-            for left_order in ['random']:
+#     for base_table in sampler.schema.join_graph:
+#         for left_table in sampler.schema.join_graph[base_table]:
+#             for left_order in ['random']:
 
-                res = sampler.query_sampler.sample_for_table(
-                    base_table, [left_table], sample_size=500, sample_with_replacement=sample_with_replacement, left_order=left_order)
+#                 res = sampler.query_sampler.sample_for_table(
+#                     base_table, [left_table], sample_size=500, sample_with_replacement=sample_with_replacement, left_order=left_order)
 
-                if sample_with_replacement:
-                    fig_filename = f"{left_table}_{base_table}_optimal_rep"
-                    data_filename = f"{left_table}_{base_table}_optimal_rep.csv"
-                else:
-                    fig_filename = f"{left_table}_{base_table}_optimal"
-                    data_filename = f"{left_table}_{base_table}_optimal.csv"
+#                 if sample_with_replacement:
+#                     fig_filename = f"{left_table}_{base_table}_optimal_rep"
+#                     data_filename = f"{left_table}_{base_table}_optimal_rep.csv"
+#                 else:
+#                     fig_filename = f"{left_table}_{base_table}_optimal"
+#                     data_filename = f"{left_table}_{base_table}_optimal.csv"
 
-                viz = DecisionVisualizer()
-                viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=fig_filename,
-                                                             base_dir=f'./figures/{db_name.lower()}/{base_table}/')
-            # exit(0)
+#                 viz = DecisionVisualizer()
+#                 viz.plot_2d_optimal_decision_with_importance(res, title=f"Optimal operator (left: {left_table}, base: {base_table})", filename=fig_filename,
+#                                                              base_dir=f'./figures/{db_name.lower()}/{base_table}/')
+#             # exit(0)
 
-                # save_data(res, save_path=f'./data/{db_name.lower()}/{base_table}/',
-                #           filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
-                #                                                 'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
+#                 # save_data(res, save_path=f'./data/{db_name.lower()}/{base_table}/',
+#                 #           filename=data_filename, column_names=['left_cardinality', 'left_cardinality_ratio', 'base_cardinality', 'selectivity_on_indexed_attr', 'left_ordered', 'base_ordered',
+#                 #                                                 'hj_idx_cost', 'hj_seq_cost', 'nl_idx_cost', 'nl_seq_cost', 'mj_idx_cost', 'mj_seq_cost', 'optimal_decision'])
 
 
 def prepare_data_on_dataset(db_name='tpch', db_engine='postgres', sample_with_replacement=False, samples_per_table=1000, execute=False, parallel=0):
@@ -1317,13 +1317,12 @@ def prepare_data_on_dataset(db_name='tpch', db_engine='postgres', sample_with_re
         assert False, f"Data set {db_name} not supported"
 
     
-
     def sample_n_save_data(sampler, base_table, left_table, db_name, sample_with_replacement):
         result = []
         left_orders = ['random', 'left_join_key']
         for left_order in left_orders: #, 'default']:
             res = sampler.query_sampler.sample_for_table(
-                base_table, [left_table], sample_size=samples_per_table, sample_with_replacement=sample_with_replacement, left_order=left_order)
+                base_table, [left_table], sample_size=int(samples_per_table/len(left_orders)), sample_with_replacement=sample_with_replacement, left_order=left_order)
             result += res
 
         if sample_with_replacement:
@@ -1334,11 +1333,11 @@ def prepare_data_on_dataset(db_name='tpch', db_engine='postgres', sample_with_re
         if execute:
             data_filename = data_filename.replace(".csv", "_groundtruth.csv")
 
-        if 'left_join_key' in left_orders:
-            data_filename = data_filename.replace(".csv", "_(random_left).csv")
+        # if 'left_join_key' in left_orders:
+        #     data_filename = data_filename.replace(".csv", "_(random_left).csv")
 
         save_data(result, save_path=f'./sample_results/{db_name.lower()}/{base_table}/',
-                    filename=data_filename, column_names=['query_id', 'query', 'hj_idx_query', 'hj_seq_query', 'nl_idx_query', 'nl_seq_query', 'mj_idx_query', 'mj_seq_query',
+                    filename=data_filename, column_names=['query_id', # 'query', 'hj_idx_query', 'hj_seq_query', 'nl_idx_query', 'nl_seq_query', 'mj_idx_query', 'mj_seq_query',
                 'left_cardinality', 'left_cardinality_ratio', 'base_cardinality',
                 'sel_of_join_pred', 'sel_of_pred_on_indexed_attr', 'sel_of_pred_on_non_indexed_attr',
                 'sel_of_pred_on_indexed_attr_and_join_pred',
@@ -1378,39 +1377,20 @@ def save_data(results, column_names, save_path, filename):
     df = pd.DataFrame(data=data, columns=column_names)
     df.to_csv(os.path.join(save_path, filename), index=False)
     print("Saving data to ", os.path.join(save_path, filename))
-    # print(df)
-    # exit(1)
 
 
 if __name__ == "__main__":
-
     import itertools
+    import argparse
 
-    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=True)
-    # visualize_pair_on_dataset(db_name='ssb', sample_with_replacement=False)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-e','--engines', nargs='+', help='Set the system to sample from. [postgres, mssql]', required=True)
+    parser.add_argument('-d','--datasets', nargs='+', help='Set the data set. [ssb, tpch, tpch_10, tpch_100, imdb]', required=True)
+    parser.add_argument('-n', '--sample_number', action='store', type=int, default=2000, help="Set number of samples per table")
+    args = parser.parse_args()
+    print(f"Sampling for {args.engines} on data sets {args.datasets}. (n = {args.sample_number})")
 
-    # visualize_pair_on_dataset(db_name='imdb', sample_with_replacement=False)
-
-    # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=True)
-    # visualize_pair_on_dataset(db_name='tpch', sample_with_replacement=False)
-
-
-    for db_engine, db_name, sample_w_rep in itertools.product(['mssql'], ['tpch_100'], [False]):
+    for db_engine, db_name in itertools.product(args.engines, args.datasets):
         prepare_data_on_dataset(db_engine=db_engine,
-                                db_name=db_name, sample_with_replacement=sample_w_rep,
-                                samples_per_table=1000, execute=False)
-
-    # for db_engine, db_name, sample_w_rep in itertools.product(['mssql'], ['tpch_100'], [False]):
-    #     prepare_data_on_dataset(db_engine=db_engine,
-    #                             db_name=db_name, sample_with_replacement=sample_w_rep,
-    #                             samples_per_table=1000, execute=False)
-
-
-    # for db_engine, db_name, sample_w_rep in itertools.product(['couchbase'], ['ssb'], [False]):
-    #     prepare_data_on_dataset(db_engine=db_engine,
-    #                             db_name=db_name, sample_with_replacement=sample_w_rep,
-    #                             samples_per_table=1000)
-
-    # for db_engine, db_name, sample_w_rep in itertools.product(['mssql'], ['ssb', 'tpch', 'imdb'], [False]):
-    #     prepare_data_on_dataset(db_engine=db_engine,
-    #                             db_name=db_name, sample_with_replacement=sample_w_rep)
+                                db_name=db_name, sample_with_replacement=False,
+                                samples_per_table=args.sample_number, execute=False)

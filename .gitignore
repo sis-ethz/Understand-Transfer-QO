@@ -134,7 +134,7 @@ dmypy.json
 core/*.txt
 
 # avoid large files
-*.csv
+# *.csv
 # *.sql
 *.tbl
 nohup.out

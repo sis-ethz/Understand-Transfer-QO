@@ -1,0 +1,5 @@
+psycopg2
+xml
+couchbase
+jwt
+pyodbc
